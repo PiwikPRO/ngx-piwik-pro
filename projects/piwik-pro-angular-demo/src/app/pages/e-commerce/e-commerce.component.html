@@ -1,0 +1,35 @@
+<main role="main" class="main">
+  <h1>eCommerce</h1>
+  <mat-card>
+    <img src="https://64.media.tumblr.com/256d5bafd4775b6f1073312ed9798df8/tumblr_inline_phmoeyxXu41tg5wat_640.jpg
+" alt="Shooping!" />
+  </mat-card>
+  <mat-card>
+    <button (click)="addHome()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>home</mat-icon> <div>Home</div>
+    </button>
+    <button (click)="addCar()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>directions_car</mat-icon> <div>Car</div>
+    </button>
+    <button (click)="addFood()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>fastfood</mat-icon> <div>Food</div>
+    </button>
+    <div><mat-divider></mat-divider></div>
+    <div>
+      <mat-list>
+        <mat-list-item *ngFor="let product of productList">
+          {{ product }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div><mat-divider></mat-divider></div>
+    <button (click)="buy()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
+    </button>
+  </mat-card>
+
+
+
+
+
+</main>

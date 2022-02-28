@@ -1,0 +1,16 @@
+
+<main focusOnNavigation aria-label="Event list" id="event-list" class="docs-guide">
+
+  <div class="docs-guide-list">
+    <a class='docs-guide-item' *ngFor="let event of eventItems.getAllItems()"
+       [routerLink]="['/event', event.id]">
+      <mat-card class="docs-guide-card">
+        <mat-card-title>{{event.name}}</mat-card-title>
+        <div class="docs-guide-card-divider"></div>
+        <mat-card-content class="docs-guide-card-summary">
+          {{event.overview}}
+        </mat-card-content>
+      </mat-card>
+    </a>
+  </div>
+</main>
