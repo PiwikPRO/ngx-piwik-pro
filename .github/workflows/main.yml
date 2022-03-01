@@ -1,0 +1,79 @@
+name: Bump and Publish
+
+on:
+  release:
+    types: [released]
+    # refs/tags/x.x.x
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: 'Cache node Modules'
+        uses: actions/cache@v1
+        with:
+          path: ~.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci --ignore-scripts
+      - run: npm test
+
+  bump-and-build:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: 'Cache node Modules'
+        uses: actions/cache@v1
+        with:
+          path: ~.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci --ignore-scripts
+      - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
+      - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
+        working-directory: projects/ngx-piwik-pro
+      - run: npm run build
+      - run: |
+          cp LICENSE dist/ngx-piwik-pro
+          cp README.md dist/ngx-piwik-pro
+          cp CHANGELOG.md dist/ngx-piwik-pro
+      - run: npm pack
+        working-directory: dist/ngx-piwik-pro
+      - name: 'Upload Build Artifatc ${{ steps.get_version.outputs.VERSION }}'
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.get_version.outputs.VERSION }}.tgz
+          path: dist/ngx-piwik-pro/ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
+
+  publish-npm:
+    needs: bump-and-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ steps.get_version.outputs.VERSION }}.tgz
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+#       - run: npm publish ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
