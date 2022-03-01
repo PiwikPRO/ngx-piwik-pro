@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
+import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
 
 /**
  * Provide a Injection Token to global settings.

@@ -1,10 +1,10 @@
 import { APP_BOOTSTRAP_LISTENER, ComponentRef, Provider } from '@angular/core';
-import { NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro/src/lib/tokens/ngx-piwik-pro-router-settings.token';
-import { PiwikProRoutingSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-router-settings.interface';
+import { NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-router-settings.token';
+import { PiwikProRoutingSettings } from '../interfaces/piwik-pro-router-settings.interface';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, skip } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
-import { PageViewsService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/page-views/page-views.service';
+import { PageViewsService } from '../services/page-views/page-views.service';
 
 export const NGX_PIWIK_PRO_ROUTER_INITIALIZER_PROVIDER: Provider = {
   provide: APP_BOOTSTRAP_LISTENER,

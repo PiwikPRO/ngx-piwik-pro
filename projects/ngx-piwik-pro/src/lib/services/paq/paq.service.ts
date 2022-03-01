@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { NGX_WINDOW } from '@piwik-pro/ngx-piwik-pro/src/lib/tokens/ngx-window-token';
-import { PiwikProWindow } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-window.interface';
+import { NGX_WINDOW } from '../../tokens/ngx-window-token';
+import { PiwikProWindow } from '../../interfaces/piwik-pro-window.interface';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 

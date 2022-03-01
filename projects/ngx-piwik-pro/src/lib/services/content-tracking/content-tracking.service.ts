@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PaqService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/paq/paq.service';
-import { TRACK_EVENT } from '@piwik-pro/ngx-piwik-pro/src/lib/constants/track-event.constant';
+import { PaqService } from '../../services/paq/paq.service';
+import { TRACK_EVENT } from '../../constants/track-event.constant';
 
 @Injectable({
   providedIn: 'root'

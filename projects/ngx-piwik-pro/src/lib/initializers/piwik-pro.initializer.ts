@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, isDevMode, Provider } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
-import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro/src/lib/tokens/ngx-piwik-pro-settings.token';
+import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
+import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-settings.token';
 
 export const NGX_PIWIK_PRO_INITIALIZER_PROVIDER: Provider = {
   provide: APP_INITIALIZER,

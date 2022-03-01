@@ -1,6 +1,6 @@
 import { InjectionToken, inject } from '@angular/core';
 import { NGX_WINDOW } from './ngx-window-token';
-import { PiwikProWindow } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-window.interface';
+import { PiwikProWindow } from '../interfaces/piwik-pro-window.interface';
 
 /**
  * Check if there is some global function called _paq on Window object, or create an empty function to doesn't brake codes...
