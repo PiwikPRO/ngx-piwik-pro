@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test ngx-google-analytics --browsers=ChromeHeadless --watch=false",
+    "test:dev": "ng test ngx-google-analytics",
+    "lint": "ng lint ngx-google-analytics"
   },
   "private": true,
   "dependencies": {
