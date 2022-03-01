@@ -54,6 +54,7 @@ jobs:
         working-directory: projects/ngx-piwik-pro
       - run: npm run build
       - run: |
+          cp SECURITY.md dist/ngx-piwik-pro
           cp LICENSE dist/ngx-piwik-pro
           cp README.md dist/ngx-piwik-pro
           cp CHANGELOG.md dist/ngx-piwik-pro
