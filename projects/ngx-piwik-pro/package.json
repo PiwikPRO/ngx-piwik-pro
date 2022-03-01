@@ -8,6 +8,14 @@
     "Tracking",
     "SPA"
   ],
+  "private": false,
+  "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
+  "author": "Piwik PRO <example@mail.com> (https://www.piwik.pro)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"
+  },
+  "homepage": "https://github.com/PiwikPRO/ngx-piwik-pro#readme",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
