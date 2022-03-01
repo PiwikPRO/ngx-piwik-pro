@@ -10,7 +10,14 @@
     "test:dev": "ng test ngx-piwik-pro",
     "lint": "ng lint ngx-piwik-pro"
   },
-  "private": true,
+  "private": false,
+  "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
+  "author": "Piwik PRO <example@mail.com> (https://www.piwik.pro)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"
+  },
+  "homepage": "https://github.com/PiwikPRO/ngx-piwik-pro#readme",
   "dependencies": {
     "@angular/animations": "~13.2.0",
     "@angular/cdk": "^13.2.3",
