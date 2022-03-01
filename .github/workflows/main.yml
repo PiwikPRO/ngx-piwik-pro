@@ -80,6 +80,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-       - run: npm publish ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
-         env:
-           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
