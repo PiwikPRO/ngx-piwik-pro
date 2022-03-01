@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.get_version.outputs.VERSION }}.tgz
-          path: dist/ngx-piwik-pro/@piwikpro/ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
+          path: dist/ngx-piwik-pro/piwikpro-ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
 
   publish-npm:
     needs: bump-and-build
