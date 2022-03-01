@@ -1,7 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro/src/lib/tokens/ngx-piwik-pro-settings.token';
-import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
-import { NGX_PIWIK_PRO_INITIALIZER_PROVIDER } from '@piwik-pro/ngx-piwik-pro/src/lib/initializers/piwik-pro.initializer';
+import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from './tokens/ngx-piwik-pro-settings.token';
+import { PiwikProSettings } from './interfaces/piwik-pro-settings.interface';
+import { NGX_PIWIK_PRO_INITIALIZER_PROVIDER } from './initializers/piwik-pro.initializer';
 
 
 @NgModule({

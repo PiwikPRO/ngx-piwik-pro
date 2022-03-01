@@ -17,11 +17,7 @@
         "projects/ngx-piwik-pro"
       ],
       "@piwik-pro/ngx-piwik-pro": [
-        "dist/ngx-piwik-pro/ngx-piwik-pro",
-        "dist/ngx-piwik-pro"
-      ],
-      "ngx-piwik-pro": [
-        "dist/ngx-piwik-pro/ngx-piwik-pro",
+        "dist/ngx-piwik-pro/*",
         "dist/ngx-piwik-pro"
       ]
     },

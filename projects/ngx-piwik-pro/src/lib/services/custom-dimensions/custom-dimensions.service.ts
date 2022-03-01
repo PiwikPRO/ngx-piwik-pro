@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PaqService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/paq/paq.service';
+import { PaqService } from '../../services/paq/paq.service';
 
 @Injectable({
   providedIn: 'root'
