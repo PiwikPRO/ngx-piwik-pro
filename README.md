@@ -28,7 +28,7 @@ Dedicated Piwik PRO library that helps with implementing Piwik PRO Tag Manager a
 To use this package in your project, run the following command.
 
 ```
-npm install @piwik-pro/ngx-piwik-pro
+npm install @piwikpro/ngx-piwik-pro
 ```
 
 
@@ -39,7 +39,7 @@ To set up the Piwik PRO Tag Manager container in the app, the easiest way is to 
 In the arguments, pass your app ID and your account URL as parameters (marked 'container-id' and 'container-url' in the example below).
 
 ```ts  
-import { NgxPiwikProModule } from '@piwik-pro/ngx-piwik-pro';  
+import { NgxPiwikProModule } from '@piwikpro/ngx-piwik-pro';  
   
 @NgModule({  
   declarations: [  
@@ -66,7 +66,7 @@ Add ```NgxPiwikProRouterModule``` on AppModule to enable auto track `Router` eve
 **IMPORTANT:** This Module subscribes to Router events when the bootstrap component is created, and then cleans up any subscriptions related to previous component when it is destroyed. You may get some issues if using this module with server side rendering or multiple bootstrap components. If that's the case, we recommend subscribing to the page view events manually.
 
 ```ts  
-import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik-pro';  
+import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';  
 ...  
   
 @NgModule({  
@@ -89,7 +89,7 @@ You can customize some rules to include/exclude routes on `NgxPiwikProRouterModu
 * Regular Expression route matching: `{ include: [ /^\/public\/.*/ ] }`;
 
 ```ts  
-import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik-pro';  
+import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';  
 ...  
   
 @NgModule({  
