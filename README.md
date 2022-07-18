@@ -52,7 +52,31 @@ import { NgxPiwikProModule } from '@piwikpro/ngx-piwik-pro';
   ],  
   providers: [],  
   bootstrap: [AppComponent]  
-})  
+})
+export class AppModule { }  
+```
+
+### Setup with nonce
+
+The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-list all inline scripts or styles.
+
+If you want your nonce to be passed to the script, pass it as the third argument when calling the script initialization method.
+
+```ts
+import { NgxPiwikProModule } from '@piwikpro/ngx-piwik-pro';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgxPiwikProModule.forRoot('container-id', 'container-url', 'nonce-hash')
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
 export class AppModule { }  
 ```
 
@@ -151,6 +175,23 @@ export class TestPageComponent implements OnInit {
 }  
 ```
 
+### Send an event with Data Layer
+
+```ts
+@Component(...)
+export class TestPageComponent implements OnInit {
+
+  constructor(
+    protected dataLayerService: DataLayerService
+  ) {}
+
+  ngOnInit() {
+    this.dataLayerService.push({ event: 'test-event' })
+  }
+
+}  
+```
+
 ## API
 
 ### Page Views Service
@@ -221,3 +262,8 @@ Goals let you define important actions registered in your application and track 
 * `deleteCustomDimension(customDimensionId: string)` - Removes a custom dimension with the specified ID.
 * `getCustomDimensionValue(customDimensionId: string | number)` - Returns the value of a custom dimension with the specified ID.
 
+### Data Layer
+A data layer is a data structure on your site or app where you can store data and access it with tools like Tag Manager. You can include any data you want in your data layer.
+
+#### Methods
+* `push(dataLayerObject: Object)`  - Adds an event to a data layer.

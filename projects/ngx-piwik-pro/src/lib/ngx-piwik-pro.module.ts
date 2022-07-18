@@ -15,7 +15,7 @@ import { NGX_PIWIK_PRO_INITIALIZER_PROVIDER } from './initializers/piwik-pro.ini
 export class NgxPiwikProModule {
   constructor() {}
 
-  static forRoot(containerId: string, containerURL: string): ModuleWithProviders<NgxPiwikProModule> {
+  static forRoot(containerId: string, containerURL: string, nonce?: string): ModuleWithProviders<NgxPiwikProModule> {
     return {
       ngModule: NgxPiwikProModule,
       providers: [
@@ -24,6 +24,7 @@ export class NgxPiwikProModule {
           useValue: {
             containerId,
             containerURL,
+            nonce
           } as PiwikProSettings
         },
         NGX_PIWIK_PRO_INITIALIZER_PROVIDER,
