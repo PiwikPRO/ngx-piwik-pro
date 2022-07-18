@@ -19,8 +19,6 @@ export class PaqService {
       throw new Error("_paq is not available");
     }
 
-    console.log('URL: ', this.routerService.url);
-
     this._window._paq.push(["setCustomUrl", this.routerService.url]);
     this._window._paq.push(["setDocumentTitle", this.titleService.getTitle()]);
 
