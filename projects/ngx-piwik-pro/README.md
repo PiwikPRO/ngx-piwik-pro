@@ -1,18 +1,16 @@
-# Ngx Piwik Pro!
+# Piwik PRO Library for Angular
 
-An easy implementation to PiwikPro Tag Manager on angular8+ apps.
+Dedicated Piwik PRO library that helps with implementing Piwik PRO Tag Manager and the Piwik PRO tracking client in Angular 8+ applications.
 
-# Index
-
-* [Setup](#setup)
+* [Installation](#installation)
   * [NPM](#npm)
-  * [Simple Setup](#simple-setup)
-  * [Routing Setup](#setup-routing-module)
-  * [Advanced Routing Setup](#advanced-setup-routing-module)
-* [PiwikPro Services](#piwikpro-services)
-  * [Custom Events](#call-custom-events)
-  * [Page Views](#call-page-views-and-virtual-page-views)
-* [Api](#api)
+  * [Basic setup](#basic-setup)
+  * [Routing setup](#set-up-the-routing-module)
+  * [Advanced routing setup](#advanced-setup-for-the-routing-module)
+* [Piwik PRO Services](#piwik-pro-services)
+  * [Custom Events](#send-custom-events)
+  * [Page Views](#send-page-views-and-virtual-page-views)
+* [API](#api)
   * [Page Views Service](#page-views-service)
   * [User Management](#user-management)
   * [Custom Event](#custom-event)
@@ -23,20 +21,22 @@ An easy implementation to PiwikPro Tag Manager on angular8+ apps.
   * [Goal Conversions](#goal-conversions)
   * [Custom Dimensions](#custom-dimensions)
 
-## Setup
+## Installation
 
 ### NPM
 
-To setup this package on you project, just call the following command.
+To use this package in your project, run the following command.
 
 ```
 npm install @piwik-pro/ngx-piwik-pro
 ```
 
 
-### Simple Setup
+### Basic setup
 
-On your Angular Project, you shall include the `NgxPiwikProModule` on your highest level application module. ie `AddModule`. The easiest install mode call the `forRoot()` method and pass the Piwik Pro Container ID and Piwik Pro Container URL.
+In your Angular Project, include the `NgxPiwikProModule` in the highest level application module. ie `AddModule`.
+To set up the Piwik PRO Tag Manager container in the app, the easiest way is to call the `forRoot()` method.
+In the arguments, pass your app ID and your account URL as parameters (marked 'container-id' and 'container-url' in the example below).
 
 ```ts  
 import { NgxPiwikProModule } from '@piwik-pro/ngx-piwik-pro';  
@@ -52,18 +52,42 @@ import { NgxPiwikProModule } from '@piwik-pro/ngx-piwik-pro';
   ],  
   providers: [],  
   bootstrap: [AppComponent]  
-})  
+})
+export class AppModule { }  
+```
+
+### Setup with nonce
+
+The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-list all inline scripts or styles.
+
+If you want your nonce to be passed to the script, pass it as the third argument when calling the script initialization method.
+
+```ts
+import { NgxPiwikProModule } from '@piwikpro/ngx-piwik-pro';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgxPiwikProModule.forRoot('container-id', 'container-url', 'nonce-hash')
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
 export class AppModule { }  
 ```
 
 
-### Setup Routing Module
+### Set up the Routing Module
 
-We provide a second Module Dependency to configure Router Event Bindings and perform automatic page view every time your application navigates to another page.
+We provide a second Module Dependency to configure Router Event Bindings and perform automatic page views every time your application navigates to another page.
 
-Add ```NgxPiwikProRouterModule``` on AppModule enable auto track `Router` events.
+Add ```NgxPiwikProRouterModule``` on AppModule to enable auto track `Router` events.
 
-**IMPORTANT:** This Module just subscribe to Router events when the bootstrap component is created, and then cleans up any subscriptions related to previous component when it is destroyed. You may get some issues if using this module on a server side rendering or multiple bootstrap components. If it is your case, I suggest you subscribe to events by yourself.
+**IMPORTANT:** This Module subscribes to Router events when the bootstrap component is created, and then cleans up any subscriptions related to previous component when it is destroyed. You may get some issues if using this module with server side rendering or multiple bootstrap components. If that's the case, we recommend subscribing to the page view events manually.
 
 ```ts  
 import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik-pro';  
@@ -81,12 +105,12 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik
 export class AppModule {}  
 ```  
 
-### Advanced Setup Routing Module
+### Advanced setup for the Routing Module
 
 You can customize some rules to include/exclude routes on `NgxPiwikProRouterModule`. The include/exclude settings allow:
-* Simple route match: `{ include: [ '/full-uri-match' ] }`;
-* Wildcard route match: `{ include: [ '*/public/*' ] }`;
-* Regular Expression route match: `{ include: [ /^\/public\/.*/ ] }`;
+* Simple route matching: `{ include: [ '/full-uri-match' ] }`;
+* Wildcard route matching: `{ include: [ '*/public/*' ] }`;
+* Regular Expression route matching: `{ include: [ /^\/public\/.*/ ] }`;
 
 ```ts  
 import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik-pro';  
@@ -104,10 +128,9 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwik-pro/ngx-piwik
 export class AppModule {}  
 ```
 
-## PiwikPro Services
+## Piwik PRO Services
 
-
-### Call Custom Events
+### Send Custom Events
 
 ```ts  
 @Component( ... )  
@@ -135,7 +158,7 @@ export class TestFormComponent {
 
 ```
 
-### Call Page Views and Virtual Page Views
+### Send page views and virtual page views
 
 ```ts  
 @Component(...)  
@@ -152,20 +175,37 @@ export class TestPageComponent implements OnInit {
 }  
 ```
 
+### Send an event with Data Layer
+
+```ts
+@Component(...)
+export class TestPageComponent implements OnInit {
+
+  constructor(
+    protected dataLayerService: DataLayerService
+  ) {}
+
+  ngOnInit() {
+    this.dataLayerService.push({ event: 'test-event' })
+  }
+
+}  
+```
+
 ## API
 
 ### Page Views Service
-Page view is the most basic type of the tracked event. It represents a single page viewing action.
+A page view is the most basic type of a tracked event. It represents a single page viewing action.
 #### Methods
 * `trackPageView(customPageTitle?: string)` - Tracks a visit on the page that the function was run on.
 
 ### User Management
 #### Methods
 * `getUserId()` - The function that will return user ID.
-* `setUserId(userId: string)` - user ID is an additional parameter that allows you to aggregate data. When set you will be able to search through sessions by this parameter, filter reports through it or create Multi attribution reports using User ID.
-* `resetUserId()` -   Clears previously set `userID`, e.g. when visitor logs out.
+* `setUserId(userId: string)` - user ID is an additional parameter that allows you to aggregate data. When set up, you will be able to search through sessions by this parameter, filter reports through it or create Multi attribution reports using User ID.
+* `resetUserId()` - Clears previously set `userID`, e.g. when visitor logs out.
 * `getVisitorId()`  - Returns 16-character hex ID of the visitor.
-* `getVisitorInfo()` - Returns visitor information in array:
+* `getVisitorInfo()` - Returns visitor information in an array:
   * new visitor flag indicating new (1) or returning (0) visitor
   * visitor ID (UUID)
   * first visit timestamp (Unix epoch time)
@@ -174,13 +214,13 @@ Page view is the most basic type of the tracked event. It represents a single pa
   * last visit timestamp (Unix epoch time or '' if N/A)
   * last e-commerce order timestamp (Unix epoch time or '' if N/A)
 
-### Custom Event
-Custom events enable tracking visitor actions that are not predefined in the existing JavaScript Tracking Client API, allowing web analysts to accurately measure and analyze any domain.
+### Custom Events
+Custom events enable tracking visitor actions that are not predefined in the existing [JavaScript Tracking Client API](https://developers.piwik.pro/en/latest/data_collection/web/javascript_tracking_client/api.html), allowing web analysts to accurately measure and analyze any domain.
 #### Methods
-* `trackEvent(category: string, action: string, name?: string, value?: number) ` - Tracks custom event, e.g. when visitor interacts with the page.
+* `trackEvent(category: string, action: string, name?: string, value?: number) ` - Tracks a custom event, e.g. when a visitor interacts with the page.
 
 ### Site search Service
-Site search tracking gives you insight into how visitors interact with the search engine on your website - what they search for and how many results they get back.
+Site search tracking gives you insights into how visitors interact with the search engine on your website - what they search for and how many results they get back.
 #### Methods
 * `trackSiteSearch(keyword: string, category?: string, searchCount?: number, dimensions?: Object)` - Tracks search requests on a website.
 
@@ -195,7 +235,7 @@ Site search tracking gives you insight into how visitors interact with the searc
 * `setEcommerceView(productSKU: string, productName?: string, productCategory?: string[], productPrice?: string)` - Tracks product or category view. Must be followed by a page view.
 
 ### Content Tracking Service
-Content Tracking allows you to track what content is visible on your site and how users interact with it.
+Content Tracking lets you track what content is visible on your site and how users interact with it.
 ### Methods
 * `trackContentImpression(contentName: string, contentPiece: string, contentTarget: string)` - Tracks manual content impression event.
 * `trackContentInteraction(contentInteraction: string, contentName: string, contentPiece: string, contentTarget: string)` - Tracks manual content interaction event.
@@ -213,11 +253,17 @@ Content Tracking allows you to track what content is visible on your site and ho
 * `setIgnoreClasses(classes: string[])` - Set a list of class names that indicate a link should not be tracked.
 
 ### Goal Conversions
-At this point we have tracked many different types of events. We have regular page views, downloads, outlinks, custom events and others. Above them all there’s one more event type we can track: a conversion. And goal tracking is about tracking conversions. If you can point out parts of your website/application more important from your business perspective, you could define those parts as goals. Visiting a specific landing page, submitting a contact form, downloading a PDF file with your product manual - these are popular examples of goal definitions. You can even define a goal based on the custom event you are tracking.
+Goals let you define important actions registered in your application and track conversions when the conditions for the action are fulfilled.
 
 * `trackGoal(goalId: number | string, conversionValue: number, dimensions?: Object)` - Tracks manual goal conversion.
 
 ### Custom Dimensions
-* `setCustomDimensionValue(customDimensionId: string | number, customDimensionValue: string)`  - Sets a custom dimension to be used later.
+* `setCustomDimensionValue(customDimensionId: string | number, customDimensionValue: string)`  - Sets a custom dimension value to be used later.
 * `deleteCustomDimension(customDimensionId: string)` - Removes a custom dimension with the specified ID.
 * `getCustomDimensionValue(customDimensionId: string | number)` - Returns the value of a custom dimension with the specified ID.
+
+### Data Layer
+A data layer is a data structure on your site or app where you can store data and access it with tools like Tag Manager. You can include any data you want in your data layer.
+
+#### Methods
+* `push(dataLayerObject: Object)`  - Adds an event to a data layer.
