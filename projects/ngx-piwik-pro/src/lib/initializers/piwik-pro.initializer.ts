@@ -42,6 +42,9 @@ export function PiwikProInitializer(
 
     const s: HTMLScriptElement = document.createElement('script');
     s.async = true;
+    if (settings.nonce) {
+      s.setAttribute("nonce", settings.nonce);
+    }
     s.text = `(function(window, document, dataLayerName, id) {
 window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
 function stgCreateCookie(a,b,c){var d="";if(c){var e=new Date;e.setTime(e.getTime()+24*c*60*60*1e3),d="; expires="+e.toUTCString()}document.cookie=a+"="+b+d+"; path=/"}
