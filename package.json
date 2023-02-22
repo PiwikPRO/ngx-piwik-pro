@@ -1,5 +1,5 @@
 {
-  "name": "piwik-pro-angular-tracking",
+  "name": "@piwikpro/ngx-piwik-pro",
   "version": "0.0.5",
   "scripts": {
     "ng": "ng",
