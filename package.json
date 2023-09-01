@@ -1,6 +1,6 @@
 {
-  "name": "piwik-pro-angular-tracking",
-  "version": "0.0.5",
+  "name": "@piwikpro/ngx-piwik-pro-project",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +12,7 @@
   },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
-  "author": "Piwik PRO <example@mail.com> (https://www.piwik.pro)",
+  "author": "Piwik PRO <integration@piwik.pro> (https://www.piwik.pro)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"
