@@ -1,5 +1,5 @@
-import { APP_INITIALIZER, isDevMode, Provider } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { APP_INITIALIZER, isDevMode, Provider, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
 import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-settings.token';
 
@@ -10,14 +10,20 @@ export const NGX_PIWIK_PRO_INITIALIZER_PROVIDER: Provider = {
   deps: [
     NGX_PIWIK_PRO_SETTINGS_TOKEN,
     DOCUMENT,
+    PLATFORM_ID,
   ]
 }
 
 export function PiwikProInitializer(
   settings: PiwikProSettings,
-  document: Document
+  document: Document,
+  platformId: string
 ) {
   return async () => {
+    if (!isPlatformBrowser(platformId)) {
+      return;
+    }
+
     if (!settings.containerId) {
       if (!isDevMode()) {
         console.error('Empty tracking code for Piwik Pro. Make sure to provide one when initializing NgxPiwikProModule.');
