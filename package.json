@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test ngx-piwik-pro --browsers=ChromeHeadless --watch=false",
+    "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
     "test:dev": "ng test ngx-piwik-pro",
     "lint": "ng lint ngx-piwik-pro"
   },
