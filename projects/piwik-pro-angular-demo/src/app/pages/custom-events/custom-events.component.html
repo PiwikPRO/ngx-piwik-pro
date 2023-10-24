@@ -1,14 +1,16 @@
 <main role="main" class="main">
   <h1>Custom Events</h1>
   <mat-slider
-    thumbLabel
-    [displayWith]="formatLabel"
-    tickInterval="1000"
-    step="1000"
     min="0"
     max="100000"
+    step="1000"
+    showTickMarks
+    discrete
+    [displayWith]="formatLabel"
     aria-label="units"
     (change)="pitch($event)"
-  ></mat-slider>
+  >
+    <input matSliderThumb>
+  </mat-slider>
 
 </main>

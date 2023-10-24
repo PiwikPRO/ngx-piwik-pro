@@ -3,8 +3,8 @@
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
-
-  > .mat-button {
+  > .mat-mdc-button {
+    color: white;
     &:last-child {
       margin-left: auto;
     }
