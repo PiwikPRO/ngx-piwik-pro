@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ngx-piwik-pro",
     "watch": "ng build --watch --configuration development",
     "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
     "test:dev": "ng test ngx-piwik-pro",
