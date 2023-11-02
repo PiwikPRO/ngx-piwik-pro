@@ -10,7 +10,7 @@
   ],
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
-  "author": "Piwik PRO <integration@piwik.pro> (https://www.piwik.pro)",
+  "author": "Piwik PRO <integrations@piwik.pro> (https://www.piwik.pro)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"

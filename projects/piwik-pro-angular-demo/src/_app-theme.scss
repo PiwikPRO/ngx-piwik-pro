@@ -4,6 +4,9 @@
 @use './app/shared/navbar/navbar-theme';
 @use './app/pages/event-list/guide-list-theme';
 
+@use './styles/markdown';
+@use './styles/general';
+
 @mixin theme($theme) {
   $primary: map.get($theme, primary);
   $accent: map.get($theme, accent);

@@ -8,7 +8,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./custom-events.component.scss']
 })
 export class CustomEventsComponent implements OnInit {
-
   constructor(
     private titleService: Title,
     private readonly customEventsService: CustomEventsService
@@ -28,12 +27,12 @@ export class CustomEventsComponent implements OnInit {
     )
   }
 
-  formatLabel(value: number) {
+  formatLabel(value: number): string {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
     }
 
-    return value;
+    return `${value}`;
   }
 
 }

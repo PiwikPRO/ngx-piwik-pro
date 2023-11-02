@@ -51,6 +51,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/piwik-pro-angular-demo",
             "index": "projects/piwik-pro-angular-demo/src/index.html",
             "main": "projects/piwik-pro-angular-demo/src/main.ts",
@@ -123,6 +124,7 @@
           "options": {
             "main": "projects/piwik-pro-angular-demo/src/test.ts",
             "polyfills": "projects/piwik-pro-angular-demo/src/polyfills.ts",
+            "codeCoverage": true,
             "tsConfig": "projects/piwik-pro-angular-demo/tsconfig.spec.json",
             "karmaConfig": "projects/piwik-pro-angular-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -139,6 +141,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-piwik-pro"
+  }
 }
