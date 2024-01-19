@@ -2,7 +2,7 @@ import { APP_BOOTSTRAP_LISTENER, ComponentRef, Provider } from '@angular/core';
 import { NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-router-settings.token';
 import { PiwikProRoutingSettings } from '../interfaces/piwik-pro-router-settings.interface';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, skip } from 'rxjs/operators';
+import { filter, skipWhile } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { PageViewsService } from '../services/page-views/page-views.service';
 
@@ -24,14 +24,21 @@ export function PiwikProRouterInitializer(
 ) {
   return async (c: ComponentRef<any>) => {
     const router = c.injector.get(Router);
-    const { include = [], exclude = [] } = settings ?? {};
+    const { include = [], exclude = [], skipFirstPageView } = settings ?? {};
     const includeRules = normalizePathRules(include);
     const excludeRules = normalizePathRules(exclude);
     const subs = router
       .events
       .pipe(
         filter((event: any) => event instanceof NavigationEnd),
-        skip(1), // Prevend double views on the first tigger (because PiwikPro Already send one ping on setup)
+
+        skipWhile((_, index) => {
+          // Preventing double views on the first trigger (because PiwikPro Already send one ping on setup by default)
+          if (skipFirstPageView) {
+            return index === 0;
+          }
+          return false;
+        }),
         filter(event => includeRules.length > 0
           ? includeRules.some(rule => rule.test(event.urlAfterRedirects))
           : true),

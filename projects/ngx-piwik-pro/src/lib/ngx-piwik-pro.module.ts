@@ -3,6 +3,11 @@ import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from './tokens/ngx-piwik-pro-settings.to
 import { PiwikProSettings } from './interfaces/piwik-pro-settings.interface';
 import { NGX_PIWIK_PRO_INITIALIZER_PROVIDER } from './initializers/piwik-pro.initializer';
 
+declare global {
+  interface Window {
+    _paq?: any[];
+  }
+}
 
 @NgModule({
   declarations: [

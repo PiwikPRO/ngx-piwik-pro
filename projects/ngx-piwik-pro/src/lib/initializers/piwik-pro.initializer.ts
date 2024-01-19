@@ -17,6 +17,7 @@ export function PiwikProInitializer(
   settings: PiwikProSettings,
   document: Document
 ) {
+  window._paq = window._paq || [];
   return async () => {
     if (!settings.containerId) {
       if (!isDevMode()) {

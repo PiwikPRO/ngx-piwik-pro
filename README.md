@@ -107,7 +107,7 @@ export class AppModule {}
 
 ### Advanced setup for the Routing Module
 
-You can customize some rules to include/exclude routes on `NgxPiwikProRouterModule`. The include/exclude settings allow:
+#### You can customize some rules to include/exclude routes on `NgxPiwikProRouterModule`. The include/exclude settings allow:
 * Simple route matching: `{ include: [ '/full-uri-match' ] }`;
 * Wildcard route matching: `{ include: [ '*/public/*' ] }`;
 * Regular Expression route matching: `{ include: [ /^\/public\/.*/ ] }`;
@@ -122,6 +122,32 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-
     ...  
     NgxPiwikProModule.forRoot('container-id'),  
     NgxPiwikProRouterModule.forRoot({ include: [...], exclude: [...] })  
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+  ]  
+})  
+export class AppModule {}  
+```
+
+
+#### Track of PageViews from the first visit to the site.
+
+The default 'Data Collection' settings assume that the 'Track page views in a single-page application' option is set to true. You will find an iformation that if this option is enabled, we will record every change in the state of the browser history on the page and report it as a page view in the reports. You need to know that this option should be disabled if you want to use the ngx-piwik-pro library.
+
+This setting can be found in:
+`Administration -> Sites & Apps -> (choose your site or apps ) -> Data Collection -> Track page views in a single-page application`
+
+In order to work according to the default Data Collection settings, the library skips the first PageViews so as not to cause duplicate entries. However, if you have taken care to disable the above settings, you should also pass the following settings to the library.
+
+```ts  
+import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';  
+...  
+  
+@NgModule({  
+  ...  
+  imports: [  
+    ...  
+    NgxPiwikProModule.forRoot('container-id'),  
+    NgxPiwikProRouterModule.forRoot({ skipFirstPageView: false })  
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
   ]  
 })  

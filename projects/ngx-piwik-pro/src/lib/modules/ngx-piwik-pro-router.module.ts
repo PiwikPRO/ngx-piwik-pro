@@ -22,7 +22,9 @@ export class NgxPiwikProRouterModule {
       providers: [
         {
           provide: NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN,
-          useValue: settings ?? {}
+          useValue: settings ?? {
+            skipFirstPageView: true,
+          }
         },
       ]
     };
