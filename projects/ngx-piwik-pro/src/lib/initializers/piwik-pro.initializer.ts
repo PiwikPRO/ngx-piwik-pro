@@ -19,7 +19,9 @@ export function PiwikProInitializer(
   document: Document,
   platformId: string
 ) {
-  window._paq = window._paq || [];
+  if (window) {
+    window._paq = window._paq || [];
+  }
   return async () => {
     if (!isPlatformBrowser(platformId)) {
       return;
