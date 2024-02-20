@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxPiwikProModule } from './ngx-piwik-pro.module';
-import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro';
+import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro/src/lib/tokens/ngx-piwik-pro-settings.token';
 import { APP_INITIALIZER } from '@angular/core';
 import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
 import { DOCUMENT } from '@angular/common';
