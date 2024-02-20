@@ -10,7 +10,6 @@ export type Product = {
     variant?: string;
     customDimensions?: Record<DimensionId, string>;
 };
-export {};
 
 export type PaymentInformation = {
   orderId: string;
