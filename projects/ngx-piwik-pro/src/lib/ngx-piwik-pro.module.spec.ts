@@ -1,9 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-import { NgxPiwikProModule } from './ngx-piwik-pro.module';
-import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro';
 import { APP_INITIALIZER } from '@angular/core';
-import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
 import { DOCUMENT } from '@angular/common';
+import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '@piwik-pro/ngx-piwik-pro';
+import { NgxPiwikProModule } from './ngx-piwik-pro.module';
+import { PiwikProSettings } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-settings.interface';
+import { TestBed } from '@angular/core/testing';
 
 describe('NgxPiwikProModule test', () => {
   const containerId = 'dummy-container-id';
@@ -46,6 +46,6 @@ describe('NgxPiwikProModule test', () => {
     const scripts = head.getElementsByTagName('script');
 
     expect(scripts.length).toBe(2);
-    expect(scripts[0].src).toEqual(`${containerURL}/containers/${containerId}.js`);
+    expect(scripts[0].src).toEqual(`${containerURL}/${containerId}.js`);
   });
 });
