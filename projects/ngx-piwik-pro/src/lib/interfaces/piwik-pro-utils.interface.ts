@@ -1,1 +1,1 @@
-export type LimitedArrayFiveStrings = [string?, string?, string?, string?, string?];
+export type LimitedArrayFiveStrings = [string] | [string, string] | [string, string, string] | [string, string, string, string] | [string, string, string, string, string];
