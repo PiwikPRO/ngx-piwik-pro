@@ -1,10 +1,10 @@
 # CHANGELOG
 
-* [1.0.1](#1.0.1)
+* [1.0.1](#1.1.0)
 * [1.0.0](#1.0.0)
 * [0.0.1](#0.0.1)
 
-## 1.0.1
+## 1.1.0
 
 * adds new ecommerce methods (v2)
 * deprecates old ecommerce methods (v1)
