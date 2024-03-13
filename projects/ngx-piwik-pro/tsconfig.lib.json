@@ -6,7 +6,11 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "typeRoots": [
+      "src/lib/interfaces",
+      "src/lib/types"
+    ]
   },
   "exclude": [
     "src/test.ts",
