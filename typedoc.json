@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./projects/ngx-piwik-pro/src/public-api.ts", 
+    "node_modules/@piwikpro/tracking-base-library/dist/interfaces/index.d.ts", 
+    
+  ],
+  "out": "docs_raw",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "docs/README_BASE.md",
+  "disableSources": true,
+}

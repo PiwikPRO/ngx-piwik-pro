@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
     "test:dev": "ng test ngx-piwik-pro",
-    "lint": "ng lint ngx-piwik-pro"
+    "lint": "ng lint ngx-piwik-pro",
+    "build:docs": "typedoc && concat-md docs_raw > README.md && node scripts/postProcessDocs.js"
   },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
@@ -16,6 +17,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "homepage": "https://github.com/PiwikPRO/ngx-piwik-pro#readme",
   "dependencies": {
@@ -29,6 +33,7 @@
     "@angular/platform-browser": "^16.2.10",
     "@angular/platform-browser-dynamic": "^16.2.10",
     "@angular/router": "^16.2.10",
+    "@piwikpro/tracking-base-library": "^1.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "^0.13.3"

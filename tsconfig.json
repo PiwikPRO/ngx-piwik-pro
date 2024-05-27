@@ -39,5 +39,9 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "./node_modules/@piwikpro/tracking-base-library/dist",
+    "./projects"
+  ],
 }

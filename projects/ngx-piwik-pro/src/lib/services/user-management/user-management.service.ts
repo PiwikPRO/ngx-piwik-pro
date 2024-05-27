@@ -1,69 +1,27 @@
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
-import { TRACK_EVENT } from '../../constants/track-event.constant';
+import { UserManagement } from '@piwikpro/tracking-base-library'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagementService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
   getUserId(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getUserId());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+    return UserManagement.getUserId()
   }
 
   setUserId(userId: string): void {
-    this.paqService.push([TRACK_EVENT.SET_USER_ID, userId]);
+    UserManagement.setUserId(userId)
   }
 
   resetUserId(): void {
-    this.paqService.push([TRACK_EVENT.RESET_USER_ID]);
+    UserManagement.resetUserId()
   }
 
   getVisitorId(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getVisitorId());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+    return UserManagement.getVisitorId()
   }
 
   getVisitorInfo(): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getVisitorInfo());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+    return UserManagement.getVisitorInfo()
   }
 }

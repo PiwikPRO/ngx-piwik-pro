@@ -1,4 +1,4 @@
-import { PaymentInformation, Product } from '../../interfaces/piwik-pro-ecommerce.interface';
+import { PaymentInformation, Product, eCommerce } from '@piwikpro/tracking-base-library'
 
 import { Injectable } from '@angular/core';
 import { PaqService } from '../paq/paq.service';
@@ -34,7 +34,7 @@ export class ECommerceService {
   }
 
   ecommerceAddToCart(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_ADD_TO_CART, products])
+    eCommerce.ecommerceAddToCart(products)
   }
 
   /**
@@ -48,7 +48,7 @@ export class ECommerceService {
   }
 
   ecommerceRemoveFromCart(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_REMOVE_FROM_CART, products])
+    eCommerce.ecommerceRemoveFromCart(products)
   }
 
   /**
@@ -105,7 +105,7 @@ export class ECommerceService {
     products: Product[],
     paymentInformation: PaymentInformation
   ) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_ORDER, products, paymentInformation])
+    eCommerce.ecommerceOrder(products, paymentInformation)
   }
 
   /**
@@ -122,7 +122,7 @@ export class ECommerceService {
     products: Product[],
     grandTotal: PaymentInformation['grandTotal']
   ) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_CART_UPDATE, products, grandTotal])
+    eCommerce.ecommerceCartUpdate(products, grandTotal)
   }
 
   /**
@@ -139,6 +139,6 @@ export class ECommerceService {
   }
 
   ecommerceProductDetailView(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_PRODUCT_DETAIL_VIEW, products])
+    eCommerce.ecommerceProductDetailView(products)
   }
 }
