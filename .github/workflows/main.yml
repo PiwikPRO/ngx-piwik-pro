@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
+        description: "Log level"
         required: true
-        default: 'warning'
+        default: "warning"
 
 jobs:
   bump-and-build:
@@ -18,13 +18,13 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
-          node-version: 16
+          node-version: 18
           registry-url: https://registry.npmjs.org/
-      - name: 'Cache node Modules'
-        uses: actions/cache@v1
+      - name: "Cache node Modules"
+        uses: actions/cache@v4.0.0
         with:
           path: ~.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -42,8 +42,8 @@ jobs:
           cp CHANGELOG.md dist/ngx-piwik-pro
       - run: npm pack
         working-directory: dist/ngx-piwik-pro
-      - name: 'Upload Build Artifatc ${{ steps.get_version.outputs.VERSION }}'
-        uses: actions/upload-artifact@v2
+      - name: "Upload Build Artifatc ${{ steps.get_version.outputs.VERSION }}"
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
         with:
           name: ${{ steps.get_version.outputs.VERSION }}.tgz
           path: dist/ngx-piwik-pro/piwikpro-ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
@@ -56,10 +56,10 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Download a Build Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
         with:
           name: ${{ steps.get_version.outputs.VERSION }}.tgz
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
