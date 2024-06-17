@@ -1,9 +1,18 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": [
-    "./projects/ngx-piwik-pro/src/public-api.ts", 
-    "node_modules/@piwikpro/tracking-base-library/dist/interfaces/index.d.ts", 
-    
+    "./projects/ngx-piwik-pro/src/lib/services/paq/paq.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/page-views/page-views.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/content-tracking/content-tracking.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/cookie-management/cookie-management.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/custom-dimensions/custom-dimensions.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/site-search/site-search.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/custom-event/custom-events.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/download-and-outlink/download-and-outlink.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/e-commerce/e-commerce.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/goal-conversions/goal-conversions.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/user-management/user-management.service.ts",
+    "./projects/ngx-piwik-pro/src/lib/services/data-layer/data-layer.service.ts",    
   ],
   "out": "docs_raw",
   "plugin": ["typedoc-plugin-markdown"],

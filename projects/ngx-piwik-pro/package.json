@@ -8,6 +8,9 @@
     "Tracking",
     "SPA"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
   "author": "Piwik PRO <integrations@piwik.pro> (https://www.piwik.pro)",
