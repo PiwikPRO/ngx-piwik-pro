@@ -4,7 +4,7 @@
 
 
 
-## Piwik PRO Library for Angular
+# Piwik PRO Library for Angular
 
 Dedicated Piwik PRO library that helps with implementing Piwik PRO Tag Manager and the Piwik PRO tracking client in Angular 8+ applications.
 
