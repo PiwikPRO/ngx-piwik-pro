@@ -1,33 +1,28 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from "node:fs";
 
-const README = 'README.md'
+const README = "README.md";
 
-const file = readFileSync(README, 'utf-8')
+const file = readFileSync(README, "utf-8");
 
 const formattedOutput = file
-  .split('\n')
-  // remove additional headings
-  .filter(
-    (line) =>
-      !line.includes('# @piwikpro/ngx-piwik-pro') &&
-      !line.includes('@piwikpro/ngx-piwik-pro / [Modules](#modulesmd)') &&
-      !line.includes('[@piwikpro/ngx-piwik-pro](#readmemd)')
-  )
+  .split("\n")
   // remove links suited for multi page documentation
-  .filter((line) => !line.includes('Exports'))
-  // remove duplicated header
-  .filter((line) => !line.includes('### Functions'))
-  // remove remove additional prefix
-  .filter((line) => !line.includes('node\\_modules'))
-  .map((line) => line.replace('Namespace: ', ''))
-  .join('\n')
-  // NOTE: top level table of contents is placed at the bottom for some reason
-  // and needs to be manually (for now) placed at the top 
-  .replace(`## Table of contents
+  .filter((line) => !line.includes("@piwikpro/tracking-base-library"))
+  // remove duplicated headers
+  .filter(
+    (line) => !line.includes("#### Functions") && !line.includes("### Index")
+  )
+  // remove remove additional prefixes
+  .map((line) => line.replace("Namespace: ", ""))
+  .map((line) => line.replace("Function: ", ""))
+  // increase heading level for the title
+  .map((line) =>
+    line.replace(
+      "## Piwik PRO Library for Angular",
+      "# Piwik PRO Library for Angular"
+    )
+  )
+  .join("\n")
+  .replace("***", "");
 
-### Modules
-
-- [src](#modulessrcmd)
-`,"")
-
-writeFileSync(README, formattedOutput)
+writeFileSync(README, formattedOutput);

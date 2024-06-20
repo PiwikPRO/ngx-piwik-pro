@@ -9,7 +9,7 @@
     "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
     "test:dev": "ng test ngx-piwik-pro",
     "lint": "ng lint ngx-piwik-pro",
-    "build:docs": "typedoc && concat-md docs_raw > README.md && node scripts/postProcessDocs.mjs"
+    "build:docs": "typedoc && concat-md --decrease-title-levels --start-title-level-at=2 docs_raw > README.md && node scripts/postProcessDocs.mjs"
   },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",

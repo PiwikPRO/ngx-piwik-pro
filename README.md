@@ -1,9 +1,8 @@
 
 <a name="readmemd"></a>
 
-**@piwikpro/ngx-piwik-pro** • [**Docs**](#modulesmd)
 
-***
+
 
 # Piwik PRO Library for Angular
 
@@ -17,20 +16,10 @@ Dedicated Piwik PRO library that helps with implementing Piwik PRO Tag Manager a
 - [Piwik PRO Services](#piwik-pro-services)
   - [Custom Events](#send-custom-events)
   - [Page Views](#send-page-views-and-virtual-page-views)
-- [API](#api)
-  - [Page Views Service](#page-views-service)
-  - [User Management](#user-management)
-  - [Custom Event](#custom-event)
-  - [Site search Service](#site-search-service)
-  - [E-Commerce Service](#e-commerce-service)
-  - [Content Tracking Service](#content-tracking-service)
-  - [Download and outlink Service](#download-and-outlink-service)
-  - [Goal Conversions](#goal-conversions)
-  - [Custom Dimensions](#custom-dimensions)
 
-## Installation
+### Installation
 
-### NPM
+#### NPM
 
 To use this package in your project, run the following command.
 
@@ -38,7 +27,7 @@ To use this package in your project, run the following command.
 npm install @piwikpro/ngx-piwik-pro
 ```
 
-### Basic setup
+#### Basic setup
 
 In your Angular Project, include the `NgxPiwikProModule` in the highest level application module. ie `AddModule`.
 To set up the Piwik PRO Tag Manager container in the app, the easiest way is to call the `forRoot()` method.
@@ -60,7 +49,7 @@ import { NgxPiwikProModule } from "@piwikpro/ngx-piwik-pro";
 export class AppModule {}
 ```
 
-### Setup with nonce
+#### Setup with nonce
 
 The nonce attribute is useful to allow-list specific elements, such as a particular inline script or style elements. It can help you to avoid using the CSP unsafe-inline directive, which would allow-list all inline scripts or styles.
 
@@ -82,7 +71,7 @@ import { NgxPiwikProModule } from "@piwikpro/ngx-piwik-pro";
 export class AppModule {}
 ```
 
-### Set up the Routing Module
+#### Set up the Routing Module
 
 We provide a second Module Dependency to configure Router Event Bindings and perform automatic page views every time your application navigates to another page.
 
@@ -106,9 +95,9 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-
 export class AppModule {}
 ```
 
-### Advanced setup for the Routing Module
+#### Advanced setup for the Routing Module
 
-#### You can customize some rules to include/exclude routes on `NgxPiwikProRouterModule`. The include/exclude settings allow:
+##### You can customize some rules to include/exclude routes on `NgxPiwikProRouterModule`. The include/exclude settings allow:
 
 - Simple route matching: `{ include: [ '/full-uri-match' ] }`;
 - Wildcard route matching: `{ include: [ '*/public/*' ] }`;
@@ -130,7 +119,7 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-
 export class AppModule {}
 ```
 
-#### Track of PageViews from the first visit to the site.
+##### Track of PageViews from the first visit to the site.
 
 The default 'Data Collection' settings assume that the 'Track page views in a single-page application' option is set to true. You will find an iformation that if this option is enabled, we will record every change in the state of the browser history on the page and report it as a page view in the reports. You need to know that this option should be disabled if you want to use the ngx-piwik-pro library.
 
@@ -155,9 +144,9 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-
 export class AppModule {}
 ```
 
-## Piwik PRO Services
+### Piwik PRO Services
 
-### Send Custom Events
+#### Send Custom Events
 
 ```ts
 @Component( ... )
@@ -185,7 +174,7 @@ export class TestFormComponent {
 
 ```
 
-### Send page views and virtual page views
+#### Send page views and virtual page views
 
 ```ts
 @Component(...)
@@ -202,7 +191,7 @@ export class TestPageComponent implements OnInit {
 }
 ```
 
-### Send an event with Data Layer
+#### Send an event with Data Layer
 
 ```ts
 @Component(...)
@@ -220,70 +209,106 @@ export class TestPageComponent implements OnInit {
 ```
 
 
-<a name="content-trackingcontent-trackingservicereadmemd"></a>
+<a name="globalsmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / content-tracking/content-tracking.service
 
-# content-tracking/content-tracking.service
+### Namespaces
 
-## Index
+- [ContentTracking](#namespacescontenttrackingreadmemd)
+- [CookieManagement](#namespacescookiemanagementreadmemd)
+- [CustomDimensions](#namespacescustomdimensionsreadmemd)
+- [CustomEvent](#namespacescustomeventreadmemd)
+- [DataLayer](#namespacesdatalayerreadmemd)
+- [DownloadAndOutlink](#namespacesdownloadandoutlinkreadmemd)
+- [ErrorTracking](#namespaceserrortrackingreadmemd)
+- [GoalConversions](#namespacesgoalconversionsreadmemd)
+- [PageViews](#namespacespageviewsreadmemd)
+- [SiteSearch](#namespacessitesearchreadmemd)
+- [UserManagement](#namespacesusermanagementreadmemd)
+- [eCommerce](#namespacesecommercereadmemd)
 
-### Classes
+### Type Aliases
 
-- [ContentTrackingService](#content-trackingcontent-trackingserviceclassescontenttrackingservicemd)
+- [Dimensions](#type-aliasesdimensionsmd)
+- [InitOptions](#type-aliasesinitoptionsmd)
+- [PaymentInformation](#type-aliasespaymentinformationmd)
+- [Product](#type-aliasesproductmd)
+- [VisitorInfo](#type-aliasesvisitorinfomd)
+
+### Variables
+
+- [default](#variablesdefaultmd)
 
 
-<a name="content-trackingcontent-trackingserviceclassescontenttrackingservicemd"></a>
+<a name="namespacescontenttrackingreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [content-tracking/content-tracking.service](#content-trackingcontent-trackingservicereadmemd) / ContentTrackingService
 
-# Class: ContentTrackingService
+## ContentTracking
 
-## Constructors
 
-### new ContentTrackingService()
 
-> **new ContentTrackingService**(): [`ContentTrackingService`](#content-trackingcontent-trackingserviceclassescontenttrackingservicemd)
+- [logAllContentBlocksOnPage](#namespacescontenttrackingfunctionslogallcontentblocksonpagemd)
+- [trackAllContentImpressions](#namespacescontenttrackingfunctionstrackallcontentimpressionsmd)
+- [trackContentImpression](#namespacescontenttrackingfunctionstrackcontentimpressionmd)
+- [trackContentImpressionsWithinNode](#namespacescontenttrackingfunctionstrackcontentimpressionswithinnodemd)
+- [trackContentInteraction](#namespacescontenttrackingfunctionstrackcontentinteractionmd)
+- [trackContentInteractionNode](#namespacescontenttrackingfunctionstrackcontentinteractionnodemd)
+- [trackVisibleContentImpressions](#namespacescontenttrackingfunctionstrackvisiblecontentimpressionsmd)
 
-#### Returns
 
-[`ContentTrackingService`](#content-trackingcontent-trackingserviceclassescontenttrackingservicemd)
+<a name="namespacescontenttrackingfunctionslogallcontentblocksonpagemd"></a>
 
-## Methods
 
-### logAllContentBlocksOnPage()
+***
+
+
+## logAllContentBlocksOnPage()
 
 > **logAllContentBlocksOnPage**(): `void`
 
-#### Returns
+Print all content blocks to the console for debugging purposes
+
+### Returns
 
 `void`
 
+
+<a name="namespacescontenttrackingfunctionstrackallcontentimpressionsmd"></a>
+
+
 ***
 
-### trackAllContentImpressions()
+
+## trackAllContentImpressions()
 
 > **trackAllContentImpressions**(): `void`
 
-#### Returns
+Scans the entire DOM for content blocks and tracks impressions after all page
+elements load. It does not send duplicates on repeated calls unless
+trackPageView was called in between trackAllContentImpressions invocations
+
+### Returns
 
 `void`
 
+
+<a name="namespacescontenttrackingfunctionstrackcontentimpressionmd"></a>
+
+
 ***
 
-### trackContentImpression()
+
+## trackContentImpression()
 
 > **trackContentImpression**(`contentName`, `contentPiece`, `contentTarget`): `void`
 
-#### Parameters
+### Parameters
 
 • **contentName**: `string`
 
@@ -291,375 +316,553 @@ export class TestPageComponent implements OnInit {
 
 • **contentTarget**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescontenttrackingfunctionstrackcontentimpressionswithinnodemd"></a>
+
+
 ***
 
-### trackContentImpressionsWithinNode()
+
+## trackContentImpressionsWithinNode()
 
 > **trackContentImpressionsWithinNode**(`domNode`): `void`
 
-#### Parameters
+### Parameters
 
 • **domNode**: `Node`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescontenttrackingfunctionstrackcontentinteractionmd"></a>
+
+
 ***
 
-### trackContentInteraction()
+
+## trackContentInteraction()
 
 > **trackContentInteraction**(`contentInteraction`, `contentName`, `contentPiece`, `contentTarget`): `void`
 
-#### Parameters
+Tracks manual content interaction event
+
+### Parameters
 
 • **contentInteraction**: `string`
 
+Type of interaction (e.g. "click")
+
 • **contentName**: `string`
+
+Name of a content block
 
 • **contentPiece**: `string`
 
+Name of the content that was displayed (e.g. link to an image)
+
 • **contentTarget**: `string`
 
-#### Returns
+Where the content leads to (e.g. URL of some external website)
+
+### Returns
 
 `void`
 
+
+<a name="namespacescontenttrackingfunctionstrackcontentinteractionnodemd"></a>
+
+
 ***
 
-### trackContentInteractionNode()
 
-> **trackContentInteractionNode**(`domNode`, `contentInteraction`): `void`
+## trackContentInteractionNode()
 
-#### Parameters
+> **trackContentInteractionNode**(`domNode`, `contentInteraction`?): `void`
+
+Tracks interaction with a block in domNode. Can be called from code placed in onclick attribute
+
+### Parameters
 
 • **domNode**: `Node`
 
-• **contentInteraction**: `string`= `'Unknown'`
+Node marked as content block or containing content blocks. If content block can’t be found, nothing will tracked.
 
-#### Returns
+• **contentInteraction?**: `string`
 
-`void`
+Name of interaction (e.g. "click")
 
-***
-
-### trackVisibleContentImpressions()
-
-> **trackVisibleContentImpressions**(`checkOnScroll`, `watchInterval`): `void`
-
-#### Parameters
-
-• **checkOnScroll**: `boolean`= `true`
-
-• **watchInterval**: `number`= `750`
-
-#### Returns
+### Returns
 
 `void`
 
 
-<a name="cookie-managementcookie-managementservicereadmemd"></a>
+<a name="namespacescontenttrackingfunctionstrackvisiblecontentimpressionsmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / cookie-management/cookie-management.service
 
-# cookie-management/cookie-management.service
+## trackVisibleContentImpressions()
 
-## Index
+> **trackVisibleContentImpressions**(`checkOnScroll`?, `watchInterval`?): `void`
 
-### Classes
+Scans DOM for all visible content blocks and tracks impressions
 
-- [CookieManagementService](#cookie-managementcookie-managementserviceclassescookiemanagementservicemd)
+### Parameters
+
+• **checkOnScroll?**: `boolean`
+
+Whether to scan for visible content on scroll event
+
+• **watchInterval?**: `number`
+
+Delay, in milliseconds, between scans for new visible content. Periodic checks can be disabled by passing 0
+
+### Returns
+
+`void`
 
 
-<a name="cookie-managementcookie-managementserviceclassescookiemanagementservicemd"></a>
+<a name="namespacescookiemanagementreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [cookie-management/cookie-management.service](#cookie-managementcookie-managementservicereadmemd) / CookieManagementService
 
-# Class: CookieManagementService
+## CookieManagement
 
-## Constructors
 
-### new CookieManagementService()
 
-> **new CookieManagementService**(): [`CookieManagementService`](#cookie-managementcookie-managementserviceclassescookiemanagementservicemd)
+- [deleteCookies](#namespacescookiemanagementfunctionsdeletecookiesmd)
+- [disableCookies](#namespacescookiemanagementfunctionsdisablecookiesmd)
+- [enableCookies](#namespacescookiemanagementfunctionsenablecookiesmd)
+- [getConfigVisitorCookieTimeout](#namespacescookiemanagementfunctionsgetconfigvisitorcookietimeoutmd)
+- [getCookieDomain](#namespacescookiemanagementfunctionsgetcookiedomainmd)
+- [getCookiePath](#namespacescookiemanagementfunctionsgetcookiepathmd)
+- [getSessionCookieTimeout](#namespacescookiemanagementfunctionsgetsessioncookietimeoutmd)
+- [hasCookies](#namespacescookiemanagementfunctionshascookiesmd)
+- [setCookieDomain](#namespacescookiemanagementfunctionssetcookiedomainmd)
+- [setCookieNamePrefix](#namespacescookiemanagementfunctionssetcookienameprefixmd)
+- [setCookiePath](#namespacescookiemanagementfunctionssetcookiepathmd)
+- [setReferralCookieTimeout](#namespacescookiemanagementfunctionssetreferralcookietimeoutmd)
+- [setSecureCookie](#namespacescookiemanagementfunctionssetsecurecookiemd)
+- [setSessionCookieTimeout](#namespacescookiemanagementfunctionssetsessioncookietimeoutmd)
+- [setVisitorCookieTimeout](#namespacescookiemanagementfunctionssetvisitorcookietimeoutmd)
+- [setVisitorIdCookie](#namespacescookiemanagementfunctionssetvisitoridcookiemd)
 
-#### Returns
 
-[`CookieManagementService`](#cookie-managementcookie-managementserviceclassescookiemanagementservicemd)
+<a name="namespacescookiemanagementfunctionsdeletecookiesmd"></a>
 
-## Methods
 
-### deleteCookies()
+***
+
+
+## deleteCookies()
 
 > **deleteCookies**(): `void`
 
-#### Returns
+Deletes existing tracking cookies on the next page view
+
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionsdisablecookiesmd"></a>
+
+
 ***
 
-### disableCookies()
+
+## disableCookies()
 
 > **disableCookies**(): `void`
 
-#### Returns
+Disables all first party cookies. Existing cookies will be deleted in the next page view
+
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionsenablecookiesmd"></a>
+
+
 ***
 
-### enableCookies()
+
+## enableCookies()
 
 > **enableCookies**(): `void`
 
-#### Returns
+Enables all first party cookies. Cookies will be created on the next tracking request
+
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionsgetconfigvisitorcookietimeoutmd"></a>
+
+
 ***
 
-### hasCookies()
+
+## getConfigVisitorCookieTimeout()
+
+> **getConfigVisitorCookieTimeout**(): `Promise`\<`number`\>
+
+Returns expiration time of visitor cookies (in milliseconds)
+
+### Returns
+
+`Promise`\<`number`\>
+
+
+<a name="namespacescookiemanagementfunctionsgetcookiedomainmd"></a>
+
+
+***
+
+
+## getCookieDomain()
+
+> **getCookieDomain**(): `Promise`\<`string`\>
+
+Returns domain of the analytics tracking cookies (set with setCookieDomain()).
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacescookiemanagementfunctionsgetcookiepathmd"></a>
+
+
+***
+
+
+## getCookiePath()
+
+> **getCookiePath**(): `Promise`\<`string`\>
+
+Returns the analytics tracking cookies path
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacescookiemanagementfunctionsgetsessioncookietimeoutmd"></a>
+
+
+***
+
+
+## getSessionCookieTimeout()
+
+> **getSessionCookieTimeout**(): `Promise`\<`number`\>
+
+Returns expiration time of session cookies
+
+### Returns
+
+`Promise`\<`number`\>
+
+
+<a name="namespacescookiemanagementfunctionshascookiesmd"></a>
+
+
+***
+
+
+## hasCookies()
 
 > **hasCookies**(): `Promise`\<`boolean`\>
 
-#### Returns
+Returns true if cookies are enabled in this browser
+
+### Returns
 
 `Promise`\<`boolean`\>
 
+
+<a name="namespacescookiemanagementfunctionssetcookiedomainmd"></a>
+
+
 ***
 
-### setCookieDomain()
+
+## setCookieDomain()
 
 > **setCookieDomain**(`domain`): `void`
 
-#### Parameters
+Sets the domain for the analytics tracking cookies
+
+### Parameters
 
 • **domain**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetcookienameprefixmd"></a>
+
+
 ***
 
-### setCookieNamePrefix()
+
+## setCookieNamePrefix()
 
 > **setCookieNamePrefix**(`prefix`): `void`
 
-#### Parameters
+Sets the prefix for analytics tracking cookies. Default is "_pk_".
+
+### Parameters
 
 • **prefix**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetcookiepathmd"></a>
+
+
 ***
 
-### setCookiePath()
+
+## setCookiePath()
 
 > **setCookiePath**(`path`): `void`
 
-#### Parameters
+Sets the analytics tracking cookies path
+
+### Parameters
 
 • **path**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetreferralcookietimeoutmd"></a>
+
+
 ***
 
-### setSecureCookie()
+
+## setReferralCookieTimeout()
+
+> **setReferralCookieTimeout**(`seconds`): `void`
+
+Sets the expiration time of referral cookies
+
+### Parameters
+
+• **seconds**: `number`
+
+### Returns
+
+`void`
+
+
+<a name="namespacescookiemanagementfunctionssetsecurecookiemd"></a>
+
+
+***
+
+
+## setSecureCookie()
 
 > **setSecureCookie**(`secure`): `void`
 
-#### Parameters
+Toggles the secure cookie flag on all first party cookies (if you are using HTTPS)
+
+### Parameters
 
 • **secure**: `boolean`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetsessioncookietimeoutmd"></a>
+
+
 ***
 
-### setSessionCookieTimeout()
+
+## setSessionCookieTimeout()
 
 > **setSessionCookieTimeout**(`seconds`): `void`
 
-#### Parameters
+Sets the expiration time of session cookies
+
+### Parameters
 
 • **seconds**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetvisitorcookietimeoutmd"></a>
+
+
 ***
 
-### setVisitorCookieTimeout()
+
+## setVisitorCookieTimeout()
 
 > **setVisitorCookieTimeout**(`seconds`): `void`
 
-#### Parameters
+Sets the expiration time of visitor cookies
+
+### Parameters
 
 • **seconds**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacescookiemanagementfunctionssetvisitoridcookiemd"></a>
+
+
 ***
 
-### setVisitorIdCookie()
+
+## setVisitorIdCookie()
 
 > **setVisitorIdCookie**(): `void`
 
-#### Returns
+Sets cookie containing [analytics ID](https://developers.piwik.pro/en/latest/glossary.html#term-analytics-id) in browser
+
+### Returns
 
 `void`
 
 
-<a name="custom-dimensionscustom-dimensionsservicereadmemd"></a>
+<a name="namespacescustomdimensionsreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / custom-dimensions/custom-dimensions.service
 
-# custom-dimensions/custom-dimensions.service
-
-## Index
-
-### Classes
-
-- [CustomDimensionsService](#custom-dimensionscustom-dimensionsserviceclassescustomdimensionsservicemd)
+## CustomDimensions
 
 
-<a name="custom-dimensionscustom-dimensionsserviceclassescustomdimensionsservicemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
+- [deleteCustomDimension](#namespacescustomdimensionsfunctionsdeletecustomdimensionmd)
+- [getCustomDimensionValue](#namespacescustomdimensionsfunctionsgetcustomdimensionvaluemd)
+- [setCustomDimensionValue](#namespacescustomdimensionsfunctionssetcustomdimensionvaluemd)
+
+
+<a name="namespacescustomdimensionsfunctionsdeletecustomdimensionmd"></a>
+
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [custom-dimensions/custom-dimensions.service](#custom-dimensionscustom-dimensionsservicereadmemd) / CustomDimensionsService
 
-# Class: CustomDimensionsService
-
-## Constructors
-
-### new CustomDimensionsService()
-
-> **new CustomDimensionsService**(): [`CustomDimensionsService`](#custom-dimensionscustom-dimensionsserviceclassescustomdimensionsservicemd)
-
-#### Returns
-
-[`CustomDimensionsService`](#custom-dimensionscustom-dimensionsserviceclassescustomdimensionsservicemd)
-
-## Methods
-
-### deleteCustomDimension()
+## deleteCustomDimension()
 
 > **deleteCustomDimension**(`customDimensionId`): `void`
 
-#### Parameters
+Removes a custom dimension with the specified ID.
 
-• **customDimensionId**: `string`
-
-#### Returns
-
-`void`
-
-***
-
-### getCustomDimensionValue()
-
-> **getCustomDimensionValue**(`customDimensionId`): `Promise`\<`undefined` \| `string`\>
-
-#### Parameters
+### Parameters
 
 • **customDimensionId**: `string` \| `number`
 
-#### Returns
+### Returns
 
-`Promise`\<`undefined` \| `string`\>
+`void`
+
+
+<a name="namespacescustomdimensionsfunctionsgetcustomdimensionvaluemd"></a>
+
 
 ***
 
-### setCustomDimensionValue()
+
+## getCustomDimensionValue()
+
+> **getCustomDimensionValue**(`customDimensionId`): `Promise`\<`string` \| `undefined`\>
+
+Returns the value of a custom dimension with the specified ID.
+
+### Parameters
+
+• **customDimensionId**: `string` \| `number`
+
+### Returns
+
+`Promise`\<`string` \| `undefined`\>
+
+
+<a name="namespacescustomdimensionsfunctionssetcustomdimensionvaluemd"></a>
+
+
+***
+
+
+## setCustomDimensionValue()
 
 > **setCustomDimensionValue**(`customDimensionId`, `customDimensionValue`): `void`
 
-#### Parameters
+Sets a custom dimension value to be used later.
+
+### Parameters
 
 • **customDimensionId**: `string` \| `number`
 
 • **customDimensionValue**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
 
-<a name="custom-eventcustom-eventsservicereadmemd"></a>
+<a name="namespacescustomeventreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / custom-event/custom-events.service
 
-# custom-event/custom-events.service
-
-## Index
-
-### Classes
-
-- [CustomEventsService](#custom-eventcustom-eventsserviceclassescustomeventsservicemd)
+## CustomEvent
 
 
-<a name="custom-eventcustom-eventsserviceclassescustomeventsservicemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
+- [trackEvent](#namespacescustomeventfunctionstrackeventmd)
+
+
+<a name="namespacescustomeventfunctionstrackeventmd"></a>
+
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [custom-event/custom-events.service](#custom-eventcustom-eventsservicereadmemd) / CustomEventsService
 
-# Class: CustomEventsService
+## trackEvent()
 
-## Constructors
+> **trackEvent**(`category`, `action`, `name`?, `value`?, `dimensions`?): `void`
 
-### new CustomEventsService()
+Tracks a custom event, e.g. when a visitor interacts with the page
 
-> **new CustomEventsService**(): [`CustomEventsService`](#custom-eventcustom-eventsserviceclassescustomeventsservicemd)
-
-#### Returns
-
-[`CustomEventsService`](#custom-eventcustom-eventsserviceclassescustomeventsservicemd)
-
-## Methods
-
-### trackEvent()
-
-> **trackEvent**(`category`, `action`, `name`?, `value`?): `void`
-
-#### Parameters
+### Parameters
 
 • **category**: `string`
 
@@ -669,297 +872,638 @@ export class TestPageComponent implements OnInit {
 
 • **value?**: `number`
 
-#### Returns
+• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
+
+### Returns
 
 `void`
 
 
-<a name="data-layerdata-layerservicereadmemd"></a>
+<a name="namespacesdatalayerreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / data-layer/data-layer.service
 
-# data-layer/data-layer.service
-
-## Index
-
-### Classes
-
-- [DataLayerService](#data-layerdata-layerserviceclassesdatalayerservicemd)
+## DataLayer
 
 
-<a name="data-layerdata-layerserviceclassesdatalayerservicemd"></a>
+#### Type Aliases
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
+- [DataLayerEntry](#namespacesdatalayertype-aliasesdatalayerentrymd)
+
+
+- [push](#namespacesdatalayerfunctionspushmd)
+- [setDataLayerName](#namespacesdatalayerfunctionssetdatalayernamemd)
+
+
+<a name="namespacesdatalayerfunctionspushmd"></a>
+
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [data-layer/data-layer.service](#data-layerdata-layerservicereadmemd) / DataLayerService
 
-# Class: DataLayerService
-
-## Constructors
-
-### new DataLayerService()
-
-> **new DataLayerService**(): [`DataLayerService`](#data-layerdata-layerserviceclassesdatalayerservicemd)
-
-#### Returns
-
-[`DataLayerService`](#data-layerdata-layerserviceclassesdatalayerservicemd)
-
-## Methods
-
-### push()
+## push()
 
 > **push**(`data`): `number`
 
-#### Parameters
+Adds entry to a data layer
 
-• **data**: `any`
+### Parameters
 
-#### Returns
+• **data**: [`DataLayerEntry`](#namespacesdatalayertype-aliasesdatalayerentrymd)
+
+### Returns
 
 `number`
 
 
-<a name="download-and-outlinkdownload-and-outlinkservicereadmemd"></a>
+<a name="namespacesdatalayerfunctionssetdatalayernamemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / download-and-outlink/download-and-outlink.service
 
-# download-and-outlink/download-and-outlink.service
+## setDataLayerName()
 
-## Index
+> **setDataLayerName**(`name`): `void`
 
-### Classes
+### Parameters
 
-- [DownloadAndOutlinkService](#download-and-outlinkdownload-and-outlinkserviceclassesdownloadandoutlinkservicemd)
+• **name**: `string`
+
+### Returns
+
+`void`
 
 
-<a name="download-and-outlinkdownload-and-outlinkserviceclassesdownloadandoutlinkservicemd"></a>
+<a name="namespacesdatalayertype-aliasesdatalayerentrymd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [download-and-outlink/download-and-outlink.service](#download-and-outlinkdownload-and-outlinkservicereadmemd) / DownloadAndOutlinkService
 
-# Class: DownloadAndOutlinkService
+## Type alias: DataLayerEntry
 
-## Constructors
+> **DataLayerEntry**: `Record`\<`string`, `AnyData`\>
 
-### new DownloadAndOutlinkService()
 
-> **new DownloadAndOutlinkService**(): [`DownloadAndOutlinkService`](#download-and-outlinkdownload-and-outlinkserviceclassesdownloadandoutlinkservicemd)
+<a name="namespacesdownloadandoutlinkreadmemd"></a>
 
-#### Returns
 
-[`DownloadAndOutlinkService`](#download-and-outlinkdownload-and-outlinkserviceclassesdownloadandoutlinkservicemd)
+***
 
-## Methods
 
-### addDownloadExtensions()
+## DownloadAndOutlink
+
+
+
+- [addDownloadExtensions](#namespacesdownloadandoutlinkfunctionsadddownloadextensionsmd)
+- [enableLinkTracking](#namespacesdownloadandoutlinkfunctionsenablelinktrackingmd)
+- [getLinkTrackingTimer](#namespacesdownloadandoutlinkfunctionsgetlinktrackingtimermd)
+- [removeDownloadExtensions](#namespacesdownloadandoutlinkfunctionsremovedownloadextensionsmd)
+- [setDownloadClasses](#namespacesdownloadandoutlinkfunctionssetdownloadclassesmd)
+- [setDownloadExtensions](#namespacesdownloadandoutlinkfunctionssetdownloadextensionsmd)
+- [setIgnoreClasses](#namespacesdownloadandoutlinkfunctionssetignoreclassesmd)
+- [setLinkClasses](#namespacesdownloadandoutlinkfunctionssetlinkclassesmd)
+- [setLinkTrackingTimer](#namespacesdownloadandoutlinkfunctionssetlinktrackingtimermd)
+- [trackLink](#namespacesdownloadandoutlinkfunctionstracklinkmd)
+
+
+<a name="namespacesdownloadandoutlinkfunctionsadddownloadextensionsmd"></a>
+
+
+***
+
+
+## addDownloadExtensions()
 
 > **addDownloadExtensions**(`extensions`): `void`
 
-#### Parameters
+Adds new extensions to the download extensions list
+
+### Parameters
 
 • **extensions**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionsenablelinktrackingmd"></a>
+
+
 ***
 
-### enableLinkTracking()
 
-> **enableLinkTracking**(`enable`): `void`
+## enableLinkTracking()
 
-#### Parameters
+> **enableLinkTracking**(`trackAlsoMiddleAndRightClicks`?): `void`
 
-• **enable**: `boolean`
+Enables automatic link tracking. If called with `true`, left, right and
+middle clicks on links will be treated as opening a link. Opening a links to
+an external site (different domain) creates an outlink event. Opening a link
+to a downloadable file creates a download event
 
-#### Returns
+### Parameters
+
+• **trackAlsoMiddleAndRightClicks?**: `boolean`
+
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionsgetlinktrackingtimermd"></a>
+
+
 ***
 
-### getLinkTrackingTimer()
+
+## getLinkTrackingTimer()
 
 > **getLinkTrackingTimer**(): `Promise`\<`number`\>
 
-#### Returns
+Returns lock/wait time after a request set by setLinkTrackingTimer
+
+### Returns
 
 `Promise`\<`number`\>
 
+
+<a name="namespacesdownloadandoutlinkfunctionsremovedownloadextensionsmd"></a>
+
+
 ***
 
-### removeDownloadExtensions()
+
+## removeDownloadExtensions()
 
 > **removeDownloadExtensions**(`extensions`): `void`
 
-#### Parameters
+Removes extensions from the download extensions list
+
+### Parameters
 
 • **extensions**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionssetdownloadclassesmd"></a>
+
+
 ***
 
-### setDownloadClasses()
+
+## setDownloadClasses()
 
 > **setDownloadClasses**(`classes`): `void`
 
-#### Parameters
+Sets a list of class names that indicate whether a list is a download and not an outlink
+
+### Parameters
 
 • **classes**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionssetdownloadextensionsmd"></a>
+
+
 ***
 
-### setDownloadExtensions()
+
+## setDownloadExtensions()
 
 > **setDownloadExtensions**(`extensions`): `void`
 
-#### Parameters
+Overwrites the list of file extensions indicating that a link is a download
+
+### Parameters
 
 • **extensions**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionssetignoreclassesmd"></a>
+
+
 ***
 
-### setIgnoreClasses()
+
+## setIgnoreClasses()
 
 > **setIgnoreClasses**(`classes`): `void`
 
-#### Parameters
+Set a list of class names that indicate a link should not be tracked
+
+### Parameters
 
 • **classes**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionssetlinkclassesmd"></a>
+
+
 ***
 
-### setLinkClasses()
+
+## setLinkClasses()
 
 > **setLinkClasses**(`classes`): `void`
 
-#### Parameters
+Sets a list of class names that indicate whether a link is an outlink and not download
+
+### Parameters
 
 • **classes**: `string`[]
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionssetlinktrackingtimermd"></a>
+
+
 ***
 
-### setLinkTrackingTimer()
+
+## setLinkTrackingTimer()
 
 > **setLinkTrackingTimer**(`time`): `void`
 
-#### Parameters
+When a visitor produces an events and closes the page immediately afterwards,
+e.g. when opening a link, the request might get cancelled. To avoid loosing
+the last event this way, JavaScript Tracking Client will lock the page for a
+fraction of a second (if wait time hasn’t passed), giving the request time to
+reach the Collecting & Processing Pipeline
+
+### Parameters
 
 • **time**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesdownloadandoutlinkfunctionstracklinkmd"></a>
+
+
 ***
 
-### trackLink()
 
-> **trackLink**(`url`, `linkType`, `customData`?, `callback`?): `void`
+## trackLink()
 
-#### Parameters
+> **trackLink**(`url`, `linkType`, `dimensions`?, `callback`?): `void`
+
+Manually tracks outlink or download event with provided values
+
+### Parameters
 
 • **url**: `string`
 
 • **linkType**: `string`
 
-• **customData?**: `Dimensions`
+• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
 
 • **callback?**
 
-#### Returns
+### Returns
 
 `void`
 
 
-<a name="e-commercee-commerceservicereadmemd"></a>
+<a name="namespaceserrortrackingreadmemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / e-commerce/e-commerce.service
 
-# e-commerce/e-commerce.service
-
-## Index
-
-### Classes
-
-- [ECommerceService](#e-commercee-commerceserviceclassesecommerceservicemd)
+## ErrorTracking
 
 
-<a name="e-commercee-commerceserviceclassesecommerceservicemd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
+- [enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd)
+- [trackError](#namespaceserrortrackingfunctionstrackerrormd)
+
+
+<a name="namespaceserrortrackingfunctionsenablejserrortrackingmd"></a>
+
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [e-commerce/e-commerce.service](#e-commercee-commerceservicereadmemd) / ECommerceService
 
-# Class: ECommerceService
+## enableJSErrorTracking()
 
-## Constructors
+> **enableJSErrorTracking**(`unique`?): `void`
 
-### new ECommerceService()
+Enables tracking of unhandled JavaScript errors.
 
-> **new ECommerceService**(`paqService`): [`ECommerceService`](#e-commercee-commerceserviceclassesecommerceservicemd)
+### Parameters
 
-#### Parameters
+• **unique?**: `boolean`
 
-• **paqService**: [`PaqService`](#paqpaqserviceclassespaqservicemd)
+track only unique errors
 
-#### Returns
+### Returns
 
-[`ECommerceService`](#e-commercee-commerceserviceclassesecommerceservicemd)
+`void`
 
-## Properties
 
-### paqService
+<a name="namespaceserrortrackingfunctionstrackerrormd"></a>
 
-> `private` `readonly` **paqService**: [`PaqService`](#paqpaqserviceclassespaqservicemd)
 
-## Methods
+***
 
-### ~~addEcommerceItem()~~
+
+## trackError()
+
+> **trackError**(`error`): `void`
+
+Attempts to send error tracking request using same format as native errors caught by enableJSErrorTracking().
+Such error request will still follow rules set for tracker, so it will be sent only when JS error tracking is enabled
+([enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd) function was called before this attempt). It will also respect rules for tracking only unique errors.
+
+### Parameters
+
+• **error**: `Error`
+
+### Returns
+
+`void`
+
+
+<a name="namespacesgoalconversionsreadmemd"></a>
+
+
+***
+
+
+## GoalConversions
+
+
+
+- [trackGoal](#namespacesgoalconversionsfunctionstrackgoalmd)
+
+
+<a name="namespacesgoalconversionsfunctionstrackgoalmd"></a>
+
+
+***
+
+
+## trackGoal()
+
+> **trackGoal**(`goalId`, `conversionValue`, `dimensions`?): `void`
+
+Tracks manual goal conversion
+
+### Parameters
+
+• **goalId**: `string` \| `number`
+
+• **conversionValue**: `number`
+
+• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
+
+### Returns
+
+`void`
+
+
+<a name="namespacespageviewsreadmemd"></a>
+
+
+***
+
+
+## PageViews
+
+
+
+- [trackPageView](#namespacespageviewsfunctionstrackpageviewmd)
+
+
+<a name="namespacespageviewsfunctionstrackpageviewmd"></a>
+
+
+***
+
+
+## trackPageView()
+
+> **trackPageView**(`customPageTitle`?): `void`
+
+Tracks a visit on the page that the function was run on
+
+### Parameters
+
+• **customPageTitle?**: `string`
+
+### Returns
+
+`void`
+
+
+<a name="namespacessitesearchreadmemd"></a>
+
+
+***
+
+
+## SiteSearch
+
+
+
+- [trackSiteSearch](#namespacessitesearchfunctionstracksitesearchmd)
+
+
+<a name="namespacessitesearchfunctionstracksitesearchmd"></a>
+
+
+***
+
+
+## trackSiteSearch()
+
+> **trackSiteSearch**(`keyword`, `category`?, `searchCount`?, `dimensions`?): `void`
+
+Tracks search requests on a website
+
+### Parameters
+
+• **keyword**: `string`
+
+• **category?**: `string`
+
+• **searchCount?**: `number`
+
+• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
+
+### Returns
+
+`void`
+
+
+<a name="namespacesusermanagementreadmemd"></a>
+
+
+***
+
+
+## UserManagement
+
+
+
+- [getUserId](#namespacesusermanagementfunctionsgetuseridmd)
+- [getVisitorId](#namespacesusermanagementfunctionsgetvisitoridmd)
+- [getVisitorInfo](#namespacesusermanagementfunctionsgetvisitorinfomd)
+- [resetUserId](#namespacesusermanagementfunctionsresetuseridmd)
+- [setUserId](#namespacesusermanagementfunctionssetuseridmd)
+
+
+<a name="namespacesusermanagementfunctionsgetuseridmd"></a>
+
+
+***
+
+
+## getUserId()
+
+> **getUserId**(): `Promise`\<`string`\>
+
+The function that will return user ID
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacesusermanagementfunctionsgetvisitoridmd"></a>
+
+
+***
+
+
+## getVisitorId()
+
+> **getVisitorId**(): `Promise`\<`string`\>
+
+Returns 16-character hex ID of the visitor
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacesusermanagementfunctionsgetvisitorinfomd"></a>
+
+
+***
+
+
+## getVisitorInfo()
+
+> **getVisitorInfo**(): `Promise`\<[`VisitorInfo`](#type-aliasesvisitorinfomd)\>
+
+Returns visitor information in an array
+
+### Returns
+
+`Promise`\<[`VisitorInfo`](#type-aliasesvisitorinfomd)\>
+
+
+<a name="namespacesusermanagementfunctionsresetuseridmd"></a>
+
+
+***
+
+
+## resetUserId()
+
+> **resetUserId**(): `void`
+
+Clears previously set userID, e.g. when visitor logs out
+
+### Returns
+
+`void`
+
+
+<a name="namespacesusermanagementfunctionssetuseridmd"></a>
+
+
+***
+
+
+## setUserId()
+
+> **setUserId**(`userId`): `void`
+
+User ID is an additional parameter that allows you to aggregate data. When
+set up, you will be able to search through sessions by this parameter, filter
+reports through it or create Multi attribution reports using User ID
+
+### Parameters
+
+• **userId**: `string`
+
+### Returns
+
+`void`
+
+
+<a name="namespacesecommercereadmemd"></a>
+
+
+***
+
+
+## eCommerce
+
+
+
+- [addEcommerceItem](#namespacesecommercefunctionsaddecommerceitemmd)
+- [clearEcommerceCart](#namespacesecommercefunctionsclearecommercecartmd)
+- [ecommerceAddToCart](#namespacesecommercefunctionsecommerceaddtocartmd)
+- [ecommerceCartUpdate](#namespacesecommercefunctionsecommercecartupdatemd)
+- [ecommerceOrder](#namespacesecommercefunctionsecommerceordermd)
+- [ecommerceProductDetailView](#namespacesecommercefunctionsecommerceproductdetailviewmd)
+- [ecommerceRemoveFromCart](#namespacesecommercefunctionsecommerceremovefromcartmd)
+- [getEcommerceItems](#namespacesecommercefunctionsgetecommerceitemsmd)
+- [removeEcommerceItem](#namespacesecommercefunctionsremoveecommerceitemmd)
+- [setEcommerceView](#namespacesecommercefunctionssetecommerceviewmd)
+- [trackEcommerceCartUpdate](#namespacesecommercefunctionstrackecommercecartupdatemd)
+- [trackEcommerceOrder](#namespacesecommercefunctionstrackecommerceordermd)
+
+
+<a name="namespacesecommercefunctionsaddecommerceitemmd"></a>
+
+
+***
+
+
+## ~~addEcommerceItem()~~
 
 > **addEcommerceItem**(`productSKU`, `productName`, `productCategory`, `productPrice`, `productQuantity`): `void`
 
-#### Parameters
+### Parameters
 
 • **productSKU**: `string`
 
@@ -971,137 +1515,192 @@ export class TestPageComponent implements OnInit {
 
 • **productQuantity**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
 
 Please use the ecommerceAddToCart instead.
 
+
+<a name="namespacesecommercefunctionsclearecommercecartmd"></a>
+
+
 ***
 
-### ~~clearEcommerceCart()~~
+
+## ~~clearEcommerceCart()~~
 
 > **clearEcommerceCart**(): `void`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
+
+
+<a name="namespacesecommercefunctionsecommerceaddtocartmd"></a>
+
 
 ***
 
-### ecommerceAddToCart()
+
+## ecommerceAddToCart()
 
 > **ecommerceAddToCart**(`products`): `void`
 
-#### Parameters
+Tracks action of adding products to a cart
 
-• **products**: `Product`[]
+### Parameters
 
-#### Returns
+• **products**: [`Product`](#type-aliasesproductmd)[]
+
+### Returns
 
 `void`
 
+
+<a name="namespacesecommercefunctionsecommercecartupdatemd"></a>
+
+
 ***
 
-### ecommerceCartUpdate()
+
+## ecommerceCartUpdate()
 
 > **ecommerceCartUpdate**(`products`, `grandTotal`): `void`
 
-#### Parameters
+Tracks current state of a cart
 
-• **products**: `Product`[]
+### Parameters
+
+• **products**: [`Product`](#type-aliasesproductmd)[]
 
 • **grandTotal**: `string` \| `number`
 
-#### Returns
+### Returns
 
 `void`
 
+
+<a name="namespacesecommercefunctionsecommerceordermd"></a>
+
+
 ***
 
-### ecommerceOrder()
+
+## ecommerceOrder()
 
 > **ecommerceOrder**(`products`, `paymentInformation`): `void`
 
-#### Parameters
+Tracks conversion, including products and payment details
 
-• **products**: `Product`[]
+### Parameters
 
-• **paymentInformation**: `PaymentInformation`
+• **products**: [`Product`](#type-aliasesproductmd)[]
 
-#### Returns
+• **paymentInformation**: [`PaymentInformation`](#type-aliasespaymentinformationmd)
+
+### Returns
 
 `void`
 
+
+<a name="namespacesecommercefunctionsecommerceproductdetailviewmd"></a>
+
+
 ***
 
-### ecommerceProductDetailView()
+
+## ecommerceProductDetailView()
 
 > **ecommerceProductDetailView**(`products`): `void`
 
-#### Parameters
+Tracks action of viewing product page
 
-• **products**: `Product`[]
+### Parameters
 
-#### Returns
+• **products**: [`Product`](#type-aliasesproductmd)[]
+
+### Returns
 
 `void`
 
+
+<a name="namespacesecommercefunctionsecommerceremovefromcartmd"></a>
+
+
 ***
 
-### ecommerceRemoveFromCart()
+
+## ecommerceRemoveFromCart()
 
 > **ecommerceRemoveFromCart**(`products`): `void`
 
-#### Parameters
+Tracks action of removing a products from a cart
 
-• **products**: `Product`[]
+### Parameters
 
-#### Returns
+• **products**: [`Product`](#type-aliasesproductmd)[]
+
+### Returns
 
 `void`
 
+
+<a name="namespacesecommercefunctionsgetecommerceitemsmd"></a>
+
+
 ***
 
-### ~~getEcommerceItems()~~
+
+## ~~getEcommerceItems()~~
 
 > **getEcommerceItems**(): `Promise`\<`object`\>
 
-#### Returns
+### Returns
 
 `Promise`\<`object`\>
 
-#### Deprecated
+### Deprecated
+
+
+<a name="namespacesecommercefunctionsremoveecommerceitemmd"></a>
+
 
 ***
 
-### ~~removeEcommerceItem()~~
+
+## ~~removeEcommerceItem()~~
 
 > **removeEcommerceItem**(`productSKU`): `void`
 
-#### Parameters
+### Parameters
 
 • **productSKU**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
 
 Please use the ecommerceRemoveFromCart instead.
 
+
+<a name="namespacesecommercefunctionssetecommerceviewmd"></a>
+
+
 ***
 
-### ~~setEcommerceView()~~
+
+## ~~setEcommerceView()~~
 
 > **setEcommerceView**(`productSKU`, `productName`?, `productCategory`?, `productPrice`?): `void`
 
-#### Parameters
+### Parameters
 
 • **productSKU**: `string`
 
@@ -1111,37 +1710,47 @@ Please use the ecommerceRemoveFromCart instead.
 
 • **productPrice?**: `string`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
+
+
+<a name="namespacesecommercefunctionstrackecommercecartupdatemd"></a>
+
 
 ***
 
-### ~~trackEcommerceCartUpdate()~~
+
+## ~~trackEcommerceCartUpdate()~~
 
 > **trackEcommerceCartUpdate**(`cartAmount`): `void`
 
-#### Parameters
+### Parameters
 
 • **cartAmount**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
 
 Please use the ecommerceCartUpdate instead.
 
+
+<a name="namespacesecommercefunctionstrackecommerceordermd"></a>
+
+
 ***
 
-### ~~trackEcommerceOrder()~~
+
+## ~~trackEcommerceOrder()~~
 
 > **trackEcommerceOrder**(`orderId`, `orderGrandTotal`, `orderSubTotal`?, `orderTax`?, `orderShipping`?, `orderDiscount`?): `void`
 
-#### Parameters
+### Parameters
 
 • **orderId**: `string`
 
@@ -1155,369 +1764,158 @@ Please use the ecommerceCartUpdate instead.
 
 • **orderDiscount?**: `number`
 
-#### Returns
+### Returns
 
 `void`
 
-#### Deprecated
+### Deprecated
 
 Please use the ecommerceOrder instead.
 
 
-<a name="goal-conversionsgoal-conversionsservicereadmemd"></a>
+<a name="type-aliasesdimensionsmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / goal-conversions/goal-conversions.service
-
-# goal-conversions/goal-conversions.service
-
-## Index
-
-### Classes
-
-- [GoalConversionsService](#goal-conversionsgoal-conversionsserviceclassesgoalconversionsservicemd)
-
-
-<a name="goal-conversionsgoal-conversionsserviceclassesgoalconversionsservicemd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [goal-conversions/goal-conversions.service](#goal-conversionsgoal-conversionsservicereadmemd) / GoalConversionsService
-
-# Class: GoalConversionsService
-
-## Constructors
-
-### new GoalConversionsService()
-
-> **new GoalConversionsService**(): [`GoalConversionsService`](#goal-conversionsgoal-conversionsserviceclassesgoalconversionsservicemd)
-
-#### Returns
-
-[`GoalConversionsService`](#goal-conversionsgoal-conversionsserviceclassesgoalconversionsservicemd)
-
-## Methods
-
-### trackGoal()
-
-> **trackGoal**(`goalId`, `conversionValue`, `dimensions`?): `void`
-
-#### Parameters
-
-• **goalId**: `string` \| `number`
-
-• **conversionValue**: `number`
-
-• **dimensions?**: `Dimensions`
-
-#### Returns
-
-`void`
-
-
-<a name="modulesmd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
 
-## Modules
+## Type alias: Dimensions
 
-- [content-tracking/content-tracking.service](#content-trackingcontent-trackingservicereadmemd)
-- [cookie-management/cookie-management.service](#cookie-managementcookie-managementservicereadmemd)
-- [custom-dimensions/custom-dimensions.service](#custom-dimensionscustom-dimensionsservicereadmemd)
-- [custom-event/custom-events.service](#custom-eventcustom-eventsservicereadmemd)
-- [data-layer/data-layer.service](#data-layerdata-layerservicereadmemd)
-- [download-and-outlink/download-and-outlink.service](#download-and-outlinkdownload-and-outlinkservicereadmemd)
-- [e-commerce/e-commerce.service](#e-commercee-commerceservicereadmemd)
-- [goal-conversions/goal-conversions.service](#goal-conversionsgoal-conversionsservicereadmemd)
-- [page-views/page-views.service](#page-viewspage-viewsservicereadmemd)
-- [paq/paq.service](#paqpaqservicereadmemd)
-- [site-search/site-search.service](#site-searchsite-searchservicereadmemd)
-- [user-management/user-management.service](#user-managementuser-managementservicereadmemd)
+> **Dimensions**: `Record`\<\`dimension$\{number\}\`, `string`\>
 
 
-<a name="page-viewspage-viewsservicereadmemd"></a>
+<a name="type-aliasesinitoptionsmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / page-views/page-views.service
 
-# page-views/page-views.service
+## Type alias: InitOptions
 
-## Index
+> **InitOptions**: `object`
 
-### Classes
+### Type declaration
 
-- [PageViewsService](#page-viewspage-viewsserviceclassespageviewsservicemd)
+#### dataLayerName?
+
+> `optional` **dataLayerName**: `string`
+
+Defaults to 'dataLayer'
+
+#### nonce?
+
+> `optional` **nonce**: `string`
 
 
-<a name="page-viewspage-viewsserviceclassespageviewsservicemd"></a>
+<a name="type-aliasespaymentinformationmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [page-views/page-views.service](#page-viewspage-viewsservicereadmemd) / PageViewsService
 
-# Class: PageViewsService
+## Type alias: PaymentInformation
 
-## Constructors
+> **PaymentInformation**: `object`
 
-### new PageViewsService()
+### Type declaration
 
-> **new PageViewsService**(): [`PageViewsService`](#page-viewspage-viewsserviceclassespageviewsservicemd)
+#### discount?
 
-#### Returns
+> `optional` **discount**: `number` \| `string`
 
-[`PageViewsService`](#page-viewspage-viewsserviceclassespageviewsservicemd)
+#### grandTotal
 
-## Methods
+> **grandTotal**: `number` \| `string`
 
-### trackPageView()
+#### orderId
 
-> **trackPageView**(`customPageTitle`?): `void`
+> **orderId**: `string`
 
-#### Parameters
+#### shipping?
 
-• **customPageTitle?**: `string`
+> `optional` **shipping**: `number` \| `string`
 
-#### Returns
+#### subTotal?
 
-`void`
+> `optional` **subTotal**: `number` \| `string`
+
+#### tax?
+
+> `optional` **tax**: `number` \| `string`
 
 
-<a name="paqpaqservicereadmemd"></a>
+<a name="type-aliasesproductmd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / paq/paq.service
 
-# paq/paq.service
+## Type alias: Product
 
-## Index
+> **Product**: `object`
 
-### Classes
+### Type declaration
 
-- [PaqService](#paqpaqserviceclassespaqservicemd)
+#### brand?
+
+> `optional` **brand**: `string`
+
+#### category?
+
+> `optional` **category**: `LimitedArrayFiveStrings`
+
+#### customDimensions?
+
+> `optional` **customDimensions**: `Record`\<`number`, `string`\>
+
+#### name?
+
+> `optional` **name**: `string`
+
+#### price?
+
+> `optional` **price**: `number`
+
+#### quantity?
+
+> `optional` **quantity**: `number`
+
+#### sku
+
+> **sku**: `string`
+
+#### variant?
+
+> `optional` **variant**: `string`
 
 
-<a name="paqpaqserviceclassespaqservicemd"></a>
+<a name="type-aliasesvisitorinfomd"></a>
 
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
 
 ***
 
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [paq/paq.service](#paqpaqservicereadmemd) / PaqService
 
-# Class: PaqService
+## Type alias: VisitorInfo
 
-## Constructors
+> **VisitorInfo**: [`"0"` \| `"1"`, `string`, `number`, `string` \| `number`, `number`, `number` \| `""`, `number` \| `""`]
 
-### new PaqService()
 
-> **new PaqService**(`titleService`, `routerService`, `_window`): [`PaqService`](#paqpaqserviceclassespaqservicemd)
+<a name="variablesdefaultmd"></a>
 
-#### Parameters
-
-• **titleService**: `Title`
-
-• **routerService**: `Router`
-
-• **\_window**: `PiwikProWindow`
-
-#### Returns
-
-[`PaqService`](#paqpaqserviceclassespaqservicemd)
-
-## Properties
-
-### \_window
-
-> `private` `readonly` **\_window**: `PiwikProWindow`
 
 ***
 
-### routerService
 
-> `private` `readonly` **routerService**: `Router`
+## Variable: default
 
-***
+> `const` **default**: `object`
 
-### titleService
+### Type declaration
 
-> `private` `readonly` **titleService**: `Title`
+#### getInitScript
 
-## Methods
+> **getInitScript**: *typeof* `PiwikPro.getInitScript`
 
-### push()
+#### initialize
 
-> **push**(`collection`): `any`
-
-#### Parameters
-
-• **collection**: `any`[]
-
-#### Returns
-
-`any`
-
-
-<a name="site-searchsite-searchservicereadmemd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / site-search/site-search.service
-
-# site-search/site-search.service
-
-## Index
-
-### Classes
-
-- [SiteSearchService](#site-searchsite-searchserviceclassessitesearchservicemd)
-
-
-<a name="site-searchsite-searchserviceclassessitesearchservicemd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [site-search/site-search.service](#site-searchsite-searchservicereadmemd) / SiteSearchService
-
-# Class: SiteSearchService
-
-## Constructors
-
-### new SiteSearchService()
-
-> **new SiteSearchService**(): [`SiteSearchService`](#site-searchsite-searchserviceclassessitesearchservicemd)
-
-#### Returns
-
-[`SiteSearchService`](#site-searchsite-searchserviceclassessitesearchservicemd)
-
-## Methods
-
-### trackSiteSearch()
-
-> **trackSiteSearch**(`keyword`, `category`?, `searchCount`?, `dimensions`?): `void`
-
-#### Parameters
-
-• **keyword**: `string`
-
-• **category?**: `string`
-
-• **searchCount?**: `number`
-
-• **dimensions?**: `Dimensions`
-
-#### Returns
-
-`void`
-
-
-<a name="user-managementuser-managementservicereadmemd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / user-management/user-management.service
-
-# user-management/user-management.service
-
-## Index
-
-### Classes
-
-- [UserManagementService](#user-managementuser-managementserviceclassesusermanagementservicemd)
-
-
-<a name="user-managementuser-managementserviceclassesusermanagementservicemd"></a>
-
-[**@piwikpro/ngx-piwik-pro**](#readmemd) • **Docs**
-
-***
-
-[@piwikpro/ngx-piwik-pro](#modulesmd) / [user-management/user-management.service](#user-managementuser-managementservicereadmemd) / UserManagementService
-
-# Class: UserManagementService
-
-## Constructors
-
-### new UserManagementService()
-
-> **new UserManagementService**(): [`UserManagementService`](#user-managementuser-managementserviceclassesusermanagementservicemd)
-
-#### Returns
-
-[`UserManagementService`](#user-managementuser-managementserviceclassesusermanagementservicemd)
-
-## Methods
-
-### getUserId()
-
-> **getUserId**(): `Promise`\<`string`\>
-
-#### Returns
-
-`Promise`\<`string`\>
-
-***
-
-### getVisitorId()
-
-> **getVisitorId**(): `Promise`\<`any`\>
-
-#### Returns
-
-`Promise`\<`any`\>
-
-***
-
-### getVisitorInfo()
-
-> **getVisitorInfo**(): `Promise`\<`any`[]\>
-
-#### Returns
-
-`Promise`\<`any`[]\>
-
-***
-
-### resetUserId()
-
-> **resetUserId**(): `void`
-
-#### Returns
-
-`void`
-
-***
-
-### setUserId()
-
-> **setUserId**(`userId`): `void`
-
-#### Parameters
-
-• **userId**: `string`
-
-#### Returns
-
-`void`
+> **initialize**: *typeof* `PiwikPro.init`
