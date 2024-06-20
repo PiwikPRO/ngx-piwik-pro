@@ -223,7 +223,6 @@ export class TestPageComponent implements OnInit {
 - [CustomEvent](#namespacescustomeventreadmemd)
 - [DataLayer](#namespacesdatalayerreadmemd)
 - [DownloadAndOutlink](#namespacesdownloadandoutlinkreadmemd)
-- [ErrorTracking](#namespaceserrortrackingreadmemd)
 - [GoalConversions](#namespacesgoalconversionsreadmemd)
 - [PageViews](#namespacespageviewsreadmemd)
 - [SiteSearch](#namespacessitesearchreadmemd)
@@ -233,7 +232,6 @@ export class TestPageComponent implements OnInit {
 ### Type Aliases
 
 - [Dimensions](#type-aliasesdimensionsmd)
-- [InitOptions](#type-aliasesinitoptionsmd)
 - [PaymentInformation](#type-aliasespaymentinformationmd)
 - [Product](#type-aliasesproductmd)
 - [VisitorInfo](#type-aliasesvisitorinfomd)
@@ -888,13 +886,8 @@ Tracks a custom event, e.g. when a visitor interacts with the page
 ## DataLayer
 
 
-#### Type Aliases
-
-- [DataLayerEntry](#namespacesdatalayertype-aliasesdatalayerentrymd)
-
 
 - [push](#namespacesdatalayerfunctionspushmd)
-- [setDataLayerName](#namespacesdatalayerfunctionssetdatalayernamemd)
 
 
 <a name="namespacesdatalayerfunctionspushmd"></a>
@@ -911,41 +904,11 @@ Adds entry to a data layer
 
 ### Parameters
 
-• **data**: [`DataLayerEntry`](#namespacesdatalayertype-aliasesdatalayerentrymd)
+• **data**: `any`
 
 ### Returns
 
 `number`
-
-
-<a name="namespacesdatalayerfunctionssetdatalayernamemd"></a>
-
-
-***
-
-
-## setDataLayerName()
-
-> **setDataLayerName**(`name`): `void`
-
-### Parameters
-
-• **name**: `string`
-
-### Returns
-
-`void`
-
-
-<a name="namespacesdatalayertype-aliasesdatalayerentrymd"></a>
-
-
-***
-
-
-## Type alias: DataLayerEntry
-
-> **DataLayerEntry**: `Record`\<`string`, `AnyData`\>
 
 
 <a name="namespacesdownloadandoutlinkreadmemd"></a>
@@ -1183,66 +1146,6 @@ Manually tracks outlink or download event with provided values
 • **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
 
 • **callback?**
-
-### Returns
-
-`void`
-
-
-<a name="namespaceserrortrackingreadmemd"></a>
-
-
-***
-
-
-## ErrorTracking
-
-
-
-- [enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd)
-- [trackError](#namespaceserrortrackingfunctionstrackerrormd)
-
-
-<a name="namespaceserrortrackingfunctionsenablejserrortrackingmd"></a>
-
-
-***
-
-
-## enableJSErrorTracking()
-
-> **enableJSErrorTracking**(`unique`?): `void`
-
-Enables tracking of unhandled JavaScript errors.
-
-### Parameters
-
-• **unique?**: `boolean`
-
-track only unique errors
-
-### Returns
-
-`void`
-
-
-<a name="namespaceserrortrackingfunctionstrackerrormd"></a>
-
-
-***
-
-
-## trackError()
-
-> **trackError**(`error`): `void`
-
-Attempts to send error tracking request using same format as native errors caught by enableJSErrorTracking().
-Such error request will still follow rules set for tracker, so it will be sent only when JS error tracking is enabled
-([enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd) function was called before this attempt). It will also respect rules for tracking only unique errors.
-
-### Parameters
-
-• **error**: `Error`
 
 ### Returns
 
@@ -1782,29 +1685,6 @@ Please use the ecommerceOrder instead.
 ## Type alias: Dimensions
 
 > **Dimensions**: `Record`\<\`dimension$\{number\}\`, `string`\>
-
-
-<a name="type-aliasesinitoptionsmd"></a>
-
-
-***
-
-
-## Type alias: InitOptions
-
-> **InitOptions**: `object`
-
-### Type declaration
-
-#### dataLayerName?
-
-> `optional` **dataLayerName**: `string`
-
-Defaults to 'dataLayer'
-
-#### nonce?
-
-> `optional` **nonce**: `string`
 
 
 <a name="type-aliasespaymentinformationmd"></a>
