@@ -1,52 +1,43 @@
 import { CookieManagement } from '@piwikpro/tracking-base-library'
 import { Injectable } from '@angular/core';
 
+type ICookieManagement = typeof CookieManagement;
+
 @Injectable({
   providedIn: 'root'
 })
 export class CookieManagementService {
-
-  disableCookies() {
-    CookieManagement.disableCookies();
+  disableCookies(...params: Parameters<ICookieManagement['disableCookies']>) {
+    CookieManagement.disableCookies(...params);
   }
-
-  enableCookies() {
-    CookieManagement.enableCookies();
+  enableCookies(...params: Parameters<ICookieManagement['enableCookies']>) {
+    CookieManagement.enableCookies(...params);
   }
-
-  deleteCookies() {
-    CookieManagement.deleteCookies();
+  deleteCookies(...params: Parameters<ICookieManagement['deleteCookies']>) {
+    CookieManagement.deleteCookies(...params);
   }
-
-  hasCookies(): Promise<boolean> {
-    return CookieManagement.hasCookies();
+  hasCookies(...params: Parameters<ICookieManagement['hasCookies']>): Promise<boolean> {
+    return CookieManagement.hasCookies(...params);
   }
-
-  setCookieNamePrefix(prefix: string) {
-    CookieManagement.setCookieNamePrefix(prefix);
+  setCookieNamePrefix(...params: Parameters<ICookieManagement['setCookieNamePrefix']>) {
+    CookieManagement.setCookieNamePrefix(...params);
   }
-
-  setCookieDomain(domain: string) {
-    CookieManagement.setCookieDomain(domain);
+  setCookieDomain(...params: Parameters<ICookieManagement['setCookieDomain']>) {
+    CookieManagement.setCookieDomain(...params);
   }
-
-  setCookiePath(path: string) {
-    CookieManagement.setCookiePath(path);
+  setCookiePath(...params: Parameters<ICookieManagement['setCookiePath']>) {
+    CookieManagement.setCookiePath(...params);
   }
-
-  setSecureCookie(secure: boolean) {
-    CookieManagement.setSecureCookie(secure);
+  setSecureCookie(...params: Parameters<ICookieManagement['setSecureCookie']>) {
+    CookieManagement.setSecureCookie(...params);
   }
-
-  setVisitorCookieTimeout(seconds: number) {
-    CookieManagement.setVisitorCookieTimeout(seconds);
+  setVisitorCookieTimeout(...params: Parameters<ICookieManagement['setVisitorCookieTimeout']>) {
+    CookieManagement.setVisitorCookieTimeout(...params);
   }
-
-  setSessionCookieTimeout(seconds: number) {
-    CookieManagement.setSessionCookieTimeout(seconds);
+  setSessionCookieTimeout(...params: Parameters<ICookieManagement['setSessionCookieTimeout']>) {
+    CookieManagement.setSessionCookieTimeout(...params);
   }
-
-  setVisitorIdCookie() {
-    CookieManagement.setVisitorIdCookie();
+  setVisitorIdCookie(...params: Parameters<ICookieManagement['setVisitorIdCookie']>) {
+    CookieManagement.setVisitorIdCookie(...params);
   }
 }
