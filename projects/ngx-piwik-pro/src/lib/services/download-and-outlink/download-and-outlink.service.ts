@@ -2,47 +2,40 @@ import { Dimensions, DownloadAndOutlink } from '@piwikpro/tracking-base-library'
 
 import { Injectable } from '@angular/core';
 
+type IDownloadAndOutlink = typeof DownloadAndOutlink;
+
 @Injectable({
   providedIn: 'root'
 })
 export class DownloadAndOutlinkService {
-  trackLink(url: string, linkType: string, customData?: Dimensions, callback?: () => void) {
-    DownloadAndOutlink.trackLink(url, linkType, customData, callback);
+  trackLink(...params: Parameters<IDownloadAndOutlink['trackLink']>) {
+    DownloadAndOutlink.trackLink(...params);
   }
-
-  enableLinkTracking(enable: boolean) {
-    DownloadAndOutlink.enableLinkTracking(enable);
+  enableLinkTracking(...params: Parameters<IDownloadAndOutlink['enableLinkTracking']>) {
+    DownloadAndOutlink.enableLinkTracking(...params);
   }
-
-  setLinkClasses(classes: string[]) {
-    DownloadAndOutlink.setLinkClasses(classes);
+  setLinkClasses(...params: Parameters<IDownloadAndOutlink['setLinkClasses']>) {
+    DownloadAndOutlink.setLinkClasses(...params);
   }
-
-  setDownloadClasses(classes: string[]) {
-    DownloadAndOutlink.setDownloadClasses(classes);
+  setDownloadClasses(...params: Parameters<IDownloadAndOutlink['setDownloadClasses']>) {
+    DownloadAndOutlink.setDownloadClasses(...params);
   }
-
-  setDownloadExtensions(extensions: string[]) {
-    DownloadAndOutlink.setDownloadExtensions(extensions);
+  setDownloadExtensions(...params: Parameters<IDownloadAndOutlink['setDownloadExtensions']>) {
+    DownloadAndOutlink.setDownloadExtensions(...params);
   }
-
-  addDownloadExtensions(extensions: string[]) {
-    DownloadAndOutlink.addDownloadExtensions(extensions);
+  addDownloadExtensions(...params: Parameters<IDownloadAndOutlink['addDownloadExtensions']>) {
+    DownloadAndOutlink.addDownloadExtensions(...params);
   }
-
-  removeDownloadExtensions(extensions: string[]) {
-    DownloadAndOutlink.removeDownloadExtensions(extensions)
+  removeDownloadExtensions(...params: Parameters<IDownloadAndOutlink['removeDownloadExtensions']>) {
+    DownloadAndOutlink.removeDownloadExtensions(...params);
   }
-
-  setLinkTrackingTimer(time: number) {
-    DownloadAndOutlink.setLinkTrackingTimer(time);
+  setLinkTrackingTimer(...params: Parameters<IDownloadAndOutlink['setLinkTrackingTimer']>) {
+    DownloadAndOutlink.setLinkTrackingTimer(...params);
   }
-
-  getLinkTrackingTimer(): Promise<number> {
-    return DownloadAndOutlink.getLinkTrackingTimer();
+  getLinkTrackingTimer(...params: Parameters<IDownloadAndOutlink['getLinkTrackingTimer']>) {
+    return DownloadAndOutlink.getLinkTrackingTimer(...params);
   }
-
-  setIgnoreClasses(classes: string[]) {
-    DownloadAndOutlink.setIgnoreClasses(classes);
+  setIgnoreClasses(...params: Parameters<IDownloadAndOutlink['setIgnoreClasses']>) {
+    DownloadAndOutlink.setIgnoreClasses(...params);
   }
 }
