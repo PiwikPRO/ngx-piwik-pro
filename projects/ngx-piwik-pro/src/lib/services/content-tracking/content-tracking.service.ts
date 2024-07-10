@@ -1,35 +1,37 @@
 import { ContentTracking } from '@piwikpro/tracking-base-library'
 import { Injectable } from '@angular/core';
 
+type IContentTracking = typeof ContentTracking;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ContentTrackingService {
-  trackAllContentImpressions() {
-    ContentTracking.trackAllContentImpressions();
+  trackAllContentImpressions(...params: Parameters<IContentTracking['trackAllContentImpressions']>) {
+    ContentTracking.trackAllContentImpressions(...params);
   }
 
-  trackVisibleContentImpressions(checkOnScroll = true, watchInterval = 750) {
-    ContentTracking.trackVisibleContentImpressions(checkOnScroll, watchInterval);
+  trackVisibleContentImpressions(...params: Parameters<IContentTracking['trackVisibleContentImpressions']>) {
+    ContentTracking.trackVisibleContentImpressions(...params);
   }
 
-  trackContentImpressionsWithinNode(domNode: Node) {
-    ContentTracking.trackContentImpressionsWithinNode(domNode);
+  trackContentImpressionsWithinNode(...params: Parameters<IContentTracking['trackContentImpressionsWithinNode']>) {
+    ContentTracking.trackContentImpressionsWithinNode(...params);
   }
 
-  trackContentImpression(contentName: string, contentPiece: string, contentTarget: string) {
-    ContentTracking.trackContentImpression(contentName, contentPiece, contentTarget);
+  trackContentImpression(...params: Parameters<IContentTracking['trackContentImpression']>) {
+    ContentTracking.trackContentImpression(...params);
   }
 
-  logAllContentBlocksOnPage(): void {
-    ContentTracking.logAllContentBlocksOnPage();
+  logAllContentBlocksOnPage(...params: Parameters<IContentTracking['logAllContentBlocksOnPage']>): void {
+    ContentTracking.logAllContentBlocksOnPage(...params);
   }
 
-  trackContentInteractionNode(domNode: Node, contentInteraction = 'Unknown') {
-    ContentTracking.trackContentInteractionNode(domNode, contentInteraction);
+  trackContentInteractionNode(...params: Parameters<IContentTracking['trackContentInteractionNode']>) {
+    ContentTracking.trackContentInteractionNode(...params);
   }
 
-  trackContentInteraction(contentInteraction: string, contentName: string, contentPiece: string, contentTarget: string) {
-    ContentTracking.trackContentInteraction(contentInteraction, contentName, contentPiece, contentTarget);
+  trackContentInteraction(...params: Parameters<IContentTracking['trackContentInteraction']>) {
+    ContentTracking.trackContentInteraction(...params);
   }
 }
