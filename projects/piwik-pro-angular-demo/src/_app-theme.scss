@@ -13,35 +13,35 @@
   $warn: map.get($theme, warn);
   $background: map.get($theme, background);
   $foreground: map.get($theme, foreground);
-  $next-theme: mat.define-palette(mat.$red-palette);
+  $next-theme: mat.m2-define-palette(mat.$m2-red-palette);
 
   .docs-app-background {
-    background: mat.get-color-from-palette($background, background);
+    background: mat.m2-get-color-from-palette($background, background);
   }
 
   .docs-primary-header {
-    background: mat.get-color-from-palette($primary);
+    background: mat.m2-get-color-from-palette($primary);
 
     h1 {
-      color: mat.get-color-from-palette($primary, default-contrast);
+      color: mat.m2-get-color-from-palette($primary, default-contrast);
     }
   }
 
   .docs-footer {
-    background: mat.get-color-from-palette($primary);
-    color: mat.get-color-from-palette($primary, default-contrast);
+    background: mat.m2-get-color-from-palette($primary);
+    color: mat.m2-get-color-from-palette($primary, default-contrast);
   }
 
   .docs-help-support {
-    color: mat.get-color-from-palette($foreground, secondary-text);
+    color: mat.m2-get-color-from-palette($foreground, secondary-text);
 
     a {
-      color: mat.get-color-from-palette($foreground, text);
+      color: mat.m2-get-color-from-palette($foreground, text);
     }
   }
 
   .is-next-version {
-    background: mat.get-color-from-palette($next-theme, 900) !important;
+    background: mat.m2-get-color-from-palette($next-theme, 900) !important;
   }
 
   @include navbar-theme.theme($theme);
