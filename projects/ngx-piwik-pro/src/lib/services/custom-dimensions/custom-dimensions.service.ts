@@ -7,13 +7,15 @@ type ICustomDimensions = typeof CustomDimensions;
   providedIn: 'root'
 })
 export class CustomDimensionsService {
-  deleteCustomDimension(customDimensionId: string) {
-    CustomDimensions.deleteCustomDimension(customDimensionId);
+  getCustomDimensionValue(...params: Parameters<ICustomDimensions['getCustomDimensionValue']>): Promise<string | undefined> {
+    return CustomDimensions.getCustomDimensionValue(...params);
   }
-  getCustomDimensionValue(customDimensionId: string | number): Promise<string | undefined> {
-    return CustomDimensions.getCustomDimensionValue(customDimensionId);
-  }
+  
   setCustomDimensionValue(...params: Parameters<ICustomDimensions['setCustomDimensionValue']>) {
     CustomDimensions.setCustomDimensionValue(...params);
+  }
+
+  deleteCustomDimension(...params: Parameters<ICustomDimensions['deleteCustomDimension']>) {
+    CustomDimensions.deleteCustomDimension(...params);
   }
 }
