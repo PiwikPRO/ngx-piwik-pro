@@ -16,7 +16,7 @@ export class CookieManagementService {
   deleteCookies(...params: Parameters<ICookieManagement['deleteCookies']>) {
     CookieManagement.deleteCookies(...params);
   }
-  hasCookies(...params: Parameters<ICookieManagement['hasCookies']>): Promise<boolean> {
+  hasCookies(...params: Parameters<ICookieManagement['hasCookies']>) {
     return CookieManagement.hasCookies(...params);
   }
   setCookieNamePrefix(...params: Parameters<ICookieManagement['setCookieNamePrefix']>) {

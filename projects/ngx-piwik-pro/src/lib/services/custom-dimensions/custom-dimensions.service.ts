@@ -7,7 +7,7 @@ type ICustomDimensions = typeof CustomDimensions;
   providedIn: 'root'
 })
 export class CustomDimensionsService {
-  getCustomDimensionValue(...params: Parameters<ICustomDimensions['getCustomDimensionValue']>): Promise<string | undefined> {
+  getCustomDimensionValue(...params: Parameters<ICustomDimensions['getCustomDimensionValue']>) {
     return CustomDimensions.getCustomDimensionValue(...params);
   }
   

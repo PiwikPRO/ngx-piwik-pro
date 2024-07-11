@@ -7,23 +7,23 @@ type IUserManagement = typeof UserManagement
   providedIn: 'root'
 })
 export class UserManagementService {
-  getUserId(...params: Parameters<IUserManagement['getUserId']>): Promise<string> {
+  getUserId(...params: Parameters<IUserManagement['getUserId']>) {
     return UserManagement.getUserId(...params)
   }
 
-  setUserId(...params: Parameters<IUserManagement['setUserId']>): void {
+  setUserId(...params: Parameters<IUserManagement['setUserId']>) {
     UserManagement.setUserId(...params)
   }
 
-  resetUserId(...params: Parameters<IUserManagement['resetUserId']>): void {
+  resetUserId(...params: Parameters<IUserManagement['resetUserId']>){
     UserManagement.resetUserId(...params)
   }
 
-  getVisitorId(...params: Parameters<IUserManagement['getVisitorId']>): Promise<any> {
+  getVisitorId(...params: Parameters<IUserManagement['getVisitorId']>) {
     return UserManagement.getVisitorId(...params)
   }
 
-  getVisitorInfo(...params: Parameters<IUserManagement['getVisitorInfo']>): Promise<any[]> {
+  getVisitorInfo(...params: Parameters<IUserManagement['getVisitorInfo']>) {
     return UserManagement.getVisitorInfo(...params)
   }
 }

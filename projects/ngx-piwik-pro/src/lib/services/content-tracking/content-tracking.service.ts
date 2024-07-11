@@ -23,7 +23,7 @@ export class ContentTrackingService {
     ContentTracking.trackContentImpression(...params);
   }
 
-  logAllContentBlocksOnPage(...params: Parameters<IContentTracking['logAllContentBlocksOnPage']>): void {
+  logAllContentBlocksOnPage(...params: Parameters<IContentTracking['logAllContentBlocksOnPage']>){
     ContentTracking.logAllContentBlocksOnPage(...params);
   }
 
