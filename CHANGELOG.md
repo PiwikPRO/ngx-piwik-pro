@@ -1,13 +1,14 @@
 # CHANGELOG
 
-- [1.0.1](#1.1.1)
+- [2.0.0](#2.0.0)
 - [1.0.1](#1.1.0)
 - [1.0.0](#1.0.0)
 - [0.0.1](#0.0.1)
 
-## 1.1.1
+## 2.0.0
 
 - uses a tracking base library in tracking methods
+- minimal suported node version is 18
 
 ## 1.1.0
 
