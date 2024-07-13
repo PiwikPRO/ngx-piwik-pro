@@ -10,20 +10,20 @@
   $is-dark-theme: map.get($theme, is-dark);
 
   .docs-guide-list .docs-guide-item {
-    color: mat.get-color-from-palette($primary, if($is-dark-theme, 200, default));
+    color: mat.m2-get-color-from-palette($primary, if($is-dark-theme, 200, default));
   }
 
   .docs-guide-card-divider {
-    background: mat.get-color-from-palette($accent);
+    background: mat.m2-get-color-from-palette($accent);
   }
 
   .docs-guide-card:hover {
-    background: mat.get-color-from-palette($background, hover);
+    background: mat.m2-get-color-from-palette($background, hover);
   }
 
   .docs-guide-item:focus {
     .docs-guide-card {
-      background: mat.get-color-from-palette($background, focused-button);
+      background: mat.m2-get-color-from-palette($background, focused-button);
     }
     outline: none;
   }

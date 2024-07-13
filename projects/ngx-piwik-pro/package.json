@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/ngx-piwik-pro",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Piwik PRO tracking library for Angular apps.",
   "keywords": [
     "PiwikPRO",
@@ -8,6 +8,9 @@
     "Tracking",
     "SPA"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
   "author": "Piwik PRO <integrations@piwik.pro> (https://www.piwik.pro)",
@@ -21,6 +24,6 @@
     "@angular/core": ">=13.2.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.2"
   }
 }

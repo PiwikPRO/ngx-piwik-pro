@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ECommerceService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/e-commerce/e-commerce.service';
-import { Product } from '@piwik-pro/ngx-piwik-pro/src/lib/interfaces/piwik-pro-ecommerce.interface';
+import { Product } from '@piwikpro/tracking-base-library';
 import { Title } from '@angular/platform-browser';
 
 @Component({

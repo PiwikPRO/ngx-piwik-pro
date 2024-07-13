@@ -1,69 +1,29 @@
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
-import { TRACK_EVENT } from '../../constants/track-event.constant';
+import { UserManagement } from '@piwikpro/tracking-base-library'
+
+type IUserManagement = typeof UserManagement
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagementService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
-  getUserId(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getUserId());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  getUserId(...params: Parameters<IUserManagement['getUserId']>) {
+    return UserManagement.getUserId(...params)
   }
 
-  setUserId(userId: string): void {
-    this.paqService.push([TRACK_EVENT.SET_USER_ID, userId]);
+  setUserId(...params: Parameters<IUserManagement['setUserId']>) {
+    UserManagement.setUserId(...params)
   }
 
-  resetUserId(): void {
-    this.paqService.push([TRACK_EVENT.RESET_USER_ID]);
+  resetUserId(...params: Parameters<IUserManagement['resetUserId']>){
+    UserManagement.resetUserId(...params)
   }
 
-  getVisitorId(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getVisitorId());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  getVisitorId(...params: Parameters<IUserManagement['getVisitorId']>) {
+    return UserManagement.getVisitorId(...params)
   }
 
-  getVisitorInfo(): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getVisitorInfo());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  getVisitorInfo(...params: Parameters<IUserManagement['getVisitorInfo']>) {
+    return UserManagement.getVisitorInfo(...params)
   }
 }

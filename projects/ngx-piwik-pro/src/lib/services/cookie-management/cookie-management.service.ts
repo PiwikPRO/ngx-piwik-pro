@@ -1,74 +1,43 @@
+import { CookieManagement } from '@piwikpro/tracking-base-library'
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
-import { TRACK_EVENT } from '../../constants/track-event.constant';
+
+type ICookieManagement = typeof CookieManagement;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CookieManagementService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
-  disableCookies() {
-    this.paqService.push([TRACK_EVENT.DISABLE_COOKIES]);
-
+  disableCookies(...params: Parameters<ICookieManagement['disableCookies']>) {
+    CookieManagement.disableCookies(...params);
   }
-
-  enableCookies() {
-    this.paqService.push([TRACK_EVENT.ENABLE_COOKIES]);
-
+  enableCookies(...params: Parameters<ICookieManagement['enableCookies']>) {
+    CookieManagement.enableCookies(...params);
   }
-
-  deleteCookies() {
-    this.paqService.push([TRACK_EVENT.DELETE_COOKIES]);
-
+  deleteCookies(...params: Parameters<ICookieManagement['deleteCookies']>) {
+    CookieManagement.deleteCookies(...params);
   }
-
-  hasCookies(): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any) {
-            resolve(this.hasCookies());
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  hasCookies(...params: Parameters<ICookieManagement['hasCookies']>) {
+    return CookieManagement.hasCookies(...params);
   }
-
-  setCookieNamePrefix(prefix: string) {
-    this.paqService.push([TRACK_EVENT.SET_COOKIE_NAME_PREFIX, prefix]);
-
+  setCookieNamePrefix(...params: Parameters<ICookieManagement['setCookieNamePrefix']>) {
+    CookieManagement.setCookieNamePrefix(...params);
   }
-
-  setCookieDomain(domain: string) {
-    this.paqService.push([TRACK_EVENT.SET_COOKIE_DOMAIN, domain]);
+  setCookieDomain(...params: Parameters<ICookieManagement['setCookieDomain']>) {
+    CookieManagement.setCookieDomain(...params);
   }
-
-  setCookiePath(path: string) {
-    this.paqService.push([TRACK_EVENT.SET_COOKIE_PATH, path]);
+  setCookiePath(...params: Parameters<ICookieManagement['setCookiePath']>) {
+    CookieManagement.setCookiePath(...params);
   }
-
-  setSecureCookie(secure: boolean) {
-    this.paqService.push([TRACK_EVENT.SET_SECURE_COOKIE, secure]);
+  setSecureCookie(...params: Parameters<ICookieManagement['setSecureCookie']>) {
+    CookieManagement.setSecureCookie(...params);
   }
-
-  setVisitorCookieTimeout(seconds: number) {
-    this.paqService.push([TRACK_EVENT.SET_VISITOR_COOKIE_TIMEOUT, seconds]);
+  setVisitorCookieTimeout(...params: Parameters<ICookieManagement['setVisitorCookieTimeout']>) {
+    CookieManagement.setVisitorCookieTimeout(...params);
   }
-
-  setSessionCookieTimeout(seconds: number) {
-    this.paqService.push([TRACK_EVENT.SET_SESSION_COOKIE_TIMEOUT, seconds]);
+  setSessionCookieTimeout(...params: Parameters<ICookieManagement['setSessionCookieTimeout']>) {
+    CookieManagement.setSessionCookieTimeout(...params);
   }
-
-  setVisitorIdCookie(){
-    this.paqService.push([TRACK_EVENT.SET_VISITOR_ID_COOKIE]);
-
+  setVisitorIdCookie(...params: Parameters<ICookieManagement['setVisitorIdCookie']>) {
+    CookieManagement.setVisitorIdCookie(...params);
   }
 }

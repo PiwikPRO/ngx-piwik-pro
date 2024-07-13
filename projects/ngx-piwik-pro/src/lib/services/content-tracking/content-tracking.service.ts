@@ -1,65 +1,37 @@
+import { ContentTracking } from '@piwikpro/tracking-base-library'
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
-import { TRACK_EVENT } from '../../constants/track-event.constant';
+
+type IContentTracking = typeof ContentTracking;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContentTrackingService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
-  trackAllContentImpressions() {
-    this.paqService.push([
-      TRACK_EVENT.ALL_CONTENT_IMPRESSIONS
-    ]);
+  trackAllContentImpressions(...params: Parameters<IContentTracking['trackAllContentImpressions']>) {
+    ContentTracking.trackAllContentImpressions(...params);
   }
 
-  trackVisibleContentImpressions(checkOnScroll?: boolean, watchIterval?: number) {
-    this.paqService.push([
-      TRACK_EVENT.VISIBLE_CONTENT_IMPRESSIONS,
-      checkOnScroll,
-      watchIterval,
-    ]);
+  trackVisibleContentImpressions(...params: Parameters<IContentTracking['trackVisibleContentImpressions']>) {
+    ContentTracking.trackVisibleContentImpressions(...params);
   }
 
-  trackContentImpressionsWithinNode(domNode: any) {
-    this.paqService.push([
-      TRACK_EVENT.CONTENT_IMPRESSIONS_WITH_NODE,
-      domNode
-    ]);
+  trackContentImpressionsWithinNode(...params: Parameters<IContentTracking['trackContentImpressionsWithinNode']>) {
+    ContentTracking.trackContentImpressionsWithinNode(...params);
   }
 
-  trackContentImpression(contentName: string, contentPiece: string, contentTarget: string) {
-    this.paqService.push([
-      TRACK_EVENT.CONTENT_IMPRESSION,
-      contentName,
-      contentPiece,
-      contentTarget
-    ]);
+  trackContentImpression(...params: Parameters<IContentTracking['trackContentImpression']>) {
+    ContentTracking.trackContentImpression(...params);
   }
 
-  logAllContentBlocksOnPage(): void {
-    this.paqService.push([ TRACK_EVENT.LOG_ALL_CONTENT_BLOCKS_ON_PAGE ]);
+  logAllContentBlocksOnPage(...params: Parameters<IContentTracking['logAllContentBlocksOnPage']>){
+    ContentTracking.logAllContentBlocksOnPage(...params);
   }
 
-  trackContentInteractionNode(domNode: any, contentInteraction: string) {
-    this.paqService.push([
-      TRACK_EVENT.CONTENT_INTERACTION_NODE,
-      domNode,
-      contentInteraction,
-    ]);
+  trackContentInteractionNode(...params: Parameters<IContentTracking['trackContentInteractionNode']>) {
+    ContentTracking.trackContentInteractionNode(...params);
   }
 
-  trackContentInteraction(contentInteraction: string, contentName: string, contentPiece: string, contentTarget: string) {
-    this.paqService.push([
-      TRACK_EVENT.CONTENT_INTERACTION,
-      contentInteraction,
-      contentName,
-      contentPiece,
-      contentTarget
-    ]);
+  trackContentInteraction(...params: Parameters<IContentTracking['trackContentInteraction']>) {
+    ContentTracking.trackContentInteraction(...params);
   }
 }

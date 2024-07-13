@@ -1,36 +1,21 @@
+import { CustomDimensions } from '@piwikpro/tracking-base-library';
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
+
+type ICustomDimensions = typeof CustomDimensions;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomDimensionsService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
-  setCustomDimensionValue(customDimensionId: string | number, customDimensionValue: string) {
-    this.paqService.push(['setCustomDimensionValue', customDimensionId, customDimensionValue]);
+  getCustomDimensionValue(...params: Parameters<ICustomDimensions['getCustomDimensionValue']>) {
+    return CustomDimensions.getCustomDimensionValue(...params);
+  }
+  
+  setCustomDimensionValue(...params: Parameters<ICustomDimensions['setCustomDimensionValue']>) {
+    CustomDimensions.setCustomDimensionValue(...params);
   }
 
-  deleteCustomDimension(customDimensionId: string) {
-    this.paqService.push(['deleteCustomDimension', customDimensionId]);
-  }
-
-  getCustomDimensionValue(customDimensionId: string | number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any): void {
-            resolve(this.getCustomDimensionValue(customDimensionId));
-          },
-        ]);
-      } catch (e) {
-        if (e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  deleteCustomDimension(...params: Parameters<ICustomDimensions['deleteCustomDimension']>) {
+    CustomDimensions.deleteCustomDimension(...params);
   }
 }

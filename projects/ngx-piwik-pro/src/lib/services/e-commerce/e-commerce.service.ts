@@ -1,8 +1,10 @@
-import { PaymentInformation, Product } from '../../interfaces/piwik-pro-ecommerce.interface';
+import { PaymentInformation, Product, eCommerce } from '@piwikpro/tracking-base-library'
 
 import { Injectable } from '@angular/core';
 import { PaqService } from '../paq/paq.service';
 import { TRACK_EVENT } from '../../constants/track-event.constant';
+
+type IeCommerce = typeof eCommerce;
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +35,8 @@ export class ECommerceService {
     ])
   }
 
-  ecommerceAddToCart(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_ADD_TO_CART, products])
+  ecommerceAddToCart(...params: Parameters<IeCommerce['ecommerceAddToCart']>) {
+    eCommerce.ecommerceAddToCart(...params)
   }
 
   /**
@@ -47,8 +49,8 @@ export class ECommerceService {
     ])
   }
 
-  ecommerceRemoveFromCart(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_REMOVE_FROM_CART, products])
+  ecommerceRemoveFromCart(...params: Parameters<IeCommerce['ecommerceRemoveFromCart']>) {
+    eCommerce.ecommerceRemoveFromCart(...params)
   }
 
   /**
@@ -101,11 +103,8 @@ export class ECommerceService {
     ]);
   }
 
-  ecommerceOrder(
-    products: Product[],
-    paymentInformation: PaymentInformation
-  ) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_ORDER, products, paymentInformation])
+  ecommerceOrder(...params: Parameters<IeCommerce['ecommerceOrder']>) {
+    eCommerce.ecommerceOrder(...params)
   }
 
   /**
@@ -118,11 +117,8 @@ export class ECommerceService {
     ]);
   }
 
-  ecommerceCartUpdate(
-    products: Product[],
-    grandTotal: PaymentInformation['grandTotal']
-  ) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_CART_UPDATE, products, grandTotal])
+  ecommerceCartUpdate(...params: Parameters<IeCommerce['ecommerceCartUpdate']>) {
+    eCommerce.ecommerceCartUpdate(...params)
   }
 
   /**
@@ -138,7 +134,7 @@ export class ECommerceService {
     ]);
   }
 
-  ecommerceProductDetailView(products: Product[]) {
-    this.paqService.push([TRACK_EVENT.ECOMMERCE_PRODUCT_DETAIL_VIEW, products])
+  ecommerceProductDetailView(...params: Parameters<IeCommerce['ecommerceProductDetailView']>) {
+    eCommerce.ecommerceProductDetailView(...params)
   }
 }

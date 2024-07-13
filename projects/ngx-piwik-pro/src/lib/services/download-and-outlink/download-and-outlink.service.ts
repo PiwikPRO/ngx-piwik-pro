@@ -1,71 +1,41 @@
+import { Dimensions, DownloadAndOutlink } from '@piwikpro/tracking-base-library'
+
 import { Injectable } from '@angular/core';
-import { PaqService } from '../../services/paq/paq.service';
-import { TRACK_EVENT } from '../../constants/track-event.constant';
+
+type IDownloadAndOutlink = typeof DownloadAndOutlink;
 
 @Injectable({
   providedIn: 'root'
 })
 export class DownloadAndOutlinkService {
-
-  constructor(
-    private readonly paqService: PaqService
-  ) {}
-
-  trackLink(url: string, linkType: string, customData?: object, callback?: (params: any) => void) {
-    this.paqService.push([
-      TRACK_EVENT.LINK,
-      url,
-      linkType,
-      customData,
-      callback
-    ]);
+  trackLink(...params: Parameters<IDownloadAndOutlink['trackLink']>) {
+    DownloadAndOutlink.trackLink(...params);
   }
-
-  enableLinkTracking(enable: boolean) {
-    this.paqService.push([TRACK_EVENT.ENABLE_LINK_TRACKING, enable]);
+  enableLinkTracking(...params: Parameters<IDownloadAndOutlink['enableLinkTracking']>) {
+    DownloadAndOutlink.enableLinkTracking(...params);
   }
-
-  setLinkClasses(classes: string[]) {
-    this.paqService.push([TRACK_EVENT.SET_LINK_CLASSES, classes]);
+  setLinkClasses(...params: Parameters<IDownloadAndOutlink['setLinkClasses']>) {
+    DownloadAndOutlink.setLinkClasses(...params);
   }
-
-  setDownloadClasses(classes: string[]) {
-    this.paqService.push([TRACK_EVENT.SET_DOWNLOAD_CLASSES, classes]);
+  setDownloadClasses(...params: Parameters<IDownloadAndOutlink['setDownloadClasses']>) {
+    DownloadAndOutlink.setDownloadClasses(...params);
   }
-
-  setDownloadExtensions(extensions: string[]) {
-    this.paqService.push([TRACK_EVENT.SET_DOWNLOAD_EXTENSIONS, extensions]);
+  setDownloadExtensions(...params: Parameters<IDownloadAndOutlink['setDownloadExtensions']>) {
+    DownloadAndOutlink.setDownloadExtensions(...params);
   }
-
-  addDownloadExtensions(extensions: string[]) {
-    this.paqService.push([TRACK_EVENT.ADD_DOWNLOAD_EXTENSIONS, extensions]);
+  addDownloadExtensions(...params: Parameters<IDownloadAndOutlink['addDownloadExtensions']>) {
+    DownloadAndOutlink.addDownloadExtensions(...params);
   }
-
-  removeDownloadExtensions(extensions: string[]) {
-    this.paqService.push([TRACK_EVENT.REMOVE_DOWNLOAD_EXTENSIONS, extensions]);
+  removeDownloadExtensions(...params: Parameters<IDownloadAndOutlink['removeDownloadExtensions']>) {
+    DownloadAndOutlink.removeDownloadExtensions(...params);
   }
-
-  setLinkTrackingTimer(time: number) {
-    this.paqService.push([TRACK_EVENT.SET_LINK_TRACKING_TIMER, time]);
+  setLinkTrackingTimer(...params: Parameters<IDownloadAndOutlink['setLinkTrackingTimer']>) {
+    DownloadAndOutlink.setLinkTrackingTimer(...params);
   }
-
-  getLinkTrackingTimer(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.paqService.push([
-          function (this: any) {
-            resolve(this.getLinkTrackingTimer());
-          },
-        ]);
-      } catch (e) {
-        if(e instanceof ReferenceError) {
-          reject(e);
-        }
-      }
-    });
+  getLinkTrackingTimer(...params: Parameters<IDownloadAndOutlink['getLinkTrackingTimer']>) {
+    return DownloadAndOutlink.getLinkTrackingTimer(...params);
   }
-
-  setIgnoreClasses(classes: string[]) {
-    this.paqService.push([TRACK_EVENT.SET_IGNORE_CLASSES, classes]);
+  setIgnoreClasses(...params: Parameters<IDownloadAndOutlink['setIgnoreClasses']>) {
+    DownloadAndOutlink.setIgnoreClasses(...params);
   }
 }
