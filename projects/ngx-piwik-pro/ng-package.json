@@ -3,5 +3,8 @@
   "dest": "../../dist/ngx-piwik-pro",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "@piwikpro/tracking-base-library"
+  ]
 }
