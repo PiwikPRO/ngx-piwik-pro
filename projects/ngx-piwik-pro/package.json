@@ -21,10 +21,10 @@
   "homepage": "https://github.com/PiwikPRO/ngx-piwik-pro#readme",
   "peerDependencies": {
     "@angular/common": ">=13.2.0",
-    "@angular/core": ">=13.2.0",
-    "@piwikpro/tracking-base-library": "^1.1.2"
+    "@angular/core": ">=13.2.0"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "@piwikpro/tracking-base-library": "^1.1.2"
   }
 }
