@@ -55,5 +55,6 @@
     "typedoc": "^0.26.10",
     "typedoc-plugin-markdown": "^4.2.9",
     "typescript": "^5.5.4"
-  }
+  },
+  "workspaces": ["projects/ngx-piwik-pro"]
 }
