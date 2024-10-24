@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/ngx-piwik-pro-project",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -33,7 +33,6 @@
     "@angular/platform-browser": "^18.2.8",
     "@angular/platform-browser-dynamic": "^18.2.8",
     "@angular/router": "^18.2.8",
-    "@piwikpro/tracking-base-library": "^1.2.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.8.0",
     "zone.js": "^0.14.0"
@@ -56,5 +55,6 @@
     "typedoc": "^0.26.10",
     "typedoc-plugin-markdown": "^4.2.9",
     "typescript": "^5.5.4"
-  }
+  },
+  "workspaces": ["projects/ngx-piwik-pro"]
 }

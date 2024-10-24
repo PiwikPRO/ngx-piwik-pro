@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/ngx-piwik-pro",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Piwik PRO tracking library for Angular apps.",
   "keywords": [
     "PiwikPRO",
@@ -24,6 +24,6 @@
     "@angular/core": ">=13.2.0"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "@piwikpro/tracking-base-library": "^1.2.0"
   }
 }
