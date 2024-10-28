@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/ngx-piwik-pro",
-  "version": "2.0.3",
+  "version": "2.0.1",
   "description": "Piwik PRO tracking library for Angular apps.",
   "keywords": [
     "PiwikPRO",

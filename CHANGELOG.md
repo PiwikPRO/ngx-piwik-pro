@@ -8,6 +8,8 @@
 
 ## 2.0.1
 - updates dependencies
+- bugfix - prevent sending custom event parameters in wrong order
+- include @piwikpro/tracking-base-library in package.json of the build
 
 ## 2.0.0
 
