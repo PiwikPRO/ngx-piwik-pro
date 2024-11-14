@@ -59,8 +59,9 @@ export function PiwikProInitializer(
     s.text = PiwikPro.getInitScript({
       containerId: settings.containerId,
       containerUrl: settings.containerURL,
+      nonceValue: settings.nonce,
     })
-      
+
     const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
     head.appendChild(s);
   }

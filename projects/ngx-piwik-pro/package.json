@@ -24,6 +24,6 @@
     "@angular/core": ">=13.2.0"
   },
   "dependencies": {
-    "@piwikpro/tracking-base-library": "^1.2.1"
+    "@piwikpro/tracking-base-library": "^1.2.2"
   }
 }
