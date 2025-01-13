@@ -24,6 +24,9 @@ export * from './lib/services/e-commerce/e-commerce.service';
 export * from './lib/services/goal-conversions/goal-conversions.service';
 export * from './lib/services/user-management/user-management.service';
 export * from './lib/services/data-layer/data-layer.service';
+export * from './lib/services/heartbeat/heartbeat.service';
+export * from './lib/services/cross-domain-tracking/cross-domain-tracking.service';
+export * from './lib/services/client-configuration/client-configuration.service';
 
 export * from './lib/tokens/ngx-paq-token';
 export * from './lib/tokens/ngx-piwik-pro-settings.token';

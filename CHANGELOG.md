@@ -1,10 +1,18 @@
 # CHANGELOG
 
-- [2.0.0](#2.0.1)
-- [2.0.0](#2.0.0)
-- [1.0.1](#1.1.0)
-- [1.0.0](#1.0.0)
-- [0.0.1](#0.0.1)
+- [2.1.0](#210)
+- [2.0.1](#201)
+- [2.0.0](#200)
+- [1.1.0](#110)
+- [1.0.0](#100)
+- [0.0.1](#001)
+
+## 2.1.0
+- update @piwikpro/tracking-base-library version
+- add cross-domain-tracking service
+- add heartbeat service
+- add client-configuration service
+- update user-management service
 
 ## 2.0.1
 - updates dependencies
