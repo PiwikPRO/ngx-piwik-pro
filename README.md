@@ -217,8 +217,10 @@ export class TestPageComponent implements OnInit {
 
 ### Namespaces
 
+- [ClientConfiguration](#namespacesclientconfigurationreadmemd)
 - [ContentTracking](#namespacescontenttrackingreadmemd)
 - [CookieManagement](#namespacescookiemanagementreadmemd)
+- [CrossDomainTracking](#namespacescrossdomaintrackingreadmemd)
 - [CustomDimensions](#namespacescustomdimensionsreadmemd)
 - [CustomEvent](#namespacescustomeventreadmemd)
 - [DataLayer](#namespacesdatalayerreadmemd)
@@ -226,6 +228,7 @@ export class TestPageComponent implements OnInit {
 - [eCommerce](#namespacesecommercereadmemd)
 - [ErrorTracking](#namespaceserrortrackingreadmemd)
 - [GoalConversions](#namespacesgoalconversionsreadmemd)
+- [Heartbeat](#namespacesheartbeatreadmemd)
 - [PageViews](#namespacespageviewsreadmemd)
 - [SiteSearch](#namespacessitesearchreadmemd)
 - [UserManagement](#namespacesusermanagementreadmemd)
@@ -241,6 +244,58 @@ export class TestPageComponent implements OnInit {
 ### Variables
 
 - [default](#variablesdefaultmd)
+
+
+<a name="namespacesclientconfigurationreadmemd"></a>
+
+
+***
+
+
+## ClientConfiguration
+
+
+
+- [getDomains](#namespacesclientconfigurationfunctionsgetdomainsmd)
+- [setDomains](#namespacesclientconfigurationfunctionssetdomainsmd)
+
+
+<a name="namespacesclientconfigurationfunctionsgetdomainsmd"></a>
+
+
+***
+
+
+## getDomains()
+
+> **getDomains**(): `Promise`\<`string`[]\>
+
+Returns list of internal domains (set with "setDomains" function and used in outlink tracking).
+
+### Returns
+
+`Promise`\<`string`[]\>
+
+
+<a name="namespacesclientconfigurationfunctionssetdomainsmd"></a>
+
+
+***
+
+
+## setDomains()
+
+> **setDomains**(`domains`): `void`
+
+Allows to define a list of internal domains or mobile app URIs. Used in outlink tracking for determining whether a link is an outlink and in cross domain linking for determining which links should have visitor ID parameter injected.
+
+### Parameters
+
+• **domains**: `string`[]
+
+### Returns
+
+`void`
 
 
 <a name="namespacescontenttrackingreadmemd"></a>
@@ -755,6 +810,205 @@ Sets cookie containing [analytics ID](https://developers.piwik.pro/en/latest/glo
 ### Returns
 
 `void`
+
+
+<a name="namespacescrossdomaintrackingreadmemd"></a>
+
+
+***
+
+
+## CrossDomainTracking
+
+
+#### Type Aliases
+
+- [LinkDecorator](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
+- [VisitorIdGetter](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
+
+
+- [customCrossDomainLinkDecorator](#namespacescrossdomaintrackingfunctionscustomcrossdomainlinkdecoratormd)
+- [customCrossDomainLinkVisitorIdGetter](#namespacescrossdomaintrackingfunctionscustomcrossdomainlinkvisitoridgettermd)
+- [disableCrossDomainLinking](#namespacescrossdomaintrackingfunctionsdisablecrossdomainlinkingmd)
+- [enableCrossDomainLinking](#namespacescrossdomaintrackingfunctionsenablecrossdomainlinkingmd)
+- [getCrossDomainLinkingUrlParameter](#namespacescrossdomaintrackingfunctionsgetcrossdomainlinkingurlparametermd)
+- [isCrossDomainLinkingEnabled](#namespacescrossdomaintrackingfunctionsiscrossdomainlinkingenabledmd)
+- [setCrossDomainLinkingTimeout](#namespacescrossdomaintrackingfunctionssetcrossdomainlinkingtimeoutmd)
+
+
+<a name="namespacescrossdomaintrackingfunctionscustomcrossdomainlinkdecoratormd"></a>
+
+
+***
+
+
+## customCrossDomainLinkDecorator()
+
+> **customCrossDomainLinkDecorator**(`decorator`): `void`
+
+Sets custom cross domains URL decorator for injecting visitor ID into URLs. Used when cross domain linking is enabled.
+
+### Parameters
+
+• **decorator**: [`LinkDecorator`](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionscustomcrossdomainlinkvisitoridgettermd"></a>
+
+
+***
+
+
+## customCrossDomainLinkVisitorIdGetter()
+
+> **customCrossDomainLinkVisitorIdGetter**(`getter`): `void`
+
+Sets custom cross domain URL parser for extracting visitor ID from URLs. Should extract data injected by URL decorator. The getter should return visitor ID extracted from page URL.
+
+### Parameters
+
+• **getter**: [`VisitorIdGetter`](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsdisablecrossdomainlinkingmd"></a>
+
+
+***
+
+
+## disableCrossDomainLinking()
+
+> **disableCrossDomainLinking**(): `void`
+
+Disables cross domain linking.
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsenablecrossdomainlinkingmd"></a>
+
+
+***
+
+
+## enableCrossDomainLinking()
+
+> **enableCrossDomainLinking**(): `void`
+
+Enables cross domain linking. Visitors across domains configured with "setDomains" function will be linked by passing visitor ID parameter in links.
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingfunctionsgetcrossdomainlinkingurlparametermd"></a>
+
+
+***
+
+
+## getCrossDomainLinkingUrlParameter()
+
+> **getCrossDomainLinkingUrlParameter**(): `Promise`\<`string`\>
+
+Returns the name of a cross domain URL parameter (query parameter by default) holding visitor ID. This is "pk_vid" by default.
+
+### Returns
+
+`Promise`\<`string`\>
+
+
+<a name="namespacescrossdomaintrackingfunctionsiscrossdomainlinkingenabledmd"></a>
+
+
+***
+
+
+## isCrossDomainLinkingEnabled()
+
+> **isCrossDomainLinkingEnabled**(): `Promise`\<`boolean`\>
+
+Returns boolean telling whether cross domain linking is enabled.
+
+### Returns
+
+`Promise`\<`boolean`\>
+
+
+<a name="namespacescrossdomaintrackingfunctionssetcrossdomainlinkingtimeoutmd"></a>
+
+
+***
+
+
+## setCrossDomainLinkingTimeout()
+
+> **setCrossDomainLinkingTimeout**(`timeout`): `void`
+
+Changes the time in which two visits across domains will be linked. The default timeout is 180 seconds (3 minutes).
+
+### Parameters
+
+• **timeout**: `number`
+
+### Returns
+
+`void`
+
+
+<a name="namespacescrossdomaintrackingtype-aliaseslinkdecoratormd"></a>
+
+
+***
+
+
+## Type Alias: LinkDecorator()
+
+> **LinkDecorator**: (`url`, `value`, `name`) => `string` \| `null`
+
+### Parameters
+
+• **url**: `string`
+
+• **value**: `string`
+
+• **name**: `string`
+
+### Returns
+
+`string` \| `null`
+
+
+<a name="namespacescrossdomaintrackingtype-aliasesvisitoridgettermd"></a>
+
+
+***
+
+
+## Type Alias: VisitorIdGetter()
+
+> **VisitorIdGetter**: (`url`, `name`) => `string`
+
+### Parameters
+
+• **url**: `string`
+
+• **name**: `string`
+
+### Returns
+
+`string`
 
 
 <a name="namespacescustomdimensionsreadmemd"></a>
@@ -1287,6 +1541,58 @@ Tracks manual goal conversion
 `void`
 
 
+<a name="namespacesheartbeatreadmemd"></a>
+
+
+***
+
+
+## Heartbeat
+
+
+
+- [disableHeartBeatTimer](#namespacesheartbeatfunctionsdisableheartbeattimermd)
+- [enableHeartBeatTimer](#namespacesheartbeatfunctionsenableheartbeattimermd)
+
+
+<a name="namespacesheartbeatfunctionsdisableheartbeattimermd"></a>
+
+
+***
+
+
+## disableHeartBeatTimer()
+
+> **disableHeartBeatTimer**(): `void`
+
+Disables sending heartbeats if they were previously enabled by "enableHeartBeatTimer" function.
+
+### Returns
+
+`void`
+
+
+<a name="namespacesheartbeatfunctionsenableheartbeattimermd"></a>
+
+
+***
+
+
+## enableHeartBeatTimer()
+
+> **enableHeartBeatTimer**(`delays`?): `void`
+
+When a visitor is not producing any events (e.g. because they are reading an article or watching a video), we don’t know if they are still on the page. This might skew page statistics, e.g. time on page value. Heartbeat timer allows us to determine how much time visitors spend on a page by sending heartbeats to the Tracker as long as the page is in focus.
+
+### Parameters
+
+• **delays?**: `number`[]
+
+### Returns
+
+`void`
+
+
 <a name="namespacespageviewsreadmemd"></a>
 
 
@@ -1371,11 +1677,30 @@ Tracks search requests on a website
 
 
 
+- [deanonymizeUser](#namespacesusermanagementfunctionsdeanonymizeusermd)
 - [getUserId](#namespacesusermanagementfunctionsgetuseridmd)
 - [getVisitorId](#namespacesusermanagementfunctionsgetvisitoridmd)
 - [getVisitorInfo](#namespacesusermanagementfunctionsgetvisitorinfomd)
 - [resetUserId](#namespacesusermanagementfunctionsresetuseridmd)
 - [setUserId](#namespacesusermanagementfunctionssetuseridmd)
+- [setUserIsAnonymous](#namespacesusermanagementfunctionssetuserisanonymousmd)
+
+
+<a name="namespacesusermanagementfunctionsdeanonymizeusermd"></a>
+
+
+***
+
+
+## deanonymizeUser()
+
+> **deanonymizeUser**(): `void`
+
+Disables anonymous tracking and sends deanonymization event to the Tracker. Recommended method for disabling anonymous tracking.
+
+### Returns
+
+`void`
 
 
 <a name="namespacesusermanagementfunctionsgetuseridmd"></a>
@@ -1463,6 +1788,27 @@ reports through it or create Multi attribution reports using User ID
 ### Parameters
 
 • **userId**: `string`
+
+### Returns
+
+`void`
+
+
+<a name="namespacesusermanagementfunctionssetuserisanonymousmd"></a>
+
+
+***
+
+
+## setUserIsAnonymous()
+
+> **setUserIsAnonymous**(`isAnonymous`): `void`
+
+Enables or disables anonymous tracking (anonymous = without consent). The next emitted event will have anonymous mode set accordingly.
+
+### Parameters
+
+• **isAnonymous**: `boolean`
 
 ### Returns
 
