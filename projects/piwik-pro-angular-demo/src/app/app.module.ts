@@ -42,7 +42,7 @@ import { DownloadAndOutlinkComponent } from './pages/download-and-outlink/downlo
     NavbarModule,
     EventListModule,
     NgxPiwikProModule.forRoot(environment.containerId, environment.containerURL),
-    NgxPiwikProRouterModule.forRoot(),
+    NgxPiwikProRouterModule.forRoot({ skipFirstPageView: false }),
     BrowserAnimationsModule,
     MatCardModule,
     MatListModule,
