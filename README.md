@@ -229,6 +229,7 @@ export class TestPageComponent implements OnInit {
 - [ErrorTracking](#namespaceserrortrackingreadmemd)
 - [GoalConversions](#namespacesgoalconversionsreadmemd)
 - [Heartbeat](#namespacesheartbeatreadmemd)
+- [Miscellaneous](#namespacesmiscellaneousreadmemd)
 - [PageViews](#namespacespageviewsreadmemd)
 - [SiteSearch](#namespacessitesearchreadmemd)
 - [UserManagement](#namespacesusermanagementreadmemd)
@@ -236,6 +237,7 @@ export class TestPageComponent implements OnInit {
 ### Type Aliases
 
 - [Dimensions](#type-aliasesdimensionsmd)
+- [Initialize](#type-aliasesinitializemd)
 - [InitOptions](#type-aliasesinitoptionsmd)
 - [PaymentInformation](#type-aliasespaymentinformationmd)
 - [Product](#type-aliasesproductmd)
@@ -1593,6 +1595,42 @@ When a visitor is not producing any events (e.g. because they are reading an art
 `void`
 
 
+<a name="namespacesmiscellaneousreadmemd"></a>
+
+
+***
+
+
+## Miscellaneous
+
+
+
+- [setTrackingSourceProvider](#namespacesmiscellaneousfunctionssettrackingsourceprovidermd)
+
+
+<a name="namespacesmiscellaneousfunctionssettrackingsourceprovidermd"></a>
+
+
+***
+
+
+## setTrackingSourceProvider()
+
+> **setTrackingSourceProvider**(`provider`, `version`): `void`
+
+Adds metadata about used framework
+
+### Parameters
+
+• **provider**: `string`
+
+• **version**: `string`
+
+### Returns
+
+`void`
+
+
 <a name="namespacespageviewsreadmemd"></a>
 
 
@@ -2153,6 +2191,29 @@ Defaults to 'dataLayer'
 > `optional` **nonce**: `string`
 
 
+<a name="type-aliasesinitializemd"></a>
+
+
+***
+
+
+## Type Alias: Initialize()
+
+> **Initialize**: (`containerId`, `containerUrl`, `nonceOrOptions`?) => `void`
+
+### Parameters
+
+• **containerId**: `string`
+
+• **containerUrl**: `string`
+
+• **nonceOrOptions?**: `string` \| [`InitOptions`](#type-aliasesinitoptionsmd)
+
+### Returns
+
+`void`
+
+
 <a name="type-aliasespaymentinformationmd"></a>
 
 
@@ -2264,4 +2325,4 @@ Defaults to 'dataLayer'
 
 #### initialize
 
-> **initialize**: *typeof* `PiwikPro.init`
+> **initialize**: [`Initialize`](#type-aliasesinitializemd)
