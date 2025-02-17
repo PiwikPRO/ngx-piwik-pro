@@ -1,6 +1,6 @@
 {
   "name": "@piwikpro/ngx-piwik-pro-project",
-  "version": "2.2.0",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
