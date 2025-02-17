@@ -24,6 +24,7 @@ import { CustomEventsService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/c
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { DownloadAndOutlinkComponent } from './pages/download-and-outlink/download-and-outlink.component';
+import { DataLayerService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/data-layer/data-layer.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,15 @@ import { DownloadAndOutlinkComponent } from './pages/download-and-outlink/downlo
     AppRoutingModule,
     NavbarModule,
     EventListModule,
-    NgxPiwikProModule.forRoot(environment.containerId, environment.containerURL),
+    NgxPiwikProModule.forRoot(
+      environment.containerId,
+      environment.containerURL,
+      // optional config
+      {
+        nonce: '_nonce_', // nonce string
+        dataLayerName: 'myDataLayerName' // custom data layer name
+      }
+    ),
     NgxPiwikProRouterModule.forRoot(),
     BrowserAnimationsModule,
     MatCardModule,
@@ -54,7 +63,7 @@ import { DownloadAndOutlinkComponent } from './pages/download-and-outlink/downlo
     UserManagementService,
     ContentTrackingService,
     CustomEventsService,
-
+    DataLayerService
   ],
   bootstrap: [AppComponent]
 })

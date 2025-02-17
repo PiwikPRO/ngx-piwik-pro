@@ -1,8 +1,8 @@
 import { APP_INITIALIZER, FactoryProvider, PLATFORM_ID, isDevMode } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import PiwikPro, { DataLayer } from '@piwikpro/tracking-base-library';
 
 import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-settings.token';
-import PiwikPro from '@piwikpro/tracking-base-library';
 import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
 
 export const NGX_PIWIK_PRO_INITIALIZER_PROVIDER: FactoryProvider = {
@@ -51,6 +51,10 @@ export function PiwikProInitializer(
       }
     }
 
+    if(settings.dataLayerName){
+        DataLayer.setDataLayerName(settings.dataLayerName)
+    }
+
     const s: HTMLScriptElement = document.createElement('script');
     s.async = true;
     if (settings.nonce) {
@@ -60,6 +64,7 @@ export function PiwikProInitializer(
       containerId: settings.containerId,
       containerUrl: settings.containerURL,
       nonceValue: settings.nonce,
+      dataLayerName: settings.dataLayerName
     })
 
     const head: HTMLHeadElement = document.getElementsByTagName('head')[0];

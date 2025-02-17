@@ -1,5 +1,6 @@
-export interface PiwikProSettings {
+import { InitOptions } from '@piwikpro/tracking-base-library';
+
+export type PiwikProSettings = {
   containerId: string;
   containerURL: string;
-  nonce?: string;
-}
+} & InitOptions;
