@@ -1,10 +1,11 @@
 {
   "name": "@piwikpro/ngx-piwik-pro-project",
-  "version": "2.0.1",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ngx-piwik-pro",
+    "build:example": "ng build piwik-pro-angular-demo --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
     "test:dev": "ng test ngx-piwik-pro",

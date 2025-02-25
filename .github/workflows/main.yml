@@ -1,68 +1,33 @@
-name: Bump and Publish
+name: Publish
 
 on:
   release:
     types: [released]
-    # refs/tags/x.x.x
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: "Log level"
-        required: true
-        default: "warning"
 
 jobs:
-  bump-and-build:
+  publish:
+    timeout-minutes: 30
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      
       - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-      - name: "Cache node Modules"
-        uses: actions/cache@v4.0.0
-        with:
-          path: ~.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm ci --ignore-scripts
-      - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
-      - run: npm --no-git-tag-version --allow-same-version version ${{ steps.get_version.outputs.VERSION }}
-        working-directory: projects/ngx-piwik-pro
-      - run: npm run build
-      - run: |
-          cp SECURITY.md dist/ngx-piwik-pro
-          cp LICENSE dist/ngx-piwik-pro
-          cp README.md dist/ngx-piwik-pro
-          cp CHANGELOG.md dist/ngx-piwik-pro
-      - run: npm pack
-        working-directory: dist/ngx-piwik-pro
-      - name: "Upload Build Artifatc ${{ steps.get_version.outputs.VERSION }}"
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
-        with:
-          name: ${{ steps.get_version.outputs.VERSION }}.tgz
-          path: dist/ngx-piwik-pro/piwikpro-ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
 
-  publish-npm:
-    needs: bump-and-build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
-        with:
-          name: ${{ steps.get_version.outputs.VERSION }}.tgz
-      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm publish piwikpro-ngx-piwik-pro-${{ steps.get_version.outputs.VERSION }}.tgz
+      - name: Install modules
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Copy main readme to package directory
+        run: cp README.md dist/ngx-piwik-pro
+
+      - name: Publish to npm
+        working-directory: dist/ngx-piwik-pro
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
