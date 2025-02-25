@@ -4,7 +4,7 @@ import PiwikPro, { DataLayer, Miscellaneous } from '@piwikpro/tracking-base-libr
 
 import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-settings.token';
 import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
-import pkg from "../../../package.json";
+import { VERSION } from "../../version"
 
 export const NGX_PIWIK_PRO_INITIALIZER_PROVIDER: FactoryProvider = {
   provide: APP_INITIALIZER,
@@ -24,7 +24,7 @@ export function PiwikProInitializer(
 ) {
   if (window) {
     window._paq = window._paq || [];
-    Miscellaneous.setTrackingSourceProvider("angular", pkg.version)
+    Miscellaneous.setTrackingSourceProvider("angular", VERSION)
   }
   return async () => {
     if (!isPlatformBrowser(platformId)) {

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ngx-piwik-pro",
+    "prebuild": "node projects/ngx-piwik-pro/scripts/bakeInVersion.js",
     "build:example": "ng build piwik-pro-angular-demo --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test ngx-piwik-pro --no-watch --no-progress --browsers=ChromeHeadless",
