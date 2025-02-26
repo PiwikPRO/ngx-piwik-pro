@@ -255,6 +255,7 @@ export class TestPageComponent implements OnInit {
 ### Type Aliases
 
 - [Dimensions](#type-aliasesdimensionsmd)
+- [EcommerceOptions](#type-aliasesecommerceoptionsmd)
 - [Initialize](#type-aliasesinitializemd)
 - [InitOptions](#type-aliasesinitoptionsmd)
 - [PaymentInformation](#type-aliasespaymentinformationmd)
@@ -1544,7 +1545,7 @@ Such error request will still follow rules set for tracker, so it will be sent o
 
 ## trackGoal()
 
-> **trackGoal**(`goalId`, `conversionValue`, `dimensions`?): `void`
+> **trackGoal**(`goalId`, `conversionValue`, `dimensions`?, `options`?): `void`
 
 Tracks manual goal conversion
 
@@ -1555,6 +1556,8 @@ Tracks manual goal conversion
 • **conversionValue**: `number`
 
 • **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -1951,13 +1954,15 @@ Please use the ecommerceAddToCart instead.
 
 ## ecommerceAddToCart()
 
-> **ecommerceAddToCart**(`products`): `void`
+> **ecommerceAddToCart**(`products`, `options`?): `void`
 
 Tracks action of adding products to a cart
 
 ### Parameters
 
 • **products**: [`Product`](#type-aliasesproductmd)[]
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -1972,7 +1977,7 @@ Tracks action of adding products to a cart
 
 ## ecommerceCartUpdate()
 
-> **ecommerceCartUpdate**(`products`, `grandTotal`): `void`
+> **ecommerceCartUpdate**(`products`, `grandTotal`, `options`?): `void`
 
 Tracks current state of a cart
 
@@ -1981,6 +1986,8 @@ Tracks current state of a cart
 • **products**: [`Product`](#type-aliasesproductmd)[]
 
 • **grandTotal**: `string` \| `number`
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -1995,7 +2002,7 @@ Tracks current state of a cart
 
 ## ecommerceOrder()
 
-> **ecommerceOrder**(`products`, `paymentInformation`): `void`
+> **ecommerceOrder**(`products`, `paymentInformation`, `options`?): `void`
 
 Tracks conversion, including products and payment details
 
@@ -2004,6 +2011,8 @@ Tracks conversion, including products and payment details
 • **products**: [`Product`](#type-aliasesproductmd)[]
 
 • **paymentInformation**: [`PaymentInformation`](#type-aliasespaymentinformationmd)
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2018,13 +2027,15 @@ Tracks conversion, including products and payment details
 
 ## ecommerceProductDetailView()
 
-> **ecommerceProductDetailView**(`products`): `void`
+> **ecommerceProductDetailView**(`products`, `options`?): `void`
 
 Tracks action of viewing product page
 
 ### Parameters
 
 • **products**: [`Product`](#type-aliasesproductmd)[]
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2039,13 +2050,15 @@ Tracks action of viewing product page
 
 ## ecommerceRemoveFromCart()
 
-> **ecommerceRemoveFromCart**(`products`): `void`
+> **ecommerceRemoveFromCart**(`products`, `options`?): `void`
 
 Tracks action of removing a products from a cart
 
 ### Parameters
 
 • **products**: [`Product`](#type-aliasesproductmd)[]
+
+• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2184,6 +2197,25 @@ Please use the ecommerceOrder instead.
 ## Type Alias: Dimensions
 
 > **Dimensions**: `Record`\<\`dimension$\{number\}\`, `string`\>
+
+
+<a name="type-aliasesecommerceoptionsmd"></a>
+
+
+***
+
+
+## Type Alias: EcommerceOptions
+
+> **EcommerceOptions**: `object`
+
+### Type declaration
+
+#### currencyCode?
+
+> `optional` **currencyCode**: `string`
+
+Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If not provided, the currency set in app settings will be used instead.
 
 
 <a name="type-aliasesinitoptionsmd"></a>
