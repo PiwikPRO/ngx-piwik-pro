@@ -19,7 +19,7 @@ export class ECommerceComponent implements OnInit {
   ) {
     this.productList = [];
     this.orderReady = false;
-    this.titleService.setTitle('Custom Events');
+    this.titleService.setTitle('Ecommerce');
   }
 
   addHome() {
@@ -48,7 +48,7 @@ export class ECommerceComponent implements OnInit {
           2: 'value2',
         },
       },
-    ]);
+    ], {currencyCode: "USD"});
   }
   addCar() {
     this.productList.push({
@@ -76,7 +76,7 @@ export class ECommerceComponent implements OnInit {
           2: 'value2',
         },
       }
-    ]);
+    ], {currencyCode: "USD"});
   }
   addFood() {
     this.productList.push({
@@ -104,7 +104,7 @@ export class ECommerceComponent implements OnInit {
           2: 'value2',
         },
       }
-    ]);
+    ], {currencyCode: "USD"});
   }
 
   buy() {
@@ -123,7 +123,7 @@ export class ECommerceComponent implements OnInit {
       tax,
       shipping,
       discount,
-    });
+    }, {currencyCode: "USD"});
   }
 
   ngOnInit(): void {
