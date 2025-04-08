@@ -57,6 +57,7 @@ The `package.json` file contains various scripts for common tasks:
 - `npm test`: run unit tests with Jest.
 - `npm test:dev`: run unit tests with Jest.
 - `npm lint`: lint files with ESLint.
+- `npm build:docs`: build a documentation
 
 ### Sending a pull request
 
