@@ -117,10 +117,10 @@ export class AppModule {}
 
 The default 'Data Collection' settings assume that the 'Track page views in a single-page application' option is set to true. You will find an information that if this option is enabled, we will record every change in the state of the browser history on the page and report it as a page view in the reports. You need to know that this option should be **disabled** if you want to use the `@piwikpro/ngx-piwik-pro` library with `NgxPiwikProRouterModule`.
 
-This setting should be turned **OFF**, it can be found in:
+This setting should be set to **OFF**, it can be found in:
 `Administration -> Sites & Apps -> (choose your site or apps ) -> Data Collection -> Track page views in a single-page application`
 
-Second setting that has to be **enabled** is `Track page views manually` in 'Tag Manager'. It is responsible for tracking the initial page view. If it's turned off and we have specified excluded pages:
+Second setting that has to be adjusted is `Track page views manually` in 'Tag Manager'. It is responsible for tracking the initial page view. If it's turned off and we have specified excluded pages:
 ```ts
 NgxPiwikProRouterModule.forRoot({ exclude: ["/"] })
 ```
@@ -130,7 +130,7 @@ This setting should be turned **ON**, it can be found in:
 `Tag Manager -> Piwik PRO (unless renamed) -> Track page views manually`
 
 
-In order to work according to the default Data Collection settings, the library skips the first PageViews so as not to cause duplicate entries. However, if you have taken care to adjust the above settings, you should also pass the following settings to the library.
+In order to work according to the default Data Collection settings, the `NgxPiwikProRouterModule` skips the first page view so as not to cause duplicate entries. However, if you have taken care to adjust the above settings, you should also pass the following setting to the `NgxPiwikProRouterModule`.
 
 ```ts
 import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';
