@@ -27,6 +27,7 @@ export * from './lib/services/data-layer/data-layer.service';
 export * from './lib/services/heartbeat/heartbeat.service';
 export * from './lib/services/cross-domain-tracking/cross-domain-tracking.service';
 export * from './lib/services/client-configuration/client-configuration.service';
+export * from './lib/services/miscellaneous/miscellaneous.service';
 
 export * from './lib/tokens/ngx-paq-token';
 export * from './lib/tokens/ngx-piwik-pro-settings.token';

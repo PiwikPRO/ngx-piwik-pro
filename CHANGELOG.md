@@ -1,11 +1,15 @@
 # CHANGELOG
 
+- [2.2.0](#220)
 - [2.1.0](#210)
 - [2.0.1](#201)
 - [2.0.0](#200)
 - [1.1.0](#110)
 - [1.0.0](#100)
 - [0.0.1](#001)
+
+## 2.2.0
+- add option to configure Data Layer name
 
 ## 2.1.0
 - update @piwikpro/tracking-base-library version

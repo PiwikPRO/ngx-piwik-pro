@@ -56,7 +56,7 @@ import { NgxPiwikProModule } from "@piwikpro/ngx-piwik-pro";
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    NgxPiwikProModule.forRoot("container-id", "container-url", "nonce-hash"),
+    NgxPiwikProModule.forRoot("container-id", "container-url", {nonce: "nonce-hash"}),
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ],
   providers: [],
@@ -143,6 +143,24 @@ import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-
     NgxPiwikProModule.forRoot('container-id', 'container-url'),
     NgxPiwikProRouterModule.forRoot({ skipFirstPageView: false })
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ]
+})
+export class AppModule {}
+```
+
+#### Customize Data Layer name
+
+```ts
+@Component(...)
+import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';
+...
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    NgxPiwikProModule.forRoot('container-id', 'container-url', {dataLayerName: "myDataLayerName"}),
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ]
 })
 export class AppModule {}

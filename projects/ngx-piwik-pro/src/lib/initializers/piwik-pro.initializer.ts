@@ -1,9 +1,10 @@
 import { APP_INITIALIZER, FactoryProvider, PLATFORM_ID, isDevMode } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import PiwikPro, { DataLayer, Miscellaneous } from '@piwikpro/tracking-base-library';
 
 import { NGX_PIWIK_PRO_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-settings.token';
-import PiwikPro from '@piwikpro/tracking-base-library';
 import { PiwikProSettings } from '../interfaces/piwik-pro-settings.interface';
+import { VERSION } from "../../version"
 
 export const NGX_PIWIK_PRO_INITIALIZER_PROVIDER: FactoryProvider = {
   provide: APP_INITIALIZER,
@@ -23,6 +24,7 @@ export function PiwikProInitializer(
 ) {
   if (window) {
     window._paq = window._paq || [];
+    Miscellaneous.setTrackingSourceProvider("angular", VERSION)
   }
   return async () => {
     if (!isPlatformBrowser(platformId)) {
@@ -51,6 +53,10 @@ export function PiwikProInitializer(
       }
     }
 
+    if(settings.dataLayerName){
+        DataLayer.setDataLayerName(settings.dataLayerName)
+    }
+
     const s: HTMLScriptElement = document.createElement('script');
     s.async = true;
     if (settings.nonce) {
@@ -60,6 +66,7 @@ export function PiwikProInitializer(
       containerId: settings.containerId,
       containerUrl: settings.containerURL,
       nonceValue: settings.nonce,
+      dataLayerName: settings.dataLayerName
     })
 
     const head: HTMLHeadElement = document.getElementsByTagName('head')[0];

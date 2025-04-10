@@ -3,37 +3,45 @@ name: Build and Tests
 on:
   push:
     branches:
-      - "**"
+      - master
   pull_request:
     branches:
       - master
 
 jobs:
   run-tests:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    timeout-minutes: 30
     runs-on: ubuntu-latest
 
     steps:
+      # Build library
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
       - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
-          node-version: "18"
+          node-version: 18
           registry-url: "https://registry.npmjs.org"
 
-      - name: "Cache node Modules"
-        uses: actions/cache@v4.0.0
-        with:
-          path: ~.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm ci --ignore-scripts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Install modules
+        run: npm ci
 
       - name: Build Angular Library
         run: npm run build
 
+      # Build example app
+      - name: Build example app
+        run: npm run build:example
+
+      # Run tests
       - name: Running Tests
         run: npm run test
+
+      # Check documentation
+      - name: Generate documentation
+        run: yarn build:docs
+
+      - name: Check for documentation changes
+        run: |
+          if [[ -n $(git status --porcelain | grep "README.md") ]]; then
+            echo "Documentation is not up to date!"
+            exit 1
+          fi
