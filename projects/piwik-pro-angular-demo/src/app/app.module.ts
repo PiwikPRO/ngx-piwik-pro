@@ -51,7 +51,7 @@ import { DataLayerService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/data
         dataLayerName: 'myDataLayerName' // custom data layer name
       }
     ),
-    NgxPiwikProRouterModule.forRoot(),
+    NgxPiwikProRouterModule.forRoot({ skipFirstPageView: false }),
     BrowserAnimationsModule,
     MatCardModule,
     MatListModule,
