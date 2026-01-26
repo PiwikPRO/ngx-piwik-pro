@@ -23,7 +23,7 @@ export class CustomEventsComponent implements OnInit {
       'choose',
       'Move slider',
       'Number',
-      event.value
+      event.target.value
     )
   }
 
