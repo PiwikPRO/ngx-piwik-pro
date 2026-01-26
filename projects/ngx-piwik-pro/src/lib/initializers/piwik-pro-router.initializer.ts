@@ -1,4 +1,5 @@
-import { APP_BOOTSTRAP_LISTENER, ComponentRef, Provider } from '@angular/core';
+import { APP_BOOTSTRAP_LISTENER, ComponentRef, PLATFORM_ID, Provider } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN } from '../tokens/ngx-piwik-pro-router-settings.token';
 import { PiwikProRoutingSettings } from '../interfaces/piwik-pro-router-settings.interface';
 import { NavigationEnd, Router } from '@angular/router';
@@ -14,6 +15,7 @@ export const NGX_PIWIK_PRO_ROUTER_INITIALIZER_PROVIDER: Provider = {
     NGX_PIWIK_PRO_ROUTING_SETTINGS_TOKEN,
     Title,
     PageViewsService,
+    PLATFORM_ID,
   ]
 };
 
@@ -21,8 +23,13 @@ export function PiwikProRouterInitializer(
   settings: PiwikProRoutingSettings,
   titleService: Title,
   pageViewsService: PageViewsService,
+  platformId: string,
 ) {
   return async (c: ComponentRef<any>) => {
+    if (!isPlatformBrowser(platformId)) {
+      return;
+    }
+
     const router = c.injector.get(Router);
     const { include = [], exclude = [], skipFirstPageView } = settings ?? {};
     const includeRules = normalizePathRules(include);
