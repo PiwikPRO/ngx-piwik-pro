@@ -1,5 +1,8 @@
 # CHANGELOG
 
+- [2.5.0](#250)
+- [2.4.0](#240)
+- [2.3.0](#230)
 - [2.2.0](#220)
 - [2.1.0](#210)
 - [2.0.1](#201)
@@ -7,6 +10,16 @@
 - [1.1.0](#110)
 - [1.0.0](#100)
 - [0.0.1](#001)
+
+## 2.5.0
+- add ssr support
+
+## 2.4.0
+- bump `@piwikpro/tracking-base-library` - tolerate trailing slashes in container URLs
+
+## 2.3.0
+- add miscellaneous service
+- add currency conversion support
 
 ## 2.2.0
 - add option to configure Data Layer name
