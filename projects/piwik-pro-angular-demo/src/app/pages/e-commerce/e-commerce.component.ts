@@ -11,14 +11,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class ECommerceComponent implements OnInit {
   public productList: Product[];
-  public orderReady: boolean;
 
   constructor(
     private titleService: Title,
     private readonly eCommerceService: ECommerceService,
   ) {
     this.productList = [];
-    this.orderReady = false;
     this.titleService.setTitle('Ecommerce');
   }
 
@@ -108,14 +106,11 @@ export class ECommerceComponent implements OnInit {
   }
 
   buy() {
-    this.orderReady = true;
-    this.productList = [];
-
     const tax = 0.12;
     const shipping = 10;
     const discount = 5;
     const subTotal = this.productList.reduce((total, product) => total + (product.price ?? 0), 0)
-
+    
     this.eCommerceService.ecommerceOrder(this.productList, {
       orderId: 'order-1',
       grandTotal: (subTotal * tax) + shipping - discount,
@@ -124,6 +119,8 @@ export class ECommerceComponent implements OnInit {
       shipping,
       discount,
     }, {currencyCode: "USD"});
+    
+    this.productList = [];
   }
 
   ngOnInit(): void {

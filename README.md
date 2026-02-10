@@ -77,8 +77,6 @@ We provide a second Module Dependency to configure Router Event Bindings and per
 
 Add `NgxPiwikProRouterModule` on AppModule to enable auto track `Router` events.
 
-**IMPORTANT:** This Module subscribes to Router events when the bootstrap component is created, and then cleans up any subscriptions related to previous component when it is destroyed. You may get some issues if using this module with server side rendering or multiple bootstrap components. If that's the case, we recommend subscribing to the page view events manually.
-
 ```ts
 import { NgxPiwikProModule, NgxPiwikProRouterModule } from '@piwikpro/ngx-piwik-pro';
 ...

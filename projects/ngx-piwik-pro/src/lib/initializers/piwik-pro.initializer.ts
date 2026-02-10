@@ -22,14 +22,13 @@ export function PiwikProInitializer(
   document: Document,
   platformId: string
 ) {
-  if (window) {
-    window._paq = window._paq || [];
-    Miscellaneous.setTrackingSourceProvider("angular", VERSION)
-  }
   return async () => {
     if (!isPlatformBrowser(platformId)) {
       return;
     }
+
+    window._paq = window._paq || [];
+    Miscellaneous.setTrackingSourceProvider("angular", VERSION);
 
     if (!settings.containerId) {
       if (!isDevMode()) {
