@@ -1,4 +1,4 @@
-import { Dimensions, DownloadAndOutlink } from '@piwikpro/tracking-base-library'
+import { DownloadAndOutlink } from '@piwikpro/tracking-base-library'
 
 import { Injectable } from '@angular/core';
 
@@ -17,9 +17,6 @@ export class DownloadAndOutlinkService {
   setLinkClasses(...params: Parameters<IDownloadAndOutlink['setLinkClasses']>) {
     DownloadAndOutlink.setLinkClasses(...params);
   }
-  setDownloadClasses(...params: Parameters<IDownloadAndOutlink['setDownloadClasses']>) {
-    DownloadAndOutlink.setDownloadClasses(...params);
-  }
   setDownloadExtensions(...params: Parameters<IDownloadAndOutlink['setDownloadExtensions']>) {
     DownloadAndOutlink.setDownloadExtensions(...params);
   }
@@ -37,5 +34,17 @@ export class DownloadAndOutlinkService {
   }
   setIgnoreClasses(...params: Parameters<IDownloadAndOutlink['setIgnoreClasses']>) {
     DownloadAndOutlink.setIgnoreClasses(...params);
+  }
+  getDownloadClasses(...params: Parameters<IDownloadAndOutlink['getDownloadClasses']>) {
+    return DownloadAndOutlink.getDownloadClasses(...params);
+  }
+  setDownloadClasses(...params: Parameters<IDownloadAndOutlink['setDownloadClasses']>) {
+    DownloadAndOutlink.setDownloadClasses(...params);
+  }
+  addDownloadClasses(...params: Parameters<IDownloadAndOutlink['addDownloadClasses']>) {
+    DownloadAndOutlink.addDownloadClasses(...params);
+  }
+  removeDownloadClasses(...params: Parameters<IDownloadAndOutlink['removeDownloadClasses']>) {
+    DownloadAndOutlink.removeDownloadClasses(...params);
   }
 }
