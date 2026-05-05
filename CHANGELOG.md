@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- [2.6.0](#260)
 - [2.5.0](#250)
 - [2.4.0](#240)
 - [2.3.0](#230)
@@ -10,6 +11,9 @@
 - [1.1.0](#110)
 - [1.0.0](#100)
 - [0.0.1](#001)
+
+## 2.6.0
+- bump `@piwikpro/tracking-base-library` - add new methods for download classes
 
 ## 2.5.0
 - add ssr support
