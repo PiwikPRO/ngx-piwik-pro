@@ -60,5 +60,8 @@
   },
   "workspaces": [
     "projects/ngx-piwik-pro"
-  ]
+  ],
+  "overrides": {
+    "tar": ">=7.5.3"
+  }
 }
