@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
+  standalone: false,
   selector: 'app-page-views',
   templateUrl: './page-views.component.html',
   styleUrls: ['./page-views.component.scss']

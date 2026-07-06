@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventItem, EventItems } from '../../../shared/event-items/event-items';
 
 @Component({
+  standalone: false,
   selector: 'app-event',
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss']

@@ -10,6 +10,8 @@
 # dependencies
 /node_modules
 projects/*/node_modules
+projects/piwik-pro-angular-demo/dist
+projects/piwik-pro-angular-demo/package-lock.json
 
 # profiling files
 chrome-profiler-events*.json

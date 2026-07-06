@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomEventsService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/custom-event/custom-events.service';
+import { CustomEventsService } from '@piwikpro/ngx-piwik-pro';
 import { Title } from '@angular/platform-browser';
 
 @Component({
+  standalone: false,
   selector: 'app-custom-events',
   templateUrl: './custom-events.component.html',
   styleUrls: ['./custom-events.component.scss']
