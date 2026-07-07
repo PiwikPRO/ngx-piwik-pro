@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { UserManagementService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/user-management/user-management.service';
+import { UserManagementService } from '@piwikpro/ngx-piwik-pro';
 
 @Component({
+  standalone: false,
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.scss']

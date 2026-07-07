@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ECommerceService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/e-commerce/e-commerce.service';
+import { ECommerceService } from '@piwikpro/ngx-piwik-pro';
 import { Product } from '@piwikpro/tracking-base-library';
 import { Title } from '@angular/platform-browser';
 
 @Component({
+  standalone: false,
   selector: 'app-e-commerce',
   templateUrl: './e-commerce.component.html',
   styleUrls: ['./e-commerce.component.scss']

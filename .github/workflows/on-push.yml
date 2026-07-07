@@ -27,6 +27,9 @@ jobs:
       - name: Build Angular Library
         run: npm run build
 
+      - name: Install example dependencies
+        run: npm install --prefix projects/piwik-pro-angular-demo
+
       # Build example app
       - name: Build example app
         run: npm run build:example

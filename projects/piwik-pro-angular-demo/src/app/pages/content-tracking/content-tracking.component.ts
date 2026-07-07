@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ContentTrackingService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/content-tracking/content-tracking.service';
+import { ContentTrackingService } from '@piwikpro/ngx-piwik-pro';
 
 @Component({
+  standalone: false,
   selector: 'app-content-tracking',
   templateUrl: './content-tracking.component.html',
   styleUrls: ['./content-tracking.component.scss']

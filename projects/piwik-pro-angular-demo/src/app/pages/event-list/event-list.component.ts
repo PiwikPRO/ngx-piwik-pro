@@ -3,6 +3,7 @@ import { EventItems } from '../../shared/event-items/event-items';
 import { Title } from '@angular/platform-browser';
 
 @Component({
+  standalone: false,
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss']

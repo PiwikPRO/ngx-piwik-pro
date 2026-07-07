@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { DataLayerService } from '@piwik-pro/ngx-piwik-pro/src/lib/services/data-layer/data-layer.service';
+import { DataLayerService } from '@piwikpro/ngx-piwik-pro';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

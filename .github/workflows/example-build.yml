@@ -1,0 +1,62 @@
+name: Example App Build
+
+on:
+  push:
+    branches:
+     - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-example:
+    name: Angular ${{ matrix.angular-version }} (${{ matrix.resolution }})
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - angular-version: 18
+            manifest: package.json
+            resolution: bundler
+            build-script: build
+          - angular-version: 21
+            manifest: package.ng21.json
+            resolution: bundler
+            build-script: build
+          - angular-version: 18
+            manifest: package.json
+            resolution: node
+            build-script: "build:node-resolution"
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install library dependencies
+        run: npm ci
+
+      - name: Build Angular Library
+        run: npm run build
+
+      - name: Select example manifest for Angular ${{ matrix.angular-version }}
+        working-directory: projects/piwik-pro-angular-demo
+        # package.json is already the Angular 18 profile, so skip the self-copy
+        run: |
+          if [ "${{ matrix.manifest }}" != "package.json" ]; then
+            cp "${{ matrix.manifest }}" package.json
+          fi
+
+      - name: Install example dependencies
+        run: npm install --prefix projects/piwik-pro-angular-demo
+
+      - name: Build example app (${{ matrix.resolution }} resolution)
+        run: npm run ${{ matrix.build-script }} --prefix projects/piwik-pro-angular-demo
