@@ -2,7 +2,7 @@
 <a name="readmemd"></a>
 
 
-
+***
 
 # Piwik PRO Library for Angular
 
@@ -225,6 +225,7 @@ export class TestPageComponent implements OnInit {
 ```
 
 
+
 <a name="globalsmd"></a>
 
 
@@ -266,6 +267,7 @@ export class TestPageComponent implements OnInit {
 - [default](#variablesdefaultmd)
 
 
+
 <a name="namespacesclientconfigurationreadmemd"></a>
 
 
@@ -273,7 +275,6 @@ export class TestPageComponent implements OnInit {
 
 
 ## ClientConfiguration
-
 
 
 - [getDomains](#namespacesclientconfigurationfunctionsgetdomainsmd)
@@ -325,7 +326,6 @@ Allows to define a list of internal domains or mobile app URIs. Used in outlink 
 
 
 ## ContentTracking
-
 
 
 - [logAllContentBlocksOnPage](#namespacescontenttrackingfunctionslogallcontentblocksonpagemd)
@@ -386,9 +386,7 @@ trackPageView was called in between trackAllContentImpressions invocations
 ### Parameters
 
 • **contentName**: `string`
-
 • **contentPiece**: `string`
-
 • **contentTarget**: `string`
 
 ### Returns
@@ -430,20 +428,9 @@ Tracks manual content interaction event
 ### Parameters
 
 • **contentInteraction**: `string`
-
-Type of interaction (e.g. "click")
-
 • **contentName**: `string`
-
-Name of a content block
-
 • **contentPiece**: `string`
-
-Name of the content that was displayed (e.g. link to an image)
-
 • **contentTarget**: `string`
-
-Where the content leads to (e.g. URL of some external website)
 
 ### Returns
 
@@ -458,19 +445,14 @@ Where the content leads to (e.g. URL of some external website)
 
 ## trackContentInteractionNode()
 
-> **trackContentInteractionNode**(`domNode`, `contentInteraction`?): `void`
+> **trackContentInteractionNode**(`domNode`, `contentInteraction?`): `void`
 
 Tracks interaction with a block in domNode. Can be called from code placed in onclick attribute
 
 ### Parameters
 
 • **domNode**: `Node`
-
-Node marked as content block or containing content blocks. If content block can’t be found, nothing will tracked.
-
 • **contentInteraction?**: `string`
-
-Name of interaction (e.g. "click")
 
 ### Returns
 
@@ -485,19 +467,14 @@ Name of interaction (e.g. "click")
 
 ## trackVisibleContentImpressions()
 
-> **trackVisibleContentImpressions**(`checkOnScroll`?, `watchInterval`?): `void`
+> **trackVisibleContentImpressions**(`checkOnScroll?`, `watchInterval?`): `void`
 
 Scans DOM for all visible content blocks and tracks impressions
 
 ### Parameters
 
 • **checkOnScroll?**: `boolean`
-
-Whether to scan for visible content on scroll event
-
 • **watchInterval?**: `number`
-
-Delay, in milliseconds, between scans for new visible content. Periodic checks can be disabled by passing 0
 
 ### Returns
 
@@ -511,7 +488,6 @@ Delay, in milliseconds, between scans for new visible content. Periodic checks c
 
 
 ## CookieManagement
-
 
 
 - [deleteCookies](#namespacescookiemanagementfunctionsdeletecookiesmd)
@@ -840,8 +816,7 @@ Sets cookie containing [analytics ID](https://developers.piwik.pro/en/latest/glo
 
 ## CrossDomainTracking
 
-
-#### Type Aliases
+### Type Aliases
 
 - [LinkDecorator](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
 - [VisitorIdGetter](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
@@ -870,7 +845,9 @@ Sets custom cross domains URL decorator for injecting visitor ID into URLs. Used
 
 ### Parameters
 
-• **decorator**: [`LinkDecorator`](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
+• **decorator**:
+
+[`LinkDecorator`](#namespacescrossdomaintrackingtype-aliaseslinkdecoratormd)
 
 ### Returns
 
@@ -891,7 +868,9 @@ Sets custom cross domain URL parser for extracting visitor ID from URLs. Should 
 
 ### Parameters
 
-• **getter**: [`VisitorIdGetter`](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
+• **getter**:
+
+[`VisitorIdGetter`](#namespacescrossdomaintrackingtype-aliasesvisitoridgettermd)
 
 ### Returns
 
@@ -993,16 +972,14 @@ Changes the time in which two visits across domains will be linked. The default 
 ***
 
 
-## Type Alias: LinkDecorator()
+## Type Alias: LinkDecorator
 
 > **LinkDecorator**: (`url`, `value`, `name`) => `string` \| `null`
 
 ### Parameters
 
 • **url**: `string`
-
 • **value**: `string`
-
 • **name**: `string`
 
 ### Returns
@@ -1016,14 +993,13 @@ Changes the time in which two visits across domains will be linked. The default 
 ***
 
 
-## Type Alias: VisitorIdGetter()
+## Type Alias: VisitorIdGetter
 
 > **VisitorIdGetter**: (`url`, `name`) => `string`
 
 ### Parameters
 
 • **url**: `string`
-
 • **name**: `string`
 
 ### Returns
@@ -1038,7 +1014,6 @@ Changes the time in which two visits across domains will be linked. The default 
 
 
 ## CustomDimensions
-
 
 
 - [deleteCustomDimension](#namespacescustomdimensionsfunctionsdeletecustomdimensionmd)
@@ -1103,7 +1078,6 @@ Sets a custom dimension value to be used later.
 ### Parameters
 
 • **customDimensionId**: `string` \| `number`
-
 • **customDimensionValue**: `string`
 
 ### Returns
@@ -1120,7 +1094,6 @@ Sets a custom dimension value to be used later.
 ## CustomEvent
 
 
-
 - [trackEvent](#namespacescustomeventfunctionstrackeventmd)
 
 
@@ -1132,21 +1105,16 @@ Sets a custom dimension value to be used later.
 
 ## trackEvent()
 
-> **trackEvent**(`category`, `action`, `name`?, `value`?, `dimensions`?): `void`
+> **trackEvent**(`category`, `action`, `name?`, `value?`, `dimensions?`): `void`
 
 Tracks a custom event, e.g. when a visitor interacts with the page
 
 ### Parameters
 
 • **category**: `string`
-
 • **action**: `string`
-
 • **name?**: `string`
-
 • **value?**: `number`
-
-• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
 
 ### Returns
 
@@ -1161,8 +1129,7 @@ Tracks a custom event, e.g. when a visitor interacts with the page
 
 ## DataLayer
 
-
-#### Type Aliases
+### Type Aliases
 
 - [DataLayerEntry](#namespacesdatalayertype-aliasesdatalayerentrymd)
 
@@ -1185,7 +1152,9 @@ Adds entry to a data layer
 
 ### Parameters
 
-• **data**: [`DataLayerEntry`](#namespacesdatalayertype-aliasesdatalayerentrymd)
+#### data
+
+[`DataLayerEntry`](#namespacesdatalayertype-aliasesdatalayerentrymd)
 
 ### Returns
 
@@ -1229,7 +1198,6 @@ Adds entry to a data layer
 
 
 ## DownloadAndOutlink
-
 
 
 - [addDownloadClasses](#namespacesdownloadandoutlinkfunctionsadddownloadclassesmd)
@@ -1297,7 +1265,7 @@ Adds new extensions to the download extensions list
 
 ## enableLinkTracking()
 
-> **enableLinkTracking**(`trackAlsoMiddleAndRightClicks`?): `void`
+> **enableLinkTracking**(`trackAlsoMiddleAndRightClicks?`): `void`
 
 Enables automatic link tracking. If called with `true`, left, right and
 middle clicks on links will be treated as opening a link. Opening a links to
@@ -1506,19 +1474,14 @@ reach the Collecting & Processing Pipeline
 
 ## trackLink()
 
-> **trackLink**(`url`, `linkType`, `dimensions`?, `callback`?): `void`
+> **trackLink**(`url`, `linkType`, `dimensions?`, `callback?`): `void`
 
 Manually tracks outlink or download event with provided values
 
 ### Parameters
 
 • **url**: `string`
-
 • **linkType**: `string`
-
-• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
-
-• **callback?**
 
 ### Returns
 
@@ -1534,7 +1497,6 @@ Manually tracks outlink or download event with provided values
 ## ErrorTracking
 
 
-
 - [enableJSErrorTracking](#namespaceserrortrackingfunctionsenablejserrortrackingmd)
 - [trackError](#namespaceserrortrackingfunctionstrackerrormd)
 
@@ -1547,15 +1509,13 @@ Manually tracks outlink or download event with provided values
 
 ## enableJSErrorTracking()
 
-> **enableJSErrorTracking**(`unique`?): `void`
+> **enableJSErrorTracking**(`unique?`): `void`
 
 Enables tracking of unhandled JavaScript errors.
 
 ### Parameters
 
 • **unique?**: `boolean`
-
-track only unique errors
 
 ### Returns
 
@@ -1594,7 +1554,6 @@ Such error request will still follow rules set for tracker, so it will be sent o
 ## GoalConversions
 
 
-
 - [trackGoal](#namespacesgoalconversionsfunctionstrackgoalmd)
 
 
@@ -1606,19 +1565,14 @@ Such error request will still follow rules set for tracker, so it will be sent o
 
 ## trackGoal()
 
-> **trackGoal**(`goalId`, `conversionValue`, `dimensions`?, `options`?): `void`
+> **trackGoal**(`goalId`, `conversionValue`, `dimensions?`, `options?`): `void`
 
 Tracks manual goal conversion
 
 ### Parameters
 
 • **goalId**: `string` \| `number`
-
 • **conversionValue**: `number`
-
-• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
-
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -1632,7 +1586,6 @@ Tracks manual goal conversion
 
 
 ## Heartbeat
-
 
 
 - [disableHeartBeatTimer](#namespacesheartbeatfunctionsdisableheartbeattimermd)
@@ -1664,7 +1617,7 @@ Disables sending heartbeats if they were previously enabled by "enableHeartBeatT
 
 ## enableHeartBeatTimer()
 
-> **enableHeartBeatTimer**(`delays`?): `void`
+> **enableHeartBeatTimer**(`delays?`): `void`
 
 When a visitor is not producing any events (e.g. because they are reading an article or watching a video), we don’t know if they are still on the page. This might skew page statistics, e.g. time on page value. Heartbeat timer allows us to determine how much time visitors spend on a page by sending heartbeats to the Tracker as long as the page is in focus.
 
@@ -1686,7 +1639,6 @@ When a visitor is not producing any events (e.g. because they are reading an art
 ## Miscellaneous
 
 
-
 - [setTrackingSourceProvider](#namespacesmiscellaneousfunctionssettrackingsourceprovidermd)
 
 
@@ -1705,7 +1657,6 @@ Adds metadata about used framework
 ### Parameters
 
 • **provider**: `string`
-
 • **version**: `string`
 
 ### Returns
@@ -1722,7 +1673,6 @@ Adds metadata about used framework
 ## PageViews
 
 
-
 - [trackPageView](#namespacespageviewsfunctionstrackpageviewmd)
 
 
@@ -1734,7 +1684,7 @@ Adds metadata about used framework
 
 ## trackPageView()
 
-> **trackPageView**(`customPageTitle`?): `void`
+> **trackPageView**(`customPageTitle?`): `void`
 
 Tracks a visit on the page that the function was run on
 
@@ -1756,7 +1706,6 @@ Tracks a visit on the page that the function was run on
 ## SiteSearch
 
 
-
 - [trackSiteSearch](#namespacessitesearchfunctionstracksitesearchmd)
 
 
@@ -1768,19 +1717,15 @@ Tracks a visit on the page that the function was run on
 
 ## trackSiteSearch()
 
-> **trackSiteSearch**(`keyword`, `category`?, `searchCount`?, `dimensions`?): `void`
+> **trackSiteSearch**(`keyword`, `category?`, `searchCount?`, `dimensions?`): `void`
 
 Tracks search requests on a website
 
 ### Parameters
 
 • **keyword**: `string`
-
 • **category?**: `string`
-
 • **searchCount?**: `number`
-
-• **dimensions?**: [`Dimensions`](#type-aliasesdimensionsmd)
 
 ### Returns
 
@@ -1794,7 +1739,6 @@ Tracks search requests on a website
 
 
 ## UserManagement
-
 
 
 - [deanonymizeUser](#namespacesusermanagementfunctionsdeanonymizeusermd)
@@ -1944,19 +1888,18 @@ Enables or disables anonymous tracking (anonymous = without consent). The next e
 ## eCommerce
 
 
-
-- [addEcommerceItem](#namespacesecommercefunctionsaddecommerceitemmd)
-- [clearEcommerceCart](#namespacesecommercefunctionsclearecommercecartmd)
+- [~~addEcommerceItem~~](#namespacesecommercefunctionsaddecommerceitemmd)
+- [~~clearEcommerceCart~~](#namespacesecommercefunctionsclearecommercecartmd)
 - [ecommerceAddToCart](#namespacesecommercefunctionsecommerceaddtocartmd)
 - [ecommerceCartUpdate](#namespacesecommercefunctionsecommercecartupdatemd)
 - [ecommerceOrder](#namespacesecommercefunctionsecommerceordermd)
 - [ecommerceProductDetailView](#namespacesecommercefunctionsecommerceproductdetailviewmd)
 - [ecommerceRemoveFromCart](#namespacesecommercefunctionsecommerceremovefromcartmd)
-- [getEcommerceItems](#namespacesecommercefunctionsgetecommerceitemsmd)
-- [removeEcommerceItem](#namespacesecommercefunctionsremoveecommerceitemmd)
-- [setEcommerceView](#namespacesecommercefunctionssetecommerceviewmd)
-- [trackEcommerceCartUpdate](#namespacesecommercefunctionstrackecommercecartupdatemd)
-- [trackEcommerceOrder](#namespacesecommercefunctionstrackecommerceordermd)
+- [~~getEcommerceItems~~](#namespacesecommercefunctionsgetecommerceitemsmd)
+- [~~removeEcommerceItem~~](#namespacesecommercefunctionsremoveecommerceitemmd)
+- [~~setEcommerceView~~](#namespacesecommercefunctionssetecommerceviewmd)
+- [~~trackEcommerceCartUpdate~~](#namespacesecommercefunctionstrackecommercecartupdatemd)
+- [~~trackEcommerceOrder~~](#namespacesecommercefunctionstrackecommerceordermd)
 
 
 <a name="namespacesecommercefunctionsaddecommerceitemmd"></a>
@@ -1972,13 +1915,9 @@ Enables or disables anonymous tracking (anonymous = without consent). The next e
 ### Parameters
 
 • **productSKU**: `string`
-
 • **productName**: `string`
-
 • **productCategory**: `string` \| `string`[]
-
 • **productPrice**: `number`
-
 • **productQuantity**: `number`
 
 ### Returns
@@ -2015,15 +1954,19 @@ Please use the ecommerceAddToCart instead.
 
 ## ecommerceAddToCart()
 
-> **ecommerceAddToCart**(`products`, `options`?): `void`
+> **ecommerceAddToCart**(`products`, `options?`): `void`
 
 Tracks action of adding products to a cart
 
 ### Parameters
 
-• **products**: [`Product`](#type-aliasesproductmd)[]
+#### products
 
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
+[`Product`](#type-aliasesproductmd)[]
+
+#### options?
+
+[`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2038,17 +1981,13 @@ Tracks action of adding products to a cart
 
 ## ecommerceCartUpdate()
 
-> **ecommerceCartUpdate**(`products`, `grandTotal`, `options`?): `void`
+> **ecommerceCartUpdate**(`products`, `grandTotal`, `options?`): `void`
 
 Tracks current state of a cart
 
 ### Parameters
 
-• **products**: [`Product`](#type-aliasesproductmd)[]
-
 • **grandTotal**: `string` \| `number`
-
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2063,17 +2002,23 @@ Tracks current state of a cart
 
 ## ecommerceOrder()
 
-> **ecommerceOrder**(`products`, `paymentInformation`, `options`?): `void`
+> **ecommerceOrder**(`products`, `paymentInformation`, `options?`): `void`
 
 Tracks conversion, including products and payment details
 
 ### Parameters
 
-• **products**: [`Product`](#type-aliasesproductmd)[]
+#### products
 
-• **paymentInformation**: [`PaymentInformation`](#type-aliasespaymentinformationmd)
+[`Product`](#type-aliasesproductmd)[]
 
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
+#### paymentInformation
+
+[`PaymentInformation`](#type-aliasespaymentinformationmd)
+
+#### options?
+
+[`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2088,15 +2033,19 @@ Tracks conversion, including products and payment details
 
 ## ecommerceProductDetailView()
 
-> **ecommerceProductDetailView**(`products`, `options`?): `void`
+> **ecommerceProductDetailView**(`products`, `options?`): `void`
 
 Tracks action of viewing product page
 
 ### Parameters
 
-• **products**: [`Product`](#type-aliasesproductmd)[]
+#### products
 
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
+[`Product`](#type-aliasesproductmd)[]
+
+#### options?
+
+[`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2111,15 +2060,19 @@ Tracks action of viewing product page
 
 ## ecommerceRemoveFromCart()
 
-> **ecommerceRemoveFromCart**(`products`, `options`?): `void`
+> **ecommerceRemoveFromCart**(`products`, `options?`): `void`
 
 Tracks action of removing a products from a cart
 
 ### Parameters
 
-• **products**: [`Product`](#type-aliasesproductmd)[]
+#### products
 
-• **options?**: [`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
+[`Product`](#type-aliasesproductmd)[]
+
+#### options?
+
+[`EcommerceOptions`](#type-aliasesecommerceoptionsmd)
 
 ### Returns
 
@@ -2174,16 +2127,13 @@ Please use the ecommerceRemoveFromCart instead.
 
 ## ~~setEcommerceView()~~
 
-> **setEcommerceView**(`productSKU`, `productName`?, `productCategory`?, `productPrice`?): `void`
+> **setEcommerceView**(`productSKU`, `productName?`, `productCategory?`, `productPrice?`): `void`
 
 ### Parameters
 
 • **productSKU**: `string`
-
 • **productName?**: `string`
-
 • **productCategory?**: `string`[]
-
 • **productPrice?**: `string`
 
 ### Returns
@@ -2224,20 +2174,15 @@ Please use the ecommerceCartUpdate instead.
 
 ## ~~trackEcommerceOrder()~~
 
-> **trackEcommerceOrder**(`orderId`, `orderGrandTotal`, `orderSubTotal`?, `orderTax`?, `orderShipping`?, `orderDiscount`?): `void`
+> **trackEcommerceOrder**(`orderId`, `orderGrandTotal`, `orderSubTotal?`, `orderTax?`, `orderShipping?`, `orderDiscount?`): `void`
 
 ### Parameters
 
 • **orderId**: `string`
-
 • **orderGrandTotal**: `number`
-
 • **orderSubTotal?**: `number`
-
 • **orderTax?**: `number`
-
 • **orderShipping?**: `number`
-
 • **orderDiscount?**: `number`
 
 ### Returns
@@ -2249,6 +2194,7 @@ Please use the ecommerceCartUpdate instead.
 Please use the ecommerceOrder instead.
 
 
+
 <a name="type-aliasesdimensionsmd"></a>
 
 
@@ -2257,7 +2203,7 @@ Please use the ecommerceOrder instead.
 
 ## Type Alias: Dimensions
 
-> **Dimensions**: `Record`\<\`dimension$\{number\}\`, `string`\>
+> **Dimensions**: `Record`\<`` `dimension${number}` ``, `string`\>
 
 
 <a name="type-aliasesecommerceoptionsmd"></a>
@@ -2285,7 +2231,7 @@ Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If n
 ***
 
 
-## Type Alias: GetInitScript()
+## Type Alias: GetInitScript
 
 > **GetInitScript**: (`params`) => `string`
 
@@ -2316,6 +2262,8 @@ Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If n
 
 Defaults to 'dataLayer'
 
+***
+
 #### nonce?
 
 > `optional` **nonce**: `string`
@@ -2327,16 +2275,14 @@ Defaults to 'dataLayer'
 ***
 
 
-## Type Alias: Initialize()
+## Type Alias: Initialize
 
-> **Initialize**: (`containerId`, `containerUrl`, `nonceOrOptions`?) => `void`
+> **Initialize**: (`containerId`, `containerUrl`, `nonceOrOptions?`) => `void`
 
 ### Parameters
 
 • **containerId**: `string`
-
 • **containerUrl**: `string`
-
 • **nonceOrOptions?**: `string` \| [`InitOptions`](#type-aliasesinitoptionsmd)
 
 ### Returns
@@ -2360,21 +2306,31 @@ Defaults to 'dataLayer'
 
 > `optional` **discount**: `number` \| `string`
 
+***
+
 #### grandTotal
 
 > **grandTotal**: `number` \| `string`
+
+***
 
 #### orderId
 
 > **orderId**: `string`
 
+***
+
 #### shipping?
 
 > `optional` **shipping**: `number` \| `string`
 
+***
+
 #### subTotal?
 
 > `optional` **subTotal**: `number` \| `string`
+
+***
 
 #### tax?
 
@@ -2397,29 +2353,43 @@ Defaults to 'dataLayer'
 
 > `optional` **brand**: `string`
 
+***
+
 #### category?
 
 > `optional` **category**: `LimitedArrayFiveStrings`
+
+***
 
 #### customDimensions?
 
 > `optional` **customDimensions**: `Record`\<`number`, `string`\>
 
+***
+
 #### name?
 
 > `optional` **name**: `string`
+
+***
 
 #### price?
 
 > `optional` **price**: `number`
 
+***
+
 #### quantity?
 
 > `optional` **quantity**: `number`
 
+***
+
 #### sku
 
 > **sku**: `string`
+
+***
 
 #### variant?
 
@@ -2434,7 +2404,7 @@ Defaults to 'dataLayer'
 
 ## Type Alias: VisitorInfo
 
-> **VisitorInfo**: [`"0"` \| `"1"`, `string`, `number`, `string` \| `number`, `number`, `number` \| `""`, `number` \| `""`]
+> **VisitorInfo**: \[`"0"` \| `"1"`, `string`, `number`, `string` \| `number`, `number`, `number` \| `""`, `number` \| `""`\]
 
 
 <a name="variablesdefaultmd"></a>
@@ -2456,3 +2426,4 @@ Defaults to 'dataLayer'
 #### initialize
 
 > **initialize**: [`Initialize`](#type-aliasesinitializemd)
+

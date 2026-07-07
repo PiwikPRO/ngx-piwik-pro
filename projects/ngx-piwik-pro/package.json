@@ -9,7 +9,7 @@
     "SPA"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19"
   },
   "private": false,
   "repository": "https://github.com/PiwikPRO/ngx-piwik-pro",
