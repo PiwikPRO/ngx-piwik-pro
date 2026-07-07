@@ -36,7 +36,7 @@
     "zone.js": "^0.14.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.9",
+    "@angular-devkit/build-angular": "^21.2.18",
     "@angular/cli": "^18.2.9",
     "@angular/compiler-cli": "^18.2.8",
     "@types/jasmine": "~5.1.4",
@@ -48,7 +48,7 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^18.2.1",
+    "ng-packagr": "^22.0.1",
     "ng-samurai": "^3.0.0",
     "typedoc": "^0.26.10",
     "typedoc-plugin-markdown": "~4.2.9",
