@@ -6,5 +6,7 @@
   "out": "docs_raw",
   "plugin": ["typedoc-plugin-markdown"],
   "readme": "docs/README_BASE.md",
-  "disableSources": true
+  "disableSources": true,
+  "tsconfig": "tsconfig.typedoc.json",
+  "exclude": ["projects/piwik-pro-angular-demo/**"]
 }
