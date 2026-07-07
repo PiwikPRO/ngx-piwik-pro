@@ -63,6 +63,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "node-resolution": {
+              "tsConfig": "tsconfig.app.node.json"
             }
           },
           "defaultConfiguration": "production"

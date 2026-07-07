@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "ng build piwik-pro-angular-demo --configuration development",
+    "build:node-resolution": "ng build piwik-pro-angular-demo --configuration development,node-resolution",
     "start": "ng serve piwik-pro-angular-demo"
   },
   "dependencies": {

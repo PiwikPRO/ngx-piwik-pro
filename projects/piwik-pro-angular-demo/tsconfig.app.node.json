@@ -1,0 +1,9 @@
+/* Consumer variant using the legacy classic module resolution ("node") instead
+   of the default "bundler". Used by the CI compatibility matrix to verify the
+   library resolves via its module/typings fields, not only the exports map. */
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "moduleResolution": "node"
+  }
+}
