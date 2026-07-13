@@ -19,6 +19,9 @@
     "url": "https://github.com/PiwikPRO/ngx-piwik-pro/issues"
   },
   "homepage": "https://github.com/PiwikPRO/ngx-piwik-pro#readme",
+  "scripts": {
+    "version": "node scripts/bakeInVersion.js && auto-changelog -p && git add ../../CHANGELOG.md src/version.ts"
+  },
   "peerDependencies": {
     "@angular/common": ">=13.2.0",
     "@angular/core": ">=13.2.0"

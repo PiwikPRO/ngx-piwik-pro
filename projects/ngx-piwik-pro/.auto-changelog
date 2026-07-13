@@ -1,0 +1,8 @@
+{
+  "output": "../../CHANGELOG.md",
+  "template": "keepachangelog",
+  "unreleased": false,
+  "commitLimit": false,
+  "hideCredit": true,
+  "ignoreCommitPattern": "^chore\\(release\\)"
+}
