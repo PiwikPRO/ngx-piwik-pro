@@ -5,7 +5,8 @@
   "scripts": {
     "build": "ng build piwik-pro-angular-demo --configuration development",
     "build:node-resolution": "ng build piwik-pro-angular-demo --configuration development,node-resolution",
-    "start": "ng serve piwik-pro-angular-demo"
+    "start": "ng serve piwik-pro-angular-demo",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@piwikpro/ngx-piwik-pro": "file:../../dist/ngx-piwik-pro",
@@ -27,6 +28,7 @@
     "@angular-devkit/build-angular": "^18.2.21",
     "@angular/cli": "^18.2.21",
     "@angular/compiler-cli": "^18.2.14",
+    "@playwright/test": "^1.61.1",
     "typescript": "^5.5.4"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/e2e",
+    "types": ["@playwright/test", "node"]
+  },
+  "include": ["**/*.ts"]
+}

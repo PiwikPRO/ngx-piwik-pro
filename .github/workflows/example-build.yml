@@ -60,3 +60,12 @@ jobs:
 
       - name: Build example app (${{ matrix.resolution }} resolution)
         run: npm run ${{ matrix.build-script }} --prefix projects/piwik-pro-angular-demo
+
+      - name: Install Playwright browser
+        if: matrix.resolution == 'bundler'
+        working-directory: projects/piwik-pro-angular-demo
+        run: npx playwright install --with-deps chromium
+
+      - name: Run example e2e tests (Angular ${{ matrix.angular-version }})
+        if: matrix.resolution == 'bundler'
+        run: npm run test:e2e --prefix projects/piwik-pro-angular-demo

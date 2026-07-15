@@ -13,6 +13,13 @@ projects/*/node_modules
 projects/piwik-pro-angular-demo/dist
 projects/piwik-pro-angular-demo/package-lock.json
 
+# playwright
+projects/piwik-pro-angular-demo/test-results
+projects/piwik-pro-angular-demo/playwright-report
+projects/piwik-pro-angular-demo/.playwright
+/test-results
+/playwright-report
+
 # profiling files
 chrome-profiler-events*.json
 
