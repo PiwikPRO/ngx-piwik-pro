@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "piwik-pro-angular-demo:build:production"
+              "buildTarget": "piwik-pro-angular-demo:build:production"
             },
             "development": {
-              "browserTarget": "piwik-pro-angular-demo:build:development"
+              "buildTarget": "piwik-pro-angular-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
