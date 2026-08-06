@@ -52,7 +52,7 @@ import { DownloadAndOutlinkComponent } from './pages/download-and-outlink/downlo
         dataLayerName: 'myDataLayerName'
       }
     ),
-    NgxPiwikProRouterModule.forRoot(),
+    NgxPiwikProRouterModule.forRoot({ skipFirstPageView: false }),
     BrowserAnimationsModule,
     MatCardModule,
     MatListModule,
