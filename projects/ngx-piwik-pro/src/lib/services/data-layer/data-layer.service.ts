@@ -7,6 +7,9 @@ type IDataLayer = typeof DataLayer;
   providedIn: 'root'
 })
 export class DataLayerService {
+  setDataLayerName(...params: Parameters<IDataLayer['setDataLayerName']>) {
+    DataLayer.setDataLayerName(...params);
+  }
   push(...params: Parameters<IDataLayer['push']>) {
     return DataLayer.push(...params);
   }

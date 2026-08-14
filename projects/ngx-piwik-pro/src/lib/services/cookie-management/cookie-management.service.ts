@@ -25,8 +25,14 @@ export class CookieManagementService {
   setCookieDomain(...params: Parameters<ICookieManagement['setCookieDomain']>) {
     CookieManagement.setCookieDomain(...params);
   }
+  getCookieDomain() {
+    return CookieManagement.getCookieDomain();
+  }
   setCookiePath(...params: Parameters<ICookieManagement['setCookiePath']>) {
     CookieManagement.setCookiePath(...params);
+  }
+  getCookiePath() {
+    return CookieManagement.getCookiePath();
   }
   setSecureCookie(...params: Parameters<ICookieManagement['setSecureCookie']>) {
     CookieManagement.setSecureCookie(...params);
@@ -34,8 +40,17 @@ export class CookieManagementService {
   setVisitorCookieTimeout(...params: Parameters<ICookieManagement['setVisitorCookieTimeout']>) {
     CookieManagement.setVisitorCookieTimeout(...params);
   }
+  getConfigVisitorCookieTimeout() {
+    return CookieManagement.getConfigVisitorCookieTimeout();
+  }
   setSessionCookieTimeout(...params: Parameters<ICookieManagement['setSessionCookieTimeout']>) {
     CookieManagement.setSessionCookieTimeout(...params);
+  }
+  getSessionCookieTimeout() {
+    return CookieManagement.getSessionCookieTimeout();
+  }
+  setReferralCookieTimeout(...params: Parameters<ICookieManagement['setReferralCookieTimeout']>) {
+    CookieManagement.setReferralCookieTimeout(...params);
   }
   setVisitorIdCookie(...params: Parameters<ICookieManagement['setVisitorIdCookie']>) {
     CookieManagement.setVisitorIdCookie(...params);

@@ -21,6 +21,7 @@ export * from './lib/services/site-search/site-search.service';
 export * from './lib/services/custom-event/custom-events.service';
 export * from './lib/services/download-and-outlink/download-and-outlink.service';
 export * from './lib/services/e-commerce/e-commerce.service';
+export * from './lib/services/error-tracking/error-tracking.service';
 export * from './lib/services/goal-conversions/goal-conversions.service';
 export * from './lib/services/user-management/user-management.service';
 export * from './lib/services/data-layer/data-layer.service';
