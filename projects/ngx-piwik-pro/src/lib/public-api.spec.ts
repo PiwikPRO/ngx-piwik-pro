@@ -11,6 +11,7 @@ import { CustomEventsService } from './services/custom-event/custom-events.servi
 import { DataLayerService } from './services/data-layer/data-layer.service';
 import { DownloadAndOutlinkService } from './services/download-and-outlink/download-and-outlink.service';
 import { ECommerceService } from './services/e-commerce/e-commerce.service';
+import { ErrorTrackingService } from './services/error-tracking/error-tracking.service';
 import { GoalConversionsService } from './services/goal-conversions/goal-conversions.service';
 import { HeartbeatService } from './services/heartbeat/heartbeat.service';
 import { MiscellaneousService } from './services/miscellaneous/miscellaneous.service';
@@ -27,6 +28,7 @@ const EXPECTED_SERVICES: ReadonlyArray<readonly [string, Type<unknown>]> = [
   ['CustomDimensionsService', CustomDimensionsService],
   ['DownloadAndOutlinkService', DownloadAndOutlinkService],
   ['ECommerceService', ECommerceService],
+  ['ErrorTrackingService', ErrorTrackingService],
   ['GoalConversionsService', GoalConversionsService],
   ['SiteSearchService', SiteSearchService],
   ['UserManagementService', UserManagementService],
