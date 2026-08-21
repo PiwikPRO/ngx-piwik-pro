@@ -1,0 +1,33 @@
+name: Bump NPM Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Semver level to bump"
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version: 20
+
+      - name: Bump NPM package version
+        uses: PiwikPRO/actions/javascript/npm-bump@master
+        with:
+          version: ${{ inputs.version }}
+          working-directory: projects/ngx-piwik-pro
