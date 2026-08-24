@@ -31,3 +31,5 @@ jobs:
         with:
           version: ${{ inputs.version }}
           working-directory: projects/ngx-piwik-pro
+          reviewers:
+            - "PiwikPRO/integrations"
